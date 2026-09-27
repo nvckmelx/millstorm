@@ -1,0 +1,20 @@
+{
+  "name": "millstorm",
+  "private": true,
+  "type": "module",
+  "workspaces": ["shared", "server", "client"],
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c yellow,cyan \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run typecheck && npm run build -w client && npm run build -w server",
+    "typecheck": "tsc -p shared --noEmit && tsc -p server --noEmit && tsc -p client --noEmit",
+    "test": "vitest run --root shared",
+    "start": "node server/dist/index.js",
+    "sim": "tsx shared/scripts/simulate.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
