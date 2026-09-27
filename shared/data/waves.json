@@ -1,0 +1,309 @@
+{
+  "_note": "Скриптовые волны 1–18. hpMultiplier = (1 + waveHpGrowth)^(N-1). Прототип использует волны 1–10.",
+  "waves": [
+    {
+      "wave": 1,
+      "boss": false,
+      "units": [
+        {
+          "type": "mouse",
+          "count": 8
+        }
+      ],
+      "hpMultiplier": 1.0,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 2,
+      "boss": false,
+      "units": [
+        {
+          "type": "mouse",
+          "count": 10
+        }
+      ],
+      "hpMultiplier": 1.12,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 3,
+      "boss": false,
+      "units": [
+        {
+          "type": "mouse",
+          "count": 8
+        },
+        {
+          "type": "beetle",
+          "count": 2
+        }
+      ],
+      "hpMultiplier": 1.254,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 4,
+      "boss": false,
+      "units": [
+        {
+          "type": "mouse",
+          "count": 10
+        },
+        {
+          "type": "beetle",
+          "count": 3
+        }
+      ],
+      "hpMultiplier": 1.405,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 5,
+      "boss": false,
+      "units": [
+        {
+          "type": "beetle",
+          "count": 5
+        },
+        {
+          "type": "mouse",
+          "count": 6
+        }
+      ],
+      "hpMultiplier": 1.574,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 6,
+      "boss": true,
+      "units": [
+        {
+          "type": "badger",
+          "count": 1
+        },
+        {
+          "type": "mouse",
+          "count": 6
+        }
+      ],
+      "hpMultiplier": 1.762,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 7,
+      "boss": false,
+      "units": [
+        {
+          "type": "crow",
+          "count": 6
+        },
+        {
+          "type": "mouse",
+          "count": 8
+        }
+      ],
+      "hpMultiplier": 1.974,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 8,
+      "boss": false,
+      "units": [
+        {
+          "type": "beetle",
+          "count": 6
+        },
+        {
+          "type": "crow",
+          "count": 4
+        }
+      ],
+      "hpMultiplier": 2.211,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 9,
+      "boss": false,
+      "units": [
+        {
+          "type": "mouse",
+          "count": 14
+        },
+        {
+          "type": "snail",
+          "count": 2
+        }
+      ],
+      "hpMultiplier": 2.476,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 10,
+      "boss": false,
+      "units": [
+        {
+          "type": "crow",
+          "count": 8
+        },
+        {
+          "type": "beetle",
+          "count": 5
+        }
+      ],
+      "hpMultiplier": 2.773,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 11,
+      "boss": false,
+      "units": [
+        {
+          "type": "spore",
+          "count": 4
+        },
+        {
+          "type": "mouse",
+          "count": 12
+        },
+        {
+          "type": "beetle",
+          "count": 4
+        }
+      ],
+      "hpMultiplier": 3.106,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 12,
+      "boss": true,
+      "units": [
+        {
+          "type": "locustQueen",
+          "count": 1
+        },
+        {
+          "type": "mouse",
+          "count": 10
+        }
+      ],
+      "hpMultiplier": 3.479,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 13,
+      "boss": false,
+      "units": [
+        {
+          "type": "beetle",
+          "count": 8
+        },
+        {
+          "type": "snail",
+          "count": 3
+        },
+        {
+          "type": "crow",
+          "count": 6
+        }
+      ],
+      "hpMultiplier": 3.896,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 14,
+      "boss": false,
+      "units": [
+        {
+          "type": "crow",
+          "count": 12
+        },
+        {
+          "type": "spore",
+          "count": 4
+        }
+      ],
+      "hpMultiplier": 4.363,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 15,
+      "boss": false,
+      "units": [
+        {
+          "type": "mouse",
+          "count": 20
+        },
+        {
+          "type": "beetle",
+          "count": 8
+        },
+        {
+          "type": "snail",
+          "count": 3
+        }
+      ],
+      "hpMultiplier": 4.887,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 16,
+      "boss": false,
+      "units": [
+        {
+          "type": "crow",
+          "count": 10
+        },
+        {
+          "type": "beetle",
+          "count": 10
+        },
+        {
+          "type": "spore",
+          "count": 5
+        }
+      ],
+      "hpMultiplier": 5.474,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 17,
+      "boss": false,
+      "units": [
+        {
+          "type": "mouse",
+          "count": 24
+        },
+        {
+          "type": "crow",
+          "count": 10
+        },
+        {
+          "type": "snail",
+          "count": 4
+        }
+      ],
+      "hpMultiplier": 6.13,
+      "spawnIntervalSec": 0.6
+    },
+    {
+      "wave": 18,
+      "boss": true,
+      "units": [
+        {
+          "type": "stormcloud",
+          "count": 1
+        },
+        {
+          "type": "crow",
+          "count": 10
+        },
+        {
+          "type": "beetle",
+          "count": 6
+        }
+      ],
+      "hpMultiplier": 6.866,
+      "spawnIntervalSec": 0.6
+    }
+  ]
+}

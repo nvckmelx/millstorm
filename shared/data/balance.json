@@ -1,0 +1,466 @@
+{
+  "_note": "Стартовые значения для плейтеста. Все числа меняются здесь, не в коде.",
+  "match": {
+    "tickRate": 20,
+    "startBuildSeconds": 30,
+    "prepSeconds": 15,
+    "waveSeconds": 35,
+    "wavesTotal": 18,
+    "sendsUnlockWave": 4,
+    "sendLockBeforeWaveSeconds": 3,
+    "waveHpGrowth": 0.12,
+    "millHpPerPlayer": 100,
+    "suddenDeath": {
+      "fromWave": 19,
+      "hpGrowthPerWave": 0.25,
+      "leakDamageMultiplier": 2,
+      "millCannonDisabled": true
+    }
+  },
+  "map": {
+    "cols": 10,
+    "rows": 16,
+    "cellPx": 48,
+    "_pathNote": "Waypoints в клетках (col,row), враги идут по ломаной от первой точки к последней; клетки тропы не застраиваются.",
+    "path": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        1,
+        11
+      ],
+      [
+        1,
+        14
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        5,
+        15
+      ]
+    ]
+  },
+  "economy": {
+    "startGrain": 200,
+    "startLure": 50,
+    "lureRegenPerSecond": 1.0,
+    "lureCap": 150,
+    "incomeBase": 30,
+    "incomePerWave": 4,
+    "cleanWaveBonus": 15,
+    "sentPestBountyShare": 0.3,
+    "sellRefund": 0.7,
+    "sellRefundSamePrep": 1.0,
+    "secondWind": {
+      "hpGapThreshold": 0.25,
+      "grainIncomeBonus": 0.2,
+      "lureRegenBonus": 0.2
+    },
+    "gift": {
+      "amount": 50,
+      "cost": 60,
+      "cooldownWaves": 1
+    },
+    "millCannon": {
+      "costPerLevel": 100,
+      "maxLevel": 5,
+      "damagePerLevel": [
+        0,
+        15,
+        25,
+        40,
+        60,
+        85
+      ],
+      "attackInterval": 1.0,
+      "rangeCells": 3
+    }
+  },
+  "armorTypes": {
+    "swift": {
+      "color": "#F2C230",
+      "label": "Шустрые"
+    },
+    "armored": {
+      "color": "#3D7BE0",
+      "label": "Панцирные"
+    },
+    "flying": {
+      "color": "#FFFFFF",
+      "label": "Летуны"
+    }
+  },
+  "damageMultipliers": {
+    "basic": {
+      "swift": 1.0,
+      "armored": 1.0,
+      "flying": 1.0
+    },
+    "splash": {
+      "swift": 1.5,
+      "armored": 0.5,
+      "flying": 0.0
+    },
+    "pierce": {
+      "swift": 0.5,
+      "armored": 1.5,
+      "flying": 0.0
+    },
+    "air": {
+      "swift": 0.7,
+      "armored": 0.7,
+      "flying": 2.0
+    }
+  },
+  "defenders": {
+    "scarecrow": {
+      "name": "Пугало-лучник",
+      "hotkey": "Q",
+      "cost": 40,
+      "upgradeCost": [
+        50,
+        90
+      ],
+      "attackType": "basic",
+      "hitsFlying": true,
+      "damage": [
+        10,
+        18,
+        30
+      ],
+      "attackInterval": 0.8,
+      "rangeCells": 3,
+      "lvl3": "каждый 4-й выстрел двойной"
+    },
+    "pumpkin": {
+      "name": "Тыквомёт",
+      "hotkey": "W",
+      "cost": 80,
+      "upgradeCost": [
+        70,
+        120
+      ],
+      "attackType": "splash",
+      "hitsFlying": false,
+      "damage": [
+        22,
+        40,
+        65
+      ],
+      "attackInterval": 2.0,
+      "rangeCells": 3,
+      "splashRadiusCells": 1.2,
+      "lvl3": "лужа: слоу 25% на 2 с в радиусе взрыва"
+    },
+    "ballista": {
+      "name": "Вилы-баллиста",
+      "hotkey": "E",
+      "cost": 90,
+      "upgradeCost": [
+        80,
+        140
+      ],
+      "attackType": "pierce",
+      "hitsFlying": false,
+      "damage": [
+        60,
+        110,
+        180
+      ],
+      "attackInterval": 2.5,
+      "rangeCells": 4,
+      "ignoresShields": true,
+      "lvl3": "выстрел пронзает 2 цели"
+    },
+    "owl": {
+      "name": "Сова-дозорный",
+      "hotkey": "R",
+      "cost": 70,
+      "upgradeCost": [
+        60,
+        110
+      ],
+      "attackType": "air",
+      "hitsFlying": true,
+      "damage": [
+        14,
+        24,
+        38
+      ],
+      "attackInterval": 1.0,
+      "rangeCells": 5,
+      "lvl3": "приоритет целей: споры и слизни"
+    },
+    "sprinkler": {
+      "name": "Разбрызгиватель",
+      "hotkey": "T",
+      "cost": 60,
+      "upgradeCost": [
+        50,
+        100
+      ],
+      "attackType": "basic",
+      "hitsFlying": false,
+      "damage": [
+        2,
+        3,
+        4
+      ],
+      "attackInterval": 1.0,
+      "rangeCells": 2,
+      "slow": [
+        0.3,
+        0.3,
+        0.4
+      ],
+      "lvl3": "снимает щиты слизней"
+    },
+    "bell": {
+      "name": "Колокол амбара",
+      "hotkey": "Y",
+      "cost": 110,
+      "upgradeCost": [
+        90,
+        150
+      ],
+      "attackType": "none",
+      "auraRangeCells": 2,
+      "attackSpeedBonus": [
+        0.2,
+        0.25,
+        0.35
+      ],
+      "lvl3": "иммунитет к спорам в ауре"
+    },
+    "feeder": {
+      "name": "Кормушка",
+      "hotkey": "U",
+      "cost": 50,
+      "upgradeCost": [],
+      "attackType": "none",
+      "lureRegenBonus": 0.25,
+      "maxPerPlayer": 4
+    }
+  },
+  "enemies": {
+    "mouse": {
+      "name": "Мышь",
+      "armor": "swift",
+      "hp": 40,
+      "speed": 1.6,
+      "bounty": 1,
+      "leakDamage": 1
+    },
+    "beetle": {
+      "name": "Жук-броненосец",
+      "armor": "armored",
+      "hp": 160,
+      "speed": 0.8,
+      "bounty": 3,
+      "leakDamage": 2
+    },
+    "ferret": {
+      "name": "Хорёк-вор",
+      "armor": "swift",
+      "hp": 90,
+      "speed": 1.8,
+      "bounty": 2,
+      "leakDamage": 1,
+      "stealGrainOnLeak": 15
+    },
+    "crow": {
+      "name": "Ворона",
+      "armor": "flying",
+      "hp": 60,
+      "speed": 1.4,
+      "bounty": 2,
+      "leakDamage": 1,
+      "flying": true
+    },
+    "snail": {
+      "name": "Слизень-щитоносец",
+      "armor": "armored",
+      "hp": 120,
+      "speed": 0.7,
+      "bounty": 3,
+      "leakDamage": 2,
+      "shieldAura": {
+        "radiusCells": 1.5,
+        "shieldHp": 50
+      }
+    },
+    "spore": {
+      "name": "Споровый гриб",
+      "armor": "swift",
+      "hp": 80,
+      "speed": 1.0,
+      "bounty": 2,
+      "leakDamage": 1,
+      "onDeath": {
+        "radiusCells": 2,
+        "towerAttackSlow": 0.4,
+        "durationSec": 5
+      }
+    },
+    "goat": {
+      "name": "Козёл-таран",
+      "armor": "armored",
+      "hp": 900,
+      "speed": 0.9,
+      "bounty": 10,
+      "leakDamage": 8
+    },
+    "badger": {
+      "name": "Старый барсук (босс)",
+      "armor": "armored",
+      "hp": 1500,
+      "speed": 0.6,
+      "bounty": 40,
+      "leakDamage": 10
+    },
+    "locustQueen": {
+      "name": "Королева саранчи (босс)",
+      "armor": "swift",
+      "hp": 4000,
+      "speed": 1.0,
+      "bounty": 80,
+      "leakDamage": 15
+    },
+    "stormcloud": {
+      "name": "Грозовая туча (босс)",
+      "armor": "flying",
+      "hp": 9000,
+      "speed": 0.7,
+      "bounty": 150,
+      "leakDamage": 20,
+      "flying": true
+    }
+  },
+  "sends": {
+    "mice": {
+      "name": "Стая мышей",
+      "hotkey": "1",
+      "lureCost": 20,
+      "incomeGain": 2,
+      "unlockWave": 4,
+      "units": [
+        [
+          "mouse",
+          6
+        ]
+      ]
+    },
+    "beetle": {
+      "name": "Жук-броненосец",
+      "hotkey": "2",
+      "lureCost": 35,
+      "incomeGain": 4,
+      "unlockWave": 4,
+      "units": [
+        [
+          "beetle",
+          1
+        ]
+      ]
+    },
+    "ferret": {
+      "name": "Хорёк-вор",
+      "hotkey": "3",
+      "lureCost": 25,
+      "incomeGain": 1,
+      "unlockWave": 4,
+      "units": [
+        [
+          "ferret",
+          1
+        ]
+      ]
+    },
+    "crows": {
+      "name": "Воронья стая",
+      "hotkey": "4",
+      "lureCost": 40,
+      "incomeGain": 4,
+      "unlockWave": 7,
+      "units": [
+        [
+          "crow",
+          3
+        ]
+      ]
+    },
+    "snail": {
+      "name": "Слизень-щитоносец",
+      "hotkey": "5",
+      "lureCost": 50,
+      "incomeGain": 5,
+      "unlockWave": 7,
+      "units": [
+        [
+          "snail",
+          1
+        ]
+      ]
+    },
+    "spore": {
+      "name": "Споровый гриб",
+      "hotkey": "6",
+      "lureCost": 45,
+      "incomeGain": 4,
+      "unlockWave": 7,
+      "units": [
+        [
+          "spore",
+          1
+        ]
+      ]
+    },
+    "goat": {
+      "name": "Козёл-таран",
+      "hotkey": "7",
+      "lureCost": 120,
+      "incomeGain": 12,
+      "unlockWave": 9,
+      "units": [
+        [
+          "goat",
+          1
+        ]
+      ]
+    }
+  },
+  "_sendsNote": "Отправленные юниты масштабируются тем же waveHpGrowth, что и текущая волна получателя."
+}
