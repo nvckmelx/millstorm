@@ -14,8 +14,14 @@
       "fromWave": 19,
       "hpGrowthPerWave": 0.25,
       "leakDamageMultiplier": 2,
-      "millCannonDisabled": true
-    }
+      "millCannonDisabled": true,
+      "waveTemplates": [
+        15,
+        16,
+        17
+      ]
+    },
+    "reconnectSeconds": 90
   },
   "map": {
     "cols": 10,
@@ -71,19 +77,20 @@
         5,
         15
       ]
-    ]
+    ],
+    "yardLengthCells": 4
   },
   "economy": {
     "startGrain": 200,
     "startLure": 50,
-    "lureRegenPerSecond": 1.0,
+    "lureRegenPerSecond": 1,
     "lureCap": 150,
     "incomeBase": 30,
     "incomePerWave": 4,
     "cleanWaveBonus": 15,
     "sentPestBountyShare": 0.3,
     "sellRefund": 0.7,
-    "sellRefundSamePrep": 1.0,
+    "sellRefundSamePrep": 1,
     "secondWind": {
       "hpGapThreshold": 0.25,
       "grainIncomeBonus": 0.2,
@@ -105,8 +112,12 @@
         60,
         85
       ],
-      "attackInterval": 1.0,
+      "attackInterval": 1,
       "rangeCells": 3
+    },
+    "raid": {
+      "hpBonus": 0.15,
+      "minParticipants": 2
     }
   },
   "armorTypes": {
@@ -125,24 +136,24 @@
   },
   "damageMultipliers": {
     "basic": {
-      "swift": 1.0,
-      "armored": 1.0,
-      "flying": 1.0
+      "swift": 1,
+      "armored": 1,
+      "flying": 1
     },
     "splash": {
       "swift": 1.5,
       "armored": 0.5,
-      "flying": 0.0
+      "flying": 0
     },
     "pierce": {
       "swift": 0.5,
       "armored": 1.5,
-      "flying": 0.0
+      "flying": 0
     },
     "air": {
       "swift": 0.7,
       "armored": 0.7,
-      "flying": 2.0
+      "flying": 2
     }
   },
   "defenders": {
@@ -163,7 +174,11 @@
       ],
       "attackInterval": 0.8,
       "rangeCells": 3,
-      "lvl3": "каждый 4-й выстрел двойной"
+      "lvl3": "каждый 4-й выстрел двойной",
+      "doubleShot": {
+        "fromLevel": 3,
+        "every": 4
+      }
     },
     "pumpkin": {
       "name": "Тыквомёт",
@@ -180,10 +195,15 @@
         40,
         65
       ],
-      "attackInterval": 2.0,
+      "attackInterval": 2,
       "rangeCells": 3,
       "splashRadiusCells": 1.2,
-      "lvl3": "лужа: слоу 25% на 2 с в радиусе взрыва"
+      "lvl3": "лужа: слоу 25% на 2 с в радиусе взрыва",
+      "puddle": {
+        "fromLevel": 3,
+        "slow": 0.25,
+        "durationSec": 2
+      }
     },
     "ballista": {
       "name": "Вилы-баллиста",
@@ -203,7 +223,12 @@
       "attackInterval": 2.5,
       "rangeCells": 4,
       "ignoresShields": true,
-      "lvl3": "выстрел пронзает 2 цели"
+      "lvl3": "выстрел пронзает 2 цели",
+      "pierceTargets": [
+        1,
+        1,
+        2
+      ]
     },
     "owl": {
       "name": "Сова-дозорный",
@@ -220,9 +245,16 @@
         24,
         38
       ],
-      "attackInterval": 1.0,
+      "attackInterval": 1,
       "rangeCells": 5,
-      "lvl3": "приоритет целей: споры и слизни"
+      "lvl3": "приоритет целей: споры и слизни",
+      "priority": {
+        "fromLevel": 3,
+        "enemies": [
+          "spore",
+          "snail"
+        ]
+      }
     },
     "sprinkler": {
       "name": "Разбрызгиватель",
@@ -239,14 +271,15 @@
         3,
         4
       ],
-      "attackInterval": 1.0,
+      "attackInterval": 1,
       "rangeCells": 2,
       "slow": [
         0.3,
         0.3,
         0.4
       ],
-      "lvl3": "снимает щиты слизней"
+      "lvl3": "снимает щиты слизней",
+      "stripShieldsFromLevel": 3
     },
     "bell": {
       "name": "Колокол амбара",
@@ -263,7 +296,8 @@
         0.25,
         0.35
       ],
-      "lvl3": "иммунитет к спорам в ауре"
+      "lvl3": "иммунитет к спорам в ауре",
+      "sporeImmunityFromLevel": 3
     },
     "feeder": {
       "name": "Кормушка",
@@ -326,7 +360,7 @@
       "name": "Споровый гриб",
       "armor": "swift",
       "hp": 80,
-      "speed": 1.0,
+      "speed": 1,
       "bounty": 2,
       "leakDamage": 1,
       "onDeath": {
@@ -355,7 +389,7 @@
       "name": "Королева саранчи (босс)",
       "armor": "swift",
       "hp": 4000,
-      "speed": 1.0,
+      "speed": 1,
       "bounty": 80,
       "leakDamage": 15
     },
