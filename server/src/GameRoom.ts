@@ -34,6 +34,8 @@ const usedCodes = new Set<string>();
 const LOADING_SECONDS = 4;
 const PUBLIC_WAIT_SECONDS = 20;
 const SNAPSHOT_EVERY_TICKS = 2;
+/** Testing only: SIM_SPEED=10 runs matches ten times faster. */
+const SIM_SPEED = Math.max(1, Math.floor(Number(process.env.SIM_SPEED) || 1));
 
 /**
  * One room = one party. It lives through lobby → loading → match → results → (rematch | lobby).
@@ -321,9 +323,11 @@ export class GameRoom extends Room {
   private tick(): void {
     const m = this.match;
     if (!m || this.stage !== "match") return;
-    for (const b of this.bots.values()) b.tick();
-    m.step();
-    if (m.tick % SNAPSHOT_EVERY_TICKS === 0 || m.phase === "ended") {
+    for (let i = 0; i < SIM_SPEED && m.phase !== "ended"; i++) {
+      for (const b of this.bots.values()) b.tick();
+      m.step();
+    }
+    if (m.tick % SNAPSHOT_EVERY_TICKS === 0 || SIM_SPEED > 1 || m.phase === "ended") {
       this.broadcast("snap", makeSnapshot(m, this.lastEventId, this.lastShotTick));
       this.lastEventId = m.eventSeq;
       this.lastShotTick = m.tick;

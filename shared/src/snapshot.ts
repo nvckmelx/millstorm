@@ -1,7 +1,7 @@
 import type { Match, MatchEvent, MatchResult, Phase, PlayerStats, TeamId } from "./match";
 
-/** [id, defenderIndex, col, row, level, spored 0|1] */
-export type SnapDefender = [number, number, number, number, number, number];
+/** [id, defenderIndex, col, row, level, spored 0|1, sellValue] */
+export type SnapDefender = [number, number, number, number, number, number, number];
 /** [id, enemyIndex, progress×100, hp, maxHp, shield, senderPlayerIndex (-1 = wave)] */
 export type SnapEnemy = [number, number, number, number, number, number, number];
 /** [tick, fromDefenderId (-1 = Mill cannon), x×10, y×10, kind] */
@@ -97,7 +97,7 @@ export function makeSnapshot(m: Match, sinceEventId: number, sinceShotTick = m.t
       giftReady: m.wave >= p.giftReadyWave,
       status: m.laneStatus(p),
       leaksThisWave: p.leaksThisWave,
-      d: p.defenders.map((d) => [d.id, defenderIds.indexOf(d.type), d.col, d.row, d.level, d.sporeTimer > 0 ? 1 : 0]),
+      d: p.defenders.map((d) => [d.id, defenderIds.indexOf(d.type), d.col, d.row, d.level, d.sporeTimer > 0 ? 1 : 0, m.sellValue(d)]),
       e: p.enemies.map((e) => [
         e.id,
         enemyIds.indexOf(e.type),

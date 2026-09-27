@@ -68,7 +68,10 @@ export class FieldScene extends Phaser.Scene {
   create(): void {
     this.g = this.add.graphics();
     this.input.mouse?.disableContextMenu();
-    this.scale.on("resize", () => this.layout());
+    this.scale.on("resize", (size: Phaser.Structs.Size) => {
+      this.cameras.main.setSize(size.width, size.height);
+      this.layout();
+    });
     this.layout();
 
     this.input.on("pointermove", (p: Phaser.Input.Pointer) => (this.hover = this.toCell(p.x, p.y)));

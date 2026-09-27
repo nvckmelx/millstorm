@@ -293,7 +293,7 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
   ctx.strokeStyle = "#e3d3b0";
   ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
-    const y = pad / 2 + ((H - pad) * i) / 4;
+    const y = pad / 2 + 6 + ((H - pad - 6) * i) / 4;
     ctx.beginPath();
     ctx.moveTo(pad, y);
     ctx.lineTo(W - 8, y);
@@ -301,7 +301,7 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
   }
   ctx.fillStyle = "#6b5a45";
   ctx.font = "12px Nunito, sans-serif";
-  ctx.fillText("HP Мельниц по волнам", pad, 12);
+  ctx.fillText("HP Мельниц по волнам", pad, 11);
   const points = [[s.teams[0].maxHp, s.teams[1].maxHp], ...hist];
   for (const team of [0, 1]) {
     ctx.strokeStyle = TEAM_COLORS[team];
@@ -309,7 +309,7 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
     ctx.beginPath();
     points.forEach((pt, i) => {
       const x = pad + ((W - pad - 8) * i) / Math.max(1, points.length - 1);
-      const y = pad / 2 + (H - pad) * (1 - pt[team] / s.teams[team].maxHp);
+      const y = pad / 2 + 6 + (H - pad - 6) * (1 - pt[team] / s.teams[team].maxHp);
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     });

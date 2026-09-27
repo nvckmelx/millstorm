@@ -32,6 +32,7 @@ export class MatchScreen {
   private lastMiniDraw = 0;
   private onKey = (e: KeyboardEvent) => this.key(e);
   private wheel: HTMLElement | null = null;
+  private resize: ResizeObserver | null = null;
 
   constructor(
     private readonly root: HTMLElement,
@@ -48,6 +49,7 @@ export class MatchScreen {
 
   destroy(): void {
     window.removeEventListener("keydown", this.onKey);
+    this.resize?.disconnect();
     this.game?.destroy(true);
     this.game = null;
     this.closeWheel();
@@ -211,12 +213,20 @@ export class MatchScreen {
       type: Phaser.AUTO,
       parent: this.el.field,
       backgroundColor: "#bfe3f5",
-      scale: { mode: Phaser.Scale.RESIZE, width: "100%", height: "100%" },
+      // Sized by the ResizeObserver below; Phaser's own RESIZE mode misreads grid cells.
+      scale: { mode: Phaser.Scale.NONE, width: Math.max(1, this.el.field.clientWidth), height: Math.max(1, this.el.field.clientHeight) },
       scene,
       banner: false,
       render: { antialias: true },
       input: { mouse: { preventDefaultWheel: false } },
     });
+    const field = this.el.field;
+    this.resize = new ResizeObserver(() => {
+      const g = this.game;
+      if (!g || !field.clientWidth || !field.clientHeight) return;
+      if (g.scale.width !== field.clientWidth || g.scale.height !== field.clientHeight) g.scale.resize(field.clientWidth, field.clientHeight);
+    });
+    this.resize.observe(field);
   }
 
   // ------------------------------------------------------------ input
