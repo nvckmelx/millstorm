@@ -5,3 +5,4 @@ export * from "./commands";
 export * from "./match";
 export * from "./snapshot";
 export * from "./bot";
+export * from "./lobby";
