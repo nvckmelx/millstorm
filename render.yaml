@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: millstorm
+    runtime: docker
+    plan: free
+    healthCheckPath: /health

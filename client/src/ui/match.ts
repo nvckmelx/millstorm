@@ -90,7 +90,7 @@ export class MatchScreen {
         "div.sys",
         {},
         (e.latency = h("span.latency", {}, "")),
-        h("button.ghost", { onclick: () => this.confirmLeave() }, "Выйти"),
+        (e.leave = h("button.ghost", { onclick: () => this.confirmLeave() }, "Выйти")),
       ),
     );
 
@@ -295,9 +295,19 @@ export class MatchScreen {
     this.wheel = null;
   }
 
+  private leaveArmed = 0;
+
+  /** Two-click confirm inside the page (native confirm() is unavailable in embedded viewers). */
   private confirmLeave(): void {
-    const text = this.session.offline ? "Выйти в меню? Матч будет потерян." : "Выйти из матча? Твою линию возьмёт бот.";
-    if (confirm(text)) this.onLeave();
+    const btn = this.el.leave;
+    if (performance.now() - this.leaveArmed < 4000) return this.onLeave();
+    this.leaveArmed = performance.now();
+    btn.textContent = this.session.offline ? "Точно выйти? Матч пропадёт" : "Точно выйти? Линию возьмёт бот";
+    btn.classList.add("armed");
+    setTimeout(() => {
+      btn.textContent = "Выйти";
+      btn.classList.remove("armed");
+    }, 4000);
   }
 
   // ------------------------------------------------------------ updates
