@@ -417,10 +417,11 @@ export class FieldScene extends Phaser.Scene {
           if (!t) {
             t = this.add
               .text(0, 0, `от ${sender.name}`, {
-                fontFamily: "'Pixelify Sans', system-ui, sans-serif",
+                fontFamily: "Rubik, system-ui, sans-serif",
+                fontStyle: "bold",
                 fontSize: `${Math.max(10, Math.round(c * 0.3))}px`,
-                color: "#2b1d14",
-                backgroundColor: "#f6ecd0",
+                color: "#3a2414",
+                backgroundColor: "#fbf4e2",
                 padding: { x: 3, y: 1 },
               })
               .setOrigin(0.5, 1)

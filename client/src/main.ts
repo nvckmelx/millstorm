@@ -1,14 +1,18 @@
-import "@fontsource/pixelify-sans/400.css";
-import "@fontsource/pixelify-sans/500.css";
-import "@fontsource/pixelify-sans/700.css";
+import "@fontsource/rubik/500.css";
+import "@fontsource/rubik/700.css";
+import "@fontsource/rubik/800.css";
+import "@fontsource/yeseva-one/400.css";
 import "./style.css";
 import type { LobbyState, Mode, Snapshot } from "@millstorm/shared";
 import { OfflineSession, OnlineSession, type Session } from "./net";
 import { mount, toast } from "./ui/dom";
 import { MatchScreen } from "./ui/match";
 import { OFFLINE_BUILD, loadingScreen, lobbyScreen, menuScreen, resultsScreen } from "./ui/screens";
+import { ART_URL } from "./game/look";
 
 const root = document.getElementById("app")!;
+// The painted sky from the art pack sits behind every screen.
+document.documentElement.style.setProperty("--sky-url", `url("${ART_URL}sky.jpg")`);
 
 let session: Session | null = null;
 let lobby: LobbyState | null = null;

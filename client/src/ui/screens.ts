@@ -39,7 +39,7 @@ function logo(): HTMLElement {
     "div.logo",
     {},
     h("h1.visually-hidden", {}, "Millstorm"),
-    h("img", { src: `${BRAND_URL}millstorm-lockup.svg`, alt: "Millstorm", width: 108, height: 87 }),
+    h("img", { src: `${BRAND_URL}millstorm-logo.png`, alt: "Millstorm", width: 720, height: 709 }),
     h("p", {}, "Защищай свою небесную ферму и насылай вредителей на соседей"),
   );
 }
@@ -207,7 +207,7 @@ export function loadingScreen(l: LobbyState, tutorial: boolean): HTMLElement {
   return h(
     "div.screen.loading",
     {},
-    h("img.emblem", { src: `${BRAND_URL}millstorm-crest.svg`, alt: "", width: 48, height: 56 }),
+    h("img.emblem", { src: `${BRAND_URL}millstorm-mill.png`, alt: "", width: 256, height: 256 }),
     h("h2", {}, tutorial ? "Обучение: игра за 60 секунд" : "Загрузка матча"),
     h(
       "div.versus",
@@ -312,7 +312,7 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
     ctx.stroke();
   }
   ctx.fillStyle = "#6b5335";
-  ctx.font = "12px 'Pixelify Sans', sans-serif";
+  ctx.font = "12px Rubik, sans-serif";
   ctx.fillText("HP Мельниц по волнам", pad, 11);
   const points = [[s.teams[0].maxHp, s.teams[1].maxHp], ...hist];
   for (const team of [0, 1]) {
