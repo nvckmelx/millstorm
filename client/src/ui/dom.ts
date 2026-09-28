@@ -25,6 +25,13 @@ export function mount(root: HTMLElement, ...nodes: Node[]): void {
   root.replaceChildren(...nodes);
 }
 
+import { ART_URL } from "../game/look";
+
+/** An icon from the art pack (client/public/art/icons/<name>.png). Decorative: the text next to it carries the meaning. */
+export function icon(name: string, cls = ""): HTMLImageElement {
+  return h(`img.ico${cls ? "." + cls : ""}`, { src: `${ART_URL}icons/${name}.png`, alt: "", draggable: "false" });
+}
+
 let toastTimer: number | undefined;
 
 export function toast(text: string, kind: "error" | "info" = "error"): void {

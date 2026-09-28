@@ -1,7 +1,7 @@
 import { DATA, type LobbyState, type Mode, type SnapPlayer, type Snapshot } from "@millstorm/shared";
 import { TEAM_COLORS, TEAM_NAMES, enemyName, plural } from "../game/look";
 import type { Session } from "../net";
-import { h, toast } from "./dom";
+import { h, icon, toast } from "./dom";
 import { LOADING_TIPS } from "./text";
 
 export const OFFLINE_BUILD = import.meta.env.MODE === "offline";
@@ -254,7 +254,7 @@ export function resultsScreen(l: LobbyState, s: Snapshot, session: Session, onLe
     finisher ? h("div.finisher", {}, finisher) : "",
     h("p", {}, `Матч длился ${Math.floor(r.durationSec / 60)}:${String(Math.floor(r.durationSec % 60)).padStart(2, "0")}, волн: ${r.waves}`),
     hpChart(s, me?.team ?? 0),
-    h("div.awards", {}, ...awards.map((a) => h("div.award", {}, h("small", {}, a.title), h("b", {}, a.name), h("span", {}, a.detail)))),
+    h("div.awards", {}, ...awards.map((a) => h("div.award", {}, icon(a.icon, "award-art"), h("div", {}, h("small", {}, a.title), h("b", {}, a.name), h("span", {}, a.detail))))),
     me ? h("p.tip", {}, tipFor(me, !!won)) : "",
     l.series[0] + l.series[1] > 0 ? h("p.series", {}, `Счёт серии: ${TEAM_NAMES[0]} ${l.series[0]} : ${l.series[1]} ${TEAM_NAMES[1]}`) : "",
     h(
@@ -271,15 +271,15 @@ export function resultsScreen(l: LobbyState, s: Snapshot, session: Session, onLe
   );
 }
 
-function awardsFor(players: SnapPlayer[]): { title: string; name: string; detail: string }[] {
-  const out: { title: string; name: string; detail: string }[] = [];
+function awardsFor(players: SnapPlayer[]): { title: string; name: string; detail: string; icon: string }[] {
+  const out: { title: string; name: string; detail: string; icon: string }[] = [];
   const best = (f: (p: SnapPlayer) => number): SnapPlayer | undefined => [...players].sort((a, b) => f(b) - f(a))[0];
   const def = best((p) => p.stats?.kills ?? 0);
-  if (def?.stats) out.push({ title: "Лучший защитник", name: def.name, detail: `${def.stats.kills} ${plural(def.stats.kills, "вредитель", "вредителя", "вредителей")}` });
+  if (def?.stats) out.push({ title: "Лучший защитник", name: def.name, detail: `${def.stats.kills} ${plural(def.stats.kills, "вредитель", "вредителя", "вредителей")}`, icon: "ui-award-best-defender" });
   const pest = best((p) => p.stats?.sendDamage ?? 0);
-  if (pest?.stats?.sendDamage) out.push({ title: "Главный вредитель", name: pest.name, detail: `${pest.stats.sendDamage} урона по Мельнице` });
+  if (pest?.stats?.sendDamage) out.push({ title: "Главный вредитель", name: pest.name, detail: `${pest.stats.sendDamage} урона по Мельнице`, icon: "ui-award-main-pest" });
   const goat = best((p) => p.stats?.goatLure ?? 0);
-  if (goat?.stats?.goatLure) out.push({ title: "Самый дорогой таран", name: goat.name, detail: `${goat.stats.goatLure} Приманки на козлов` });
+  if (goat?.stats?.goatLure) out.push({ title: "Самый дорогой таран", name: goat.name, detail: `${goat.stats.goatLure} Приманки на козлов`, icon: "ui-award-expensive-ram" });
   return out;
 }
 

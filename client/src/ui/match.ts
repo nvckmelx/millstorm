@@ -2,10 +2,10 @@ import Phaser from "phaser";
 import { DATA, type Command, type PingKind, type SnapPlayer, type Snapshot } from "@millstorm/shared";
 import { SnapBuffer } from "../game/buffer";
 import { FieldScene, type FieldView } from "../game/FieldScene";
-import { ATTACK_LABEL, DEFENDER_COLORS, TEAM_COLORS, armorColor, enemyName, strongAgainst } from "../game/look";
+import { ATTACK_LABEL, TEAM_COLORS, armorColor, enemyName, strongAgainst } from "../game/look";
 import { drawMiniField } from "../game/minimap";
 import type { Session } from "../net";
-import { h, setText, toast } from "./dom";
+import { h, icon, setText, toast } from "./dom";
 import { Hints } from "./hints";
 import { BRAND_URL } from "./screens";
 import { PING_TEXT, PING_WHEEL, STICKERS, eventText, sendUnitsText } from "./text";
@@ -71,11 +71,11 @@ export class MatchScreen {
         "div.resources",
         {},
         h("img.brand", { src: `${BRAND_URL}millstorm-crest.svg`, alt: "Millstorm", width: 48, height: 56 }),
-        h("div.res.grain", { title: "Зерно: постройка и улучшения" }, h("span.icon.grain-icon"), (e.grain = h("b", {}, "0")), (e.income = h("small", {}, ""))),
+        h("div.res.grain", { title: "Зерно: постройка и улучшения" }, icon("ui-grain", "res-icon"), (e.grain = h("b", {}, "0")), (e.income = h("small", {}, ""))),
         h(
           "div.res.lure",
           { title: "Приманка: отправка вредителей. Потолок 150" },
-          h("span.icon.lure-icon"),
+          icon("ui-lure", "res-icon"),
           (e.lure = h("b", {}, "0")),
           h("div.lurebar", {}, (e.lureFill = h("div"))),
           (e.lureRegen = h("small", {}, "")),
@@ -106,7 +106,9 @@ export class MatchScreen {
         "div.pings",
         {},
         ...[...PING_WHEEL, ...STICKERS].map((k) =>
-          h("button.ping", { onclick: () => this.cmd({ type: "ping", ping: k }), title: PING_TEXT[k] }, PING_TEXT[k]),
+          STICKERS.includes(k)
+            ? h("button.ping.sticker", { onclick: () => this.cmd({ type: "ping", ping: k }), title: PING_TEXT[k], "aria-label": PING_TEXT[k] }, icon(`ui-goose-${k}`))
+            : h("button.ping", { onclick: () => this.cmd({ type: "ping", ping: k }), title: PING_TEXT[k] }, icon(`ui-ping-${k}`), PING_TEXT[k]),
         ),
       ),
     );
@@ -131,6 +133,7 @@ export class MatchScreen {
         (e.cannonBtn = h(
           "button.small",
           { onclick: () => this.cmd({ type: "cannon" }), title: "Пушка во Дворе бьёт прорвавшихся вредителей" },
+          icon("ui-cannon"),
           `Вложить ${B.economy.millCannon.costPerLevel} в пушку`,
         )),
         (e.raid = h("div.raid", {}, "")),
@@ -152,7 +155,7 @@ export class MatchScreen {
           onclick: () => this.startPlacing(id),
           title: defenderTip(id),
         },
-        h("span.swatch", { style: `background:${DEFENDER_COLORS[id]}` }),
+        icon(`defender-${id}-l1`, "unit"),
         h("span.name", {}, d.name),
         h("span.cost", {}, d.cost),
         h("span.key", {}, d.hotkey),
@@ -173,11 +176,11 @@ export class MatchScreen {
       const btn = h(
         "button.send",
         { onclick: () => this.cmd({ type: "send", sendId: id }), title: `${s.name}: ${sendUnitsText(id)}. +${s.incomeGain} к доходу навсегда` },
-        h("span.swatch.round", { style: `background:${armorColor(main.armor)}` }),
+        icon(`enemy-${s.units[0][0]}-side_a`, "unit"),
         h("span.name", {}, s.name),
         h("span.cost", {}, `${s.lureCost} · +${s.incomeGain}`),
         h("span.key", {}, s.hotkey),
-        h("span.lock", {}, ""),
+        h("span.lock", {}, icon("ui-lock"), h("span", {}, "")),
       );
       this.sendBtns.set(id, btn);
       srow.append(btn);
@@ -376,7 +379,8 @@ export class MatchScreen {
       const locked = s.nextWave < unlock;
       btn.classList.toggle("locked", locked);
       btn.classList.toggle("poor", !locked && (me.lure < sd.lureCost || !s.sendsOpen));
-      setText(btn.querySelector(".lock"), locked ? `в${unlock}` : "");
+      setText(btn.querySelector(".lock span"), locked ? `${unlock}` : "");
+      btn.querySelector<HTMLElement>(".lock")!.hidden = !locked;
     }
     setText(this.el.target, target ? `→ цель: ${target.name}` : "");
     const q = me.q.map(([idx, tid]) => `${B.sends[DATA.sendIds[idx]].name}${s.players.length > 2 ? ` → ${nameOf(s, tid)}` : ""}`);
@@ -396,7 +400,7 @@ export class MatchScreen {
       h("span.label", {}, entries.length ? "Идут к тебе:" : "К тебе пока ничего не идёт"),
       ...entries.map(([id, n]) => {
         const main = B.enemies[B.sends[id].units[0][0]];
-        return h("span.chip", { style: `border-color:${armorColor(main.armor)}` }, h("i", { style: `background:${armorColor(main.armor)}` }), `${B.sends[id].name} ×${n}`);
+        return h("span.chip", { style: `border-color:${armorColor(main.armor)}` }, icon(`enemy-${B.sends[id].units[0][0]}-side_a`), `${B.sends[id].name} ×${n}`);
       }),
       h("span.next", {}, `Волна ${s.nextWave}: ${nextUnits.map((u) => `${enemyName(u.type)} ×${u.count}`).join(", ")}`),
     );
@@ -444,8 +448,10 @@ export class MatchScreen {
       drawMiniField(card.canvas, p);
       const status = p.status === "ok" ? "держит" : p.status === "warn" ? "течёт" : "провал";
       card.info.replaceChildren(
-        h("b", {}, p.name, p.isBot || !p.connected ? h("small", {}, p.isBot ? " (бот)" : " (бот, пока игрок вернётся)") : ""),
-        h("span", {}, ally ? status : `Приманка ${Math.floor(p.lure)}`),
+        h("b", {}, p.isBot || !p.connected ? icon("ui-bot", "inline") : "", p.name, p.isBot || !p.connected ? h("small", {}, p.isBot ? " (бот)" : " (бот, пока игрок вернётся)") : ""),
+        ally
+          ? h("span", {}, icon(p.status === "ok" ? "ui-holding" : p.status === "warn" ? "ui-leaking" : "ui-failed", "inline"), status)
+          : h("span", {}, icon("ui-lure", "inline"), `Приманка ${Math.floor(p.lure)}`),
         !ally && p.lure >= 120 ? h("span.warn", {}, "копит на тарана?") : "",
       );
       const acts: Node[] = [];
@@ -454,6 +460,7 @@ export class MatchScreen {
         const btn = h(
           "button.small",
           { onclick: (ev: Event) => (ev.stopPropagation(), this.cmd({ type: "gift", playerId: p.id })), title: `Стоит тебе ${g.cost}` },
+          icon("ui-gift", "inline"),
           `Подарить ${g.amount}`,
         );
         btn.disabled = !me.giftReady || me.grain < g.cost;
@@ -462,8 +469,8 @@ export class MatchScreen {
         const ourRaid = s.teams[me.team].raid;
         const teamSize = s.players.filter((x) => x.team === me.team).length;
         if (teamSize > 1 && !ourRaid && s.sendsOpen)
-          acts.push(h("button.small", { onclick: (ev: Event) => (ev.stopPropagation(), this.cmd({ type: "raid", targetId: p.id })), title: "Все отправки команды в эту цель получат +15% HP, если участвуют 2+ игрока" }, "Налёт"));
-        if (me.targetId === p.id) acts.push(h("span.tag", {}, "цель"));
+          acts.push(h("button.small", { onclick: (ev: Event) => (ev.stopPropagation(), this.cmd({ type: "raid", targetId: p.id })), title: "Все отправки команды в эту цель получат +15% HP, если участвуют 2+ игрока" }, icon("ui-raid", "inline"), "Налёт"));
+        if (me.targetId === p.id) acts.push(h("span.tag", {}, icon("ui-target", "inline"), "цель"));
       }
       card.actions.replaceChildren(...acts);
     }
@@ -493,7 +500,7 @@ export class MatchScreen {
     const def = B.defenders[type];
     const level = sel[4];
     const upCost = def.upgradeCost[level - 1];
-    const up = h("button.small", { onclick: () => this.cmd({ type: "upgrade", id: sel[0] }) }, upCost !== undefined ? `Улучшить ${upCost} [Z]` : "Макс. уровень");
+    const up = h("button.small", { onclick: () => this.cmd({ type: "upgrade", id: sel[0] }) }, icon("ui-upgrade", "inline"), upCost !== undefined ? `Улучшить ${upCost} [Z]` : "Макс. уровень");
     up.disabled = upCost === undefined || me.grain < upCost;
     const sell = h(
       "button.small.danger",
@@ -503,10 +510,11 @@ export class MatchScreen {
           this.view.selectedId = null;
         },
       },
+      icon("ui-sell", "inline"),
       `Продать +${sel[6]} [X]`,
     );
     const next = level === 2 && def.lvl3 ? h("small", {}, `Ур. 3: ${def.lvl3}`) : "";
-    box.replaceChildren(h("b", {}, `${def.name} · ур. ${level}`), h("div.row", {}, up, sell), next);
+    box.replaceChildren(h("div.sel-head", {}, icon(`defender-${type}-l${level}`, "sel-art"), h("b", {}, `${def.name} · ур. ${level}`)), h("div.row", {}, up, sell), next);
   }
 
   private updateFeed(s: Snapshot): void {
@@ -522,7 +530,8 @@ export class MatchScreen {
       if (ev.kind === "wave" && ev.boss) this.flashBanner(`Волна ${ev.wave}: босс!`);
       const line = eventText(ev, s, this.session.you);
       if (!line) continue;
-      this.feed.prepend(h(`div.line.${line.tone}`, {}, line.text));
+      const art = ev.kind === "ping" ? icon(STICKERS.includes(ev.ping) ? `ui-goose-${ev.ping}` : `ui-ping-${ev.ping}`, STICKERS.includes(ev.ping) ? "feed-goose" : "inline") : null;
+      this.feed.prepend(h(`div.line.${line.tone}`, {}, art, line.text));
       while (this.feed.childNodes.length > 40) this.feed.lastChild?.remove();
     }
   }

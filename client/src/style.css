@@ -106,6 +106,10 @@ img {
   max-width: 100%;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 small {
   font-size: 12px;
 }
@@ -667,8 +671,14 @@ input::placeholder {
 .award {
   padding: 12px 16px;
   display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+}
+
+.award > div {
+  display: flex;
   flex-direction: column;
-  min-width: 180px;
 }
 
 .award small {
@@ -780,20 +790,57 @@ input::placeholder {
   white-space: nowrap;
 }
 
-.icon {
+/* Painted icons from Art Pack 01 (client/public/art/icons). */
+.ico {
+  display: inline-block;
   width: 20px;
   height: 20px;
-  background: center / contain no-repeat;
-  image-rendering: pixelated;
+  object-fit: contain;
+  vertical-align: -5px;
   flex: none;
+  pointer-events: none;
+  user-select: none;
 }
 
-.grain-icon {
-  background-image: url("./assets/icon-grain.svg");
+.ico.res-icon {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 var(--px) 0 var(--ink));
 }
 
-.lure-icon {
-  background-image: url("./assets/icon-lure.svg");
+.ico.inline {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}
+
+.ico.unit {
+  width: 34px;
+  height: 34px;
+  margin-top: 1px;
+}
+
+.ico.sel-art {
+  width: 40px;
+  height: 40px;
+}
+
+.ico.award-art {
+  width: 64px;
+  height: 64px;
+}
+
+.ico.feed-goose {
+  width: 32px;
+  height: 32px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.sel-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .lurebar {
@@ -989,6 +1036,25 @@ input::placeholder {
   font-size: 11px;
   padding: 3px 6px;
   font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ping .ico {
+  width: 16px;
+  height: 16px;
+  margin-right: 3px;
+}
+
+/* Goose stickers are pictures, not words. */
+.ping.sticker {
+  padding: 2px;
+}
+
+.ping.sticker .ico {
+  width: 40px;
+  height: 40px;
+  margin: 0;
 }
 
 .wheel {
@@ -1052,10 +1118,10 @@ input::placeholder {
   margin: 0 var(--px);
 }
 
-.chip i {
-  width: 10px;
-  height: 10px;
-  box-shadow: 0 0 0 var(--px) var(--ink);
+.chip .ico {
+  width: 22px;
+  height: 22px;
+  margin: -3px 0;
 }
 
 .field {
@@ -1309,19 +1375,6 @@ input::placeholder {
   --text: var(--parch-lo);
 }
 
-.swatch {
-  width: 22px;
-  height: 22px;
-  flex: none;
-  box-shadow: 0 0 0 var(--px) var(--ink);
-  margin-top: var(--px);
-}
-
-.swatch.round {
-  clip-path: polygon(25% 0, 75% 0, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0 75%, 0 25%);
-  box-shadow: inset 0 0 0 var(--px) var(--ink);
-}
-
 .build .name,
 .send .name {
   text-align: center;
@@ -1349,14 +1402,23 @@ input::placeholder {
 
 .lock {
   position: absolute;
-  top: 3px;
-  right: 4px;
-  font-size: 10px;
-  color: var(--verm-hi);
+  top: 2px;
+  right: 2px;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-hi);
 }
 
-.send.locked .lock {
-  color: var(--gold-hi);
+.lock .ico {
+  width: 16px;
+  height: 16px;
+}
+
+.send.locked .ico.unit {
+  filter: grayscale(0.8) brightness(0.7);
 }
 
 .strip {

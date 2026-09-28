@@ -1,6 +1,9 @@
 import { DATA } from "@millstorm/shared";
 
-/** Visual constants for placeholder shapes. Original, flat, thick outlines. */
+/** Runtime art (Art Pack 01, built by tools/build_art.py). Relative so the offline build works. */
+export const ART_URL = `${import.meta.env.BASE_URL}art/`;
+
+/** Visual constants: team colours, sizes, labels. */
 export const TEAM_COLORS = ["#2F80ED", "#F2994A"] as const;
 export const TEAM_NAMES = ["Синие", "Оранжевые"] as const;
 
