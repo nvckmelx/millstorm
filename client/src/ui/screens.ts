@@ -39,7 +39,7 @@ function logo(): HTMLElement {
     "div.logo",
     {},
     h("h1.visually-hidden", {}, "Millstorm"),
-    h("img", { src: `${BRAND_URL}millstorm-lockup.png`, alt: "Millstorm", width: 720, height: 599 }),
+    h("img", { src: `${BRAND_URL}millstorm-lockup.svg`, alt: "Millstorm", width: 108, height: 87 }),
     h("p", {}, "Защищай свою небесную ферму и насылай вредителей на соседей"),
   );
 }
@@ -207,7 +207,7 @@ export function loadingScreen(l: LobbyState, tutorial: boolean): HTMLElement {
   return h(
     "div.screen.loading",
     {},
-    h("img.emblem", { src: `${BRAND_URL}millstorm-emblem.png`, alt: "", width: 512, height: 469 }),
+    h("img.emblem", { src: `${BRAND_URL}millstorm-crest.svg`, alt: "", width: 48, height: 56 }),
     h("h2", {}, tutorial ? "Обучение: игра за 60 секунд" : "Загрузка матча"),
     h(
       "div.versus",
@@ -300,9 +300,9 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
   const W = canvas.width;
   const H = canvas.height;
   const pad = 28;
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = "#f6ecd0";
   ctx.fillRect(0, 0, W, H);
-  ctx.strokeStyle = "#cbd3de";
+  ctx.strokeStyle = "#c9b07a";
   ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
     const y = pad / 2 + 6 + ((H - pad - 6) * i) / 4;
@@ -311,7 +311,7 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
     ctx.lineTo(W - 8, y);
     ctx.stroke();
   }
-  ctx.fillStyle = "#4f6280";
+  ctx.fillStyle = "#6b5335";
   ctx.font = "12px 'Pixelify Sans', sans-serif";
   ctx.fillText("HP Мельниц по волнам", pad, 11);
   const points = [[s.teams[0].maxHp, s.teams[1].maxHp], ...hist];

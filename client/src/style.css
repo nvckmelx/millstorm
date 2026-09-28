@@ -1,41 +1,54 @@
 /*
- * Millstorm brand UI — "Stormkeep": medieval castle chrome, pixel-perfect.
+ * Millstorm brand UI — "Armorial" (Гербовник): heraldic, medieval, pixel-perfect.
+ * Parchment panels in oak frames with iron corners, oak plank buttons, a vermilion
+ * wax-seal call to action, gold for "selected", castle stonework behind everything.
  * Rules and rationale: .claude/skills/millstorm-brand/SKILL.md
  *
- * One art pixel = var(--px) = 2 CSS px. Every border, bevel, offset and
- * shadow is a whole number of art pixels. No border-radius, no blur.
+ * One art pixel = var(--px) = 2 CSS px. Every border, bevel, offset and shadow is a
+ * whole number of art pixels. No border-radius, no blur.
  */
 
 :root {
-  /* Brand (sampled from the logo) */
-  --night: #0e213b;
-  --night-2: #17325a;
-  --night-3: #244878;
-  --night-deep: #081527;
-  --bolt: #1ac5fd;
-  --bolt-deep: #0b8fc4;
-  --bolt-pale: #9be6ff;
-  --stone: #e5e8ee;
-  --stone-hi: #ffffff;
-  --stone-2: #cbd3de;
-  --stone-3: #9aa8ba;
-  --stone-ink: #4f6280;
+  /* Ink and parchment */
+  --ink: #2b1d14;
+  --parch: #ead9b0;
+  --parch-hi: #f6ecd0;
+  --parch-lo: #c9b07a;
+  --parch-ink: #6b5335;
+
+  /* Oak (frames, planks, HUD beams) */
+  --oak: #7a4a26;
+  --oak-hi: #9a6534;
+  --oak-lo: #4e2e16;
+  --oak-deep: #33200f;
+
+  /* Metals */
+  --iron: #5b6770;
+  --iron-hi: #8a97a1;
+  --gold: #e2b33c;
+  --gold-hi: #f6d77a;
+  --gold-lo: #a8781e;
+
+  /* Heraldic tinctures */
+  --verm: #b8322a; /* the one call to action: a wax seal */
+  --verm-hi: #d9543f;
+  --verm-lo: #7e1f1a;
+  --azure: #2f5da8;
 
   /* Game semantics (unchanged meaning) */
-  --good: #3dba5e;
-  --bad: #e5484d;
+  --good: #3f8f3a;
+  --bad: #c0392b;
   --warn: #f2c230;
   --blue: #2f80ed;
   --orange: #f2994a;
 
   --px: 2px;
   --font: "Pixelify Sans", "Trebuchet MS", system-ui, sans-serif;
-
-  --edge: var(--night);
+  --edge: var(--ink);
 
   color-scheme: light;
   font-family: var(--font);
-  color: var(--night);
+  color: var(--ink);
   font-synthesis: none;
   -webkit-font-smoothing: none;
 }
@@ -45,7 +58,7 @@
 }
 
 /* Pixel frame: four offset copies of the box make an outline with notched corners.
-   Declared on every element so a local --edge (e.g. red for a targeted card) applies. */
+   Declared on every element so a local --edge (e.g. red on a targeted card) applies. */
 *,
 *::before,
 *::after {
@@ -53,6 +66,11 @@
     0 calc(var(--px) * 2) 0 0 var(--edge);
   --frame-flat: 0 calc(var(--px) * -1) 0 0 var(--edge), calc(var(--px) * -1) 0 0 0 var(--edge), var(--px) 0 0 0 var(--edge),
     0 var(--px) 0 0 var(--edge);
+  /* Four iron rivets, one art pixel square, 3 pixels in from each corner. */
+  --rivets: linear-gradient(var(--iron-hi), var(--iron-hi)) 6px 6px / 4px 4px no-repeat,
+    linear-gradient(var(--iron-hi), var(--iron-hi)) calc(100% - 6px) 6px / 4px 4px no-repeat,
+    linear-gradient(var(--iron-hi), var(--iron-hi)) 6px calc(100% - 8px) / 4px 4px no-repeat,
+    linear-gradient(var(--iron-hi), var(--iron-hi)) calc(100% - 6px) calc(100% - 8px) / 4px 4px no-repeat;
 }
 
 html,
@@ -61,17 +79,10 @@ body {
   height: 100%;
 }
 
-/* Storm sky in hard-edged bands, like a pixel-art backdrop. */
+/* Castle stonework: 16×8-pixel stones in running bond, a 32×16 tile shown at 2×. */
 body {
-  background: linear-gradient(
-    180deg,
-    #c9dbeb 0 18%,
-    #d3e2ef 18% 36%,
-    #dce7f2 36% 56%,
-    #e3ecf4 56% 76%,
-    #eaf0f6 76% 100%
-  );
-  background-attachment: fixed;
+  background: #7b7365 url("./assets/wall.svg") 0 0 / 64px 32px repeat;
+  image-rendering: pixelated;
   overflow: hidden;
   font-size: 16px;
   line-height: 1.25;
@@ -79,6 +90,7 @@ body {
 
 #app {
   height: 100%;
+  image-rendering: auto;
 }
 
 h1,
@@ -99,7 +111,7 @@ small {
 }
 
 .muted {
-  color: var(--stone-ink);
+  color: var(--parch-ink);
 }
 
 .row {
@@ -111,22 +123,25 @@ small {
 
 /* ---------------------------------------------------------------- buttons */
 
+/* Default: an oak plank with iron rivets and parchment lettering. */
 button {
-  --face: var(--stone);
-  --hi: var(--stone-hi);
-  --lo: var(--stone-3);
-  --ink: var(--night);
+  --face: var(--oak);
+  --hi: var(--oak-hi);
+  --lo: var(--oak-lo);
+  --text: var(--parch-hi);
+  --rivet: var(--iron-hi);
   position: relative;
   font: inherit;
   font-weight: 700;
   font-size: 16px;
-  color: var(--ink);
-  background: var(--face);
+  color: var(--text);
+  background: var(--rivets), var(--face);
   border: 0;
   border-radius: 0;
-  padding: 8px 14px 8px;
+  padding: 8px 16px 8px;
   margin: var(--px) var(--px) calc(var(--px) * 2);
   cursor: pointer;
+  text-shadow: 0 var(--px) 0 var(--lo);
   box-shadow:
     inset var(--px) var(--px) 0 0 var(--hi),
     inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 var(--lo),
@@ -134,7 +149,8 @@ button {
 }
 
 button:hover:not(:disabled) {
-  --face: var(--stone-hi);
+  --face: var(--oak-hi);
+  --hi: #b27a45;
 }
 
 button:active:not(:disabled) {
@@ -145,49 +161,68 @@ button:active:not(:disabled) {
 }
 
 button:disabled {
-  --face: var(--stone-2);
-  --hi: var(--stone-2);
-  --lo: var(--stone-2);
-  --ink: var(--stone-3);
+  --face: var(--parch-lo);
+  --hi: var(--parch-lo);
+  --lo: var(--parch-lo);
+  --text: var(--parch-ink);
+  text-shadow: none;
   cursor: default;
 }
 
 button:focus-visible,
 input:focus-visible {
-  outline: var(--px) solid var(--bolt);
+  outline: var(--px) solid var(--gold);
   outline-offset: calc(var(--px) * 3);
 }
 
-/* Storm: the call to action, navy text on lightning cyan like the logo. */
+/* The call to action: a vermilion wax seal with a gold rim. */
 button.primary {
-  --face: var(--bolt);
-  --hi: var(--bolt-pale);
-  --lo: var(--bolt-deep);
+  --face: var(--verm);
+  --hi: var(--verm-hi);
+  --lo: var(--verm-lo);
+  --edge: var(--ink);
+  background: var(--face);
+  box-shadow:
+    inset 0 0 0 var(--px) var(--gold-lo),
+    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--verm-hi),
+    inset calc(var(--px) * -2) calc(var(--px) * -2) 0 0 var(--verm-lo),
+    var(--frame);
 }
 
 button.primary:hover:not(:disabled) {
-  --face: #4fd5ff;
+  --face: #cc3b31;
+}
+
+button.primary:active:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 var(--px) var(--gold-lo),
+    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--verm-lo),
+    var(--frame-flat);
 }
 
 button.danger {
-  --face: #ffd9d9;
-  --lo: #d98c8c;
+  --face: var(--verm-lo);
+  --hi: var(--verm);
+  --lo: #521410;
 }
 
 button.big {
   font-size: 20px;
-  padding: 12px 20px;
+  padding: 12px 22px;
 }
 
 button.small {
   font-size: 13px;
   padding: 4px 8px;
+  background: var(--face);
 }
 
 button.ghost {
+  --text: var(--ink);
   background: none;
   box-shadow: none;
   padding: 6px 4px;
+  text-shadow: none;
   text-decoration: underline;
   text-decoration-thickness: var(--px);
   text-underline-offset: 4px;
@@ -198,63 +233,95 @@ button.ghost:active:not(:disabled) {
 }
 
 button.ghost.armed {
-  color: var(--bad);
+  --text: var(--verm);
+}
+
+/* A text link standing on the stone wall needs an ink outline to stay readable. */
+.screen > .row button.ghost {
+  --text: var(--parch-hi);
+  text-shadow:
+    var(--px) 0 0 var(--ink),
+    calc(var(--px) * -1) 0 0 var(--ink),
+    0 var(--px) 0 var(--ink),
+    0 calc(var(--px) * -1) 0 var(--ink);
 }
 
 input {
   font: inherit;
   font-size: 16px;
   font-weight: 500;
-  color: var(--night);
-  background: var(--stone-hi);
+  color: var(--ink);
+  background: var(--parch-hi);
   border: 0;
   border-radius: 0;
   padding: 10px 12px;
   margin: var(--px);
   min-width: 0;
   box-shadow:
-    inset var(--px) var(--px) 0 0 var(--stone-2),
+    inset var(--px) var(--px) 0 0 var(--parch-lo),
     var(--frame-flat);
 }
 
 input::placeholder {
-  color: var(--stone-3);
+  color: var(--parch-lo);
 }
 
 /* ---------------------------------------------------------------- panels */
 
-/* Stone panel with a pixel frame; .panel also gets castle crenellations on top. */
+/* Parchment in an oak frame with iron corner plates. */
 .panel,
 .team,
 .tip,
 .award,
-.chat-log,
-.teambox,
-.card {
-  background: var(--stone);
+.teambox {
+  position: relative;
+  background: var(--parch);
   box-shadow:
-    inset var(--px) var(--px) 0 0 var(--stone-hi),
-    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 var(--stone-2),
+    inset 0 0 0 var(--px) var(--oak-lo),
+    inset 0 0 0 calc(var(--px) * 3) var(--oak),
+    inset 0 0 0 calc(var(--px) * 4) var(--gold-lo),
+    inset calc(var(--px) * 5) calc(var(--px) * 5) 0 0 var(--parch-hi),
     var(--frame);
 }
 
-.panel,
-.team {
-  position: relative;
-  margin-top: 10px;
-}
-
-.panel::before,
-.team::before {
-  /* Merlons: solid navy teeth like the towers in the logo. */
+.panel::after,
+.team::after {
+  /* Iron corner plates: 8×8 art-pixel L-brackets drawn with gradients. */
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  top: -10px;
-  height: 8px;
-  background: repeating-linear-gradient(90deg, var(--night) 0 16px, transparent 16px 28px);
-  background-position: 6px 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--iron), var(--iron)) 0 0 / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 0 0 / 6px 16px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 0 / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 0 / 6px 16px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 0 100% / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 0 100% / 6px 16px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 100% / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 100% / 6px 16px no-repeat;
+}
+
+.tip,
+.award,
+.teambox {
+  box-shadow:
+    inset 0 0 0 var(--px) var(--oak),
+    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--parch-hi),
+    var(--frame);
+}
+
+/* Illuminated initial: the first letter of a section heading, as in a manuscript. */
+.panel h2::first-letter,
+.lobby-head h2::first-letter,
+.loading h2::first-letter {
+  color: var(--parch-hi);
+  background: var(--verm);
+  padding: 0 4px;
+  margin-right: 4px;
+  box-shadow:
+    0 0 0 var(--px) var(--gold),
+    0 0 0 calc(var(--px) * 2) var(--ink);
 }
 
 /* ---------------------------------------------------------------- screens */
@@ -271,7 +338,7 @@ input::placeholder {
 
 .panel {
   width: min(460px, 100%);
-  padding: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -285,7 +352,7 @@ input::placeholder {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--stone-ink);
+  color: var(--parch-ink);
 }
 
 .panel.note {
@@ -297,21 +364,27 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   text-align: center;
 }
 
 .logo img {
-  width: min(320px, 72vw);
+  width: min(324px, 80vw);
   height: auto;
-  image-rendering: auto;
+  image-rendering: pixelated;
 }
 
 .logo p {
   margin: 0;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   max-width: 34ch;
+  color: var(--parch-hi);
+  text-shadow:
+    var(--px) 0 0 var(--ink),
+    calc(var(--px) * -1) 0 0 var(--ink),
+    0 var(--px) 0 var(--ink),
+    0 calc(var(--px) * -1) 0 var(--ink);
 }
 
 .visually-hidden {
@@ -348,9 +421,21 @@ input::placeholder {
   margin-right: 4px;
 }
 
+/* Text sitting directly on the stone wall gets a parchment plaque. */
+.foot,
+.status,
+.series,
+.countdown,
+.results > p {
+  background: var(--parch);
+  box-shadow: var(--frame-flat);
+  padding: 6px 12px;
+  margin: 0;
+}
+
 .foot {
   font-size: 13px;
-  color: var(--stone-ink);
+  color: var(--parch-ink);
   text-align: center;
   max-width: 64ch;
 }
@@ -361,13 +446,20 @@ input::placeholder {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
 }
 
 .lobby-head h2,
 .loading h2 {
   font-size: 32px;
+  color: var(--parch-hi);
+  text-shadow:
+    var(--px) 0 0 var(--ink),
+    calc(var(--px) * -1) 0 0 var(--ink),
+    0 var(--px) 0 var(--ink),
+    0 calc(var(--px) * -1) 0 var(--ink),
+    0 calc(var(--px) * 2) 0 var(--ink);
 }
 
 .invite {
@@ -376,13 +468,16 @@ input::placeholder {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  background: var(--parch);
+  box-shadow: var(--frame-flat);
+  padding: 8px 12px;
 }
 
 .invite .code {
   font-size: 32px;
   letter-spacing: 6px;
-  color: var(--night);
-  background: var(--stone-hi);
+  color: var(--verm);
+  background: var(--parch-hi);
   padding: 2px 10px;
   box-shadow: var(--frame-flat);
 }
@@ -397,10 +492,14 @@ input::placeholder {
   padding: 12px 24px;
 }
 
-.mode.active {
-  --face: var(--bolt);
-  --hi: var(--bolt-pale);
-  --lo: var(--bolt-deep);
+/* Selected = gold ("or"), distinct from the vermilion call to action. */
+.mode.active,
+.build.active {
+  --face: var(--gold);
+  --hi: var(--gold-hi);
+  --lo: var(--gold-lo);
+  --text: var(--ink);
+  text-shadow: none;
 }
 
 .teams,
@@ -412,7 +511,7 @@ input::placeholder {
 }
 
 .team {
-  padding: 12px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -422,17 +521,18 @@ input::placeholder {
 .team h3 {
   align-self: flex-start;
   background: var(--team);
-  color: var(--stone-hi);
+  color: var(--parch-hi);
   font-size: 16px;
   padding: 4px 22px 4px 10px;
   clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%);
-  text-shadow: var(--px) var(--px) 0 var(--night);
+  text-shadow: var(--px) var(--px) 0 var(--ink);
 }
 
 .slot {
   --face: transparent;
   --hi: transparent;
   --lo: transparent;
+  --text: var(--ink);
   display: flex;
   gap: 8px;
   align-items: baseline;
@@ -443,13 +543,15 @@ input::placeholder {
   text-align: left;
   font-size: 14px;
   font-weight: 500;
+  text-shadow: none;
+  background: none;
   box-shadow: none;
-  outline: var(--px) dashed var(--stone-3);
+  outline: var(--px) dashed var(--parch-lo);
   outline-offset: calc(var(--px) * -1);
 }
 
 .slot.filled {
-  background: var(--stone-hi);
+  background: var(--parch-hi);
   outline: none;
   box-shadow: var(--frame-flat);
 }
@@ -463,14 +565,13 @@ input::placeholder {
 .slot span {
   margin-left: auto;
   font-size: 13px;
-  color: var(--stone-ink);
+  color: var(--parch-ink);
 }
 
 .status,
 .series {
   font-weight: 700;
   text-align: center;
-  margin: 0;
 }
 
 .chat {
@@ -481,11 +582,15 @@ input::placeholder {
 }
 
 .chat-log {
+  background: var(--parch);
   padding: 8px;
   height: 110px;
   overflow: auto;
   font-size: 14px;
   margin: var(--px);
+  box-shadow:
+    inset var(--px) var(--px) 0 0 var(--parch-lo),
+    var(--frame-flat);
 }
 
 .tips {
@@ -495,7 +600,7 @@ input::placeholder {
 }
 
 .tip {
-  padding: 14px;
+  padding: 14px 16px;
   font-size: 18px;
   font-weight: 500;
 }
@@ -506,48 +611,50 @@ input::placeholder {
 }
 
 .loading .emblem {
-  width: 96px;
+  width: 144px;
   height: auto;
+  image-rendering: pixelated;
 }
 
 /* results */
 
 .results h1 {
   font-size: 64px;
-  color: var(--stone-hi);
+  color: var(--parch-hi);
   text-shadow:
-    0 calc(var(--px) * -2) 0 var(--night),
-    calc(var(--px) * -2) 0 0 var(--night),
-    calc(var(--px) * 2) 0 0 var(--night),
-    0 calc(var(--px) * 2) 0 var(--night),
-    0 calc(var(--px) * 4) 0 var(--night);
+    0 calc(var(--px) * -2) 0 var(--ink),
+    calc(var(--px) * -2) 0 0 var(--ink),
+    calc(var(--px) * 2) 0 0 var(--ink),
+    0 calc(var(--px) * 2) 0 var(--ink),
+    0 calc(var(--px) * 4) 0 var(--ink);
 }
 
 .results h1.win {
-  color: var(--bolt);
+  color: var(--gold);
 }
 
 .results h1.lose {
-  color: #ff8f8f;
+  color: #e8836f;
 }
 
-/* The finale ribbon: "Мельницу сломал козёл игрока X". */
+/* The finale on a parchment ribbon: "Мельницу сломал козёл игрока X". */
 .finisher {
-  background: var(--night);
-  color: var(--stone-hi);
+  background: var(--parch-hi);
+  color: var(--ink);
   font-weight: 700;
   font-size: 20px;
   padding: 10px 40px;
   clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%, 16px 50%);
-  border-top: var(--px) solid var(--bolt);
-  border-bottom: var(--px) solid var(--bolt);
+  border-top: calc(var(--px) * 2) solid var(--verm);
+  border-bottom: calc(var(--px) * 2) solid var(--verm);
 }
 
 .chart {
   max-width: 100%;
-  image-rendering: pixelated;
-  box-shadow: var(--frame-flat);
-  margin: var(--px);
+  box-shadow:
+    0 0 0 calc(var(--px) * 2) var(--oak),
+    0 0 0 calc(var(--px) * 3) var(--ink);
+  margin: 6px;
 }
 
 .awards {
@@ -558,7 +665,7 @@ input::placeholder {
 }
 
 .award {
-  padding: 10px 14px;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
   min-width: 180px;
@@ -567,7 +674,8 @@ input::placeholder {
 .award small {
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--stone-ink);
+  color: var(--verm);
+  font-weight: 700;
 }
 
 .results .tip {
@@ -582,8 +690,8 @@ input::placeholder {
   left: 50%;
   bottom: 176px;
   transform: translate(-50%, 8px);
-  background: var(--night);
-  color: var(--stone-hi);
+  background: var(--oak-lo);
+  color: var(--parch-hi);
   padding: 10px 16px;
   font-weight: 700;
   opacity: 0;
@@ -591,7 +699,7 @@ input::placeholder {
   transition: opacity 0.15s steps(3), transform 0.15s steps(3);
   z-index: 50;
   max-width: calc(100vw - 32px);
-  --edge: var(--bolt);
+  --edge: var(--gold);
   box-shadow: var(--frame-flat);
 }
 
@@ -601,11 +709,11 @@ input::placeholder {
 }
 
 .toast.error {
-  --edge: var(--bad);
+  --edge: var(--verm-hi);
 }
 
 .toast.info {
-  --edge: var(--good);
+  --edge: #7fbf5a;
 }
 
 /* ---------------------------------------------------------------- match */
@@ -621,11 +729,11 @@ input::placeholder {
     "bottom bottom bottom";
 }
 
-/* Castle wall bars: navy with a lightning seam. */
+/* Oak beams with a gold trim. */
 .topbar,
 .bottombar {
-  background: var(--night);
-  color: var(--stone);
+  background: repeating-linear-gradient(180deg, var(--oak) 0 10px, #734524 10px 12px, var(--oak) 12px 22px, var(--oak-lo) 22px 24px);
+  color: var(--parch);
 }
 
 .topbar {
@@ -634,13 +742,16 @@ input::placeholder {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 12px;
-  padding: 6px 12px;
-  border-bottom: var(--px) solid var(--bolt);
+  padding: 6px 12px 6px;
+  box-shadow:
+    inset 0 calc(var(--px) * -2) 0 0 var(--gold-lo),
+    inset 0 calc(var(--px) * -3) 0 0 var(--ink);
 }
 
 .topbar .brand {
-  width: 30px;
+  width: 32px;
   height: auto;
+  image-rendering: pixelated;
 }
 
 .resources {
@@ -658,12 +769,13 @@ input::placeholder {
 .res b {
   font-size: 24px;
   min-width: 44px;
-  color: var(--stone-hi);
+  color: var(--parch-hi);
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 var(--px) 0 var(--ink);
 }
 
 .res small {
-  color: var(--stone-3);
+  color: var(--gold-hi);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -687,8 +799,8 @@ input::placeholder {
 .lurebar {
   width: 72px;
   height: 10px;
-  background: var(--night-deep);
-  box-shadow: 0 0 0 var(--px) var(--night-3);
+  background: var(--oak-deep);
+  box-shadow: 0 0 0 var(--px) var(--ink);
 }
 
 .lurebar div {
@@ -710,7 +822,7 @@ input::placeholder {
 }
 
 .mill b {
-  color: var(--stone-hi);
+  color: var(--parch-hi);
   font-variant-numeric: tabular-nums;
 }
 
@@ -718,8 +830,10 @@ input::placeholder {
 .hpbar {
   width: 150px;
   height: 16px;
-  background: var(--night-deep);
-  box-shadow: 0 0 0 var(--px) var(--night-3);
+  background: var(--oak-deep);
+  box-shadow:
+    0 0 0 var(--px) var(--gold-lo),
+    0 0 0 calc(var(--px) * 2) var(--ink);
   overflow: hidden;
 }
 
@@ -742,19 +856,20 @@ input::placeholder {
 .wave-no {
   font-weight: 700;
   font-size: 13px;
-  color: var(--bolt);
+  color: var(--gold-hi);
 }
 
 .timer {
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
-  color: var(--stone-hi);
+  color: var(--parch-hi);
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 var(--px) 0 var(--ink);
 }
 
 .timer.urgent {
-  color: #ff8f8f;
+  color: #ff8a75;
   animation: blink 0.5s steps(2) infinite;
 }
 
@@ -766,7 +881,7 @@ input::placeholder {
 
 .phase {
   font-size: 11px;
-  color: var(--stone-3);
+  color: var(--parch-lo);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -780,17 +895,18 @@ input::placeholder {
 }
 
 .sys .ghost {
-  color: var(--stone);
+  --text: var(--parch-hi);
 }
 
 .latency {
   font-size: 12px;
-  color: var(--stone-3);
+  color: var(--parch-lo);
 }
 
+/* Side columns: parchment scrolls on the wall. */
 .left,
 .right {
-  background: var(--stone-2);
+  background: var(--parch);
   padding: 10px 10px 10px 12px;
   overflow: auto;
   display: flex;
@@ -800,12 +916,16 @@ input::placeholder {
 
 .left {
   grid-area: left;
-  box-shadow: inset calc(var(--px) * -2) 0 0 0 var(--night);
+  box-shadow:
+    inset calc(var(--px) * -2) 0 0 0 var(--oak),
+    inset calc(var(--px) * -3) 0 0 0 var(--ink);
 }
 
 .right {
   grid-area: right;
-  box-shadow: inset calc(var(--px) * 2) 0 0 0 var(--night);
+  box-shadow:
+    inset calc(var(--px) * 2) 0 0 0 var(--oak),
+    inset calc(var(--px) * 3) 0 0 0 var(--ink);
 }
 
 .left h4,
@@ -816,11 +936,16 @@ input::placeholder {
   letter-spacing: 1px;
 }
 
+.left h4,
+.right h4 {
+  color: var(--verm);
+}
+
 .left h4 small,
 .right h4 small {
   text-transform: none;
   letter-spacing: 0;
-  color: var(--stone-ink);
+  color: var(--parch-ink);
   font-weight: 500;
 }
 
@@ -837,9 +962,8 @@ input::placeholder {
 
 .line {
   padding: 3px 6px 3px 8px;
-  background: var(--stone);
-  box-shadow: inset var(--px) 0 0 0 var(--stone-3);
-  border-left: calc(var(--px) * 2) solid var(--stone-3);
+  background: var(--parch-hi);
+  border-left: calc(var(--px) * 2) solid var(--parch-lo);
 }
 
 .line.good {
@@ -851,8 +975,8 @@ input::placeholder {
 }
 
 .line.ping {
-  border-left-color: var(--bolt);
-  background: #e3f6fd;
+  border-left-color: var(--gold-lo);
+  background: #f9e9b6;
 }
 
 .pings {
@@ -904,18 +1028,18 @@ input::placeholder {
   padding: 6px 10px;
   font-size: 13px;
   font-weight: 700;
-  background: rgba(229, 232, 238, 0.85);
-  box-shadow: inset 0 calc(var(--px) * -1) 0 0 var(--stone-3);
+  background: rgba(234, 217, 176, 0.92);
+  box-shadow: inset 0 calc(var(--px) * -1) 0 0 var(--oak);
 }
 
 .incoming.danger {
-  background: #ffe1e1;
-  box-shadow: inset 0 calc(var(--px) * -2) 0 0 var(--bad);
+  background: #f3c9b8;
+  box-shadow: inset 0 calc(var(--px) * -2) 0 0 var(--verm);
 }
 
 .incoming .next {
   margin-left: auto;
-  color: var(--stone-ink);
+  color: var(--parch-ink);
 }
 
 .chip {
@@ -923,7 +1047,7 @@ input::placeholder {
   gap: 4px;
   align-items: center;
   padding: 1px 8px;
-  background: var(--stone-hi);
+  background: var(--parch-hi);
   box-shadow: var(--frame-flat);
   margin: 0 var(--px);
 }
@@ -931,7 +1055,7 @@ input::placeholder {
 .chip i {
   width: 10px;
   height: 10px;
-  box-shadow: 0 0 0 var(--px) var(--night);
+  box-shadow: 0 0 0 var(--px) var(--ink);
 }
 
 .field {
@@ -946,19 +1070,21 @@ input::placeholder {
   inset: 0;
 }
 
-/* Boss / goat alert: a red pennant. */
+/* Boss / goat alert: a vermilion ribbon. */
 .banner {
   position: absolute;
   top: 60px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--bad);
-  color: var(--stone-hi);
+  background: var(--verm);
+  color: var(--parch-hi);
   font-weight: 700;
   font-size: 24px;
   padding: 8px 36px;
   clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%, 14px 50%);
-  text-shadow: var(--px) var(--px) 0 var(--night);
+  border-top: var(--px) solid var(--gold);
+  border-bottom: var(--px) solid var(--gold);
+  text-shadow: var(--px) var(--px) 0 var(--ink);
   opacity: 0;
   pointer-events: none;
   z-index: 5;
@@ -990,11 +1116,11 @@ input::placeholder {
   top: 44px;
   transform: translateX(-50%);
   width: min(520px, calc(100% - 24px));
-  background: #fff6c2;
+  background: var(--parch-hi);
   box-shadow:
-    inset var(--px) var(--px) 0 0 var(--stone-hi),
+    inset calc(var(--px) * 3) 0 0 0 var(--verm),
     var(--frame);
-  padding: 10px 14px;
+  padding: 10px 14px 10px 18px;
   font-weight: 700;
   display: none;
   z-index: 6;
@@ -1005,7 +1131,7 @@ input::placeholder {
 }
 
 .teambox {
-  padding: 8px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1018,10 +1144,10 @@ input::placeholder {
 }
 
 .raid {
-  background: #e3f6fd;
+  background: #f9e9b6;
   padding: 4px 6px;
   font-weight: 700;
-  box-shadow: inset calc(var(--px) * 2) 0 0 0 var(--bolt);
+  box-shadow: inset calc(var(--px) * 2) 0 0 0 var(--gold-lo);
 }
 
 .cards {
@@ -1037,6 +1163,10 @@ input::placeholder {
   padding: 6px 6px 6px 12px;
   font-size: 13px;
   position: relative;
+  background: var(--parch-hi);
+  box-shadow:
+    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 var(--parch-lo),
+    var(--frame);
 }
 
 /* Team banner stripe on the card's left edge. */
@@ -1055,15 +1185,15 @@ input::placeholder {
 }
 
 .card.enemy:hover {
-  background: var(--stone-hi);
+  background: #fff8e4;
 }
 
 .card.targeted {
-  --edge: var(--bad);
+  --edge: var(--verm);
 }
 
 .card.ally.warn {
-  --edge: #c99a00;
+  --edge: var(--gold-lo);
 }
 
 .card.ally.bad {
@@ -1074,7 +1204,7 @@ input::placeholder {
   width: 64px;
   flex: none;
   image-rendering: pixelated;
-  box-shadow: 0 0 0 var(--px) var(--night);
+  box-shadow: 0 0 0 var(--px) var(--ink);
 }
 
 .meta {
@@ -1103,8 +1233,8 @@ input::placeholder {
 }
 
 .tag {
-  background: var(--bad);
-  color: var(--stone-hi);
+  background: var(--verm);
+  color: var(--parch-hi);
   padding: 1px 6px;
   font-weight: 700;
   font-size: 11px;
@@ -1115,19 +1245,21 @@ input::placeholder {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 230px minmax(0, 1fr);
   gap: 12px;
-  padding: 6px 12px 4px;
-  border-top: var(--px) solid var(--bolt);
+  padding: 8px 12px 4px;
+  box-shadow:
+    inset 0 calc(var(--px) * 2) 0 0 var(--gold-lo),
+    inset 0 calc(var(--px) * 3) 0 0 var(--ink);
 }
 
 .bar-title {
   margin-bottom: 4px;
-  color: var(--bolt);
+  color: var(--gold-hi);
 }
 
 .bar-title .target {
   text-transform: none;
   letter-spacing: 0;
-  color: #ff9d9d;
+  color: #ffb3a1;
 }
 
 .buttons {
@@ -1136,8 +1268,13 @@ input::placeholder {
   gap: 4px;
 }
 
+/* Build and send tiles are parchment cards on the oak beam. */
 .build,
 .send {
+  --face: var(--parch);
+  --hi: var(--parch-hi);
+  --lo: var(--parch-lo);
+  --text: var(--ink);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1148,39 +1285,41 @@ input::placeholder {
   line-height: 1.1;
   overflow: hidden;
   min-height: 62px;
+  text-shadow: none;
+  background: var(--face);
 }
 
-.build.active {
-  --face: var(--bolt-pale);
-  --edge: var(--bolt);
+.build:hover:not(:disabled),
+.send:hover:not(:disabled) {
+  --face: var(--parch-hi);
+  --hi: #fffaf0;
 }
 
 .build.poor,
 .send.poor {
-  --face: var(--stone-2);
-  --hi: var(--stone-2);
-  --ink: var(--stone-ink);
+  --face: var(--parch-lo);
+  --hi: var(--parch-lo);
+  --text: var(--parch-ink);
 }
 
 .send.locked {
-  --face: var(--night-2);
-  --hi: var(--night-3);
-  --lo: var(--night-deep);
-  --ink: var(--stone-3);
-  --edge: var(--night-deep);
+  --face: var(--oak-lo);
+  --hi: var(--oak);
+  --lo: var(--oak-deep);
+  --text: var(--parch-lo);
 }
 
 .swatch {
   width: 22px;
   height: 22px;
   flex: none;
-  box-shadow: 0 0 0 var(--px) var(--night);
+  box-shadow: 0 0 0 var(--px) var(--ink);
   margin-top: var(--px);
 }
 
 .swatch.round {
   clip-path: polygon(25% 0, 75% 0, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0 75%, 0 25%);
-  box-shadow: inset 0 0 0 var(--px) var(--night);
+  box-shadow: inset 0 0 0 var(--px) var(--ink);
 }
 
 .build .name,
@@ -1196,6 +1335,7 @@ input::placeholder {
   font-size: 13px;
 }
 
+/* Hotkey: a small iron plate with gold letter. */
 .key {
   position: absolute;
   top: 2px;
@@ -1203,8 +1343,8 @@ input::placeholder {
   font-size: 10px;
   line-height: 1;
   padding: 2px 3px;
-  background: var(--night);
-  color: var(--bolt);
+  background: var(--iron);
+  color: var(--gold-hi);
 }
 
 .lock {
@@ -1212,7 +1352,11 @@ input::placeholder {
   top: 3px;
   right: 4px;
   font-size: 10px;
-  color: #ff9d9d;
+  color: var(--verm-hi);
+}
+
+.send.locked .lock {
+  color: var(--gold-hi);
 }
 
 .strip {
@@ -1230,18 +1374,18 @@ input::placeholder {
   justify-content: center;
   font-size: 13px;
   padding: 0 12px;
-  border-left: var(--px) dashed var(--night-3);
-  border-right: var(--px) dashed var(--night-3);
+  border-left: var(--px) dashed var(--gold-lo);
+  border-right: var(--px) dashed var(--gold-lo);
 }
 
 .selection small {
-  color: var(--stone-3);
+  color: var(--parch-lo);
 }
 
 .queue {
   font-size: 12px;
   margin-top: 2px;
-  color: var(--stone-3);
+  color: var(--parch-lo);
   font-weight: 500;
   min-height: 16px;
 }

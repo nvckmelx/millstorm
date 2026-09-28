@@ -70,7 +70,7 @@ export class MatchScreen {
       h(
         "div.resources",
         {},
-        h("img.brand", { src: `${BRAND_URL}millstorm-emblem-reversed.png`, alt: "Millstorm", width: 512, height: 469 }),
+        h("img.brand", { src: `${BRAND_URL}millstorm-crest.svg`, alt: "Millstorm", width: 48, height: 56 }),
         h("div.res.grain", { title: "Зерно: постройка и улучшения" }, h("span.icon.grain-icon"), (e.grain = h("b", {}, "0")), (e.income = h("small", {}, ""))),
         h(
           "div.res.lure",
@@ -214,7 +214,7 @@ export class MatchScreen {
     this.game = new Phaser.Game({
       type: Phaser.AUTO,
       parent: this.el.field,
-      backgroundColor: "#d3e2ef",
+      backgroundColor: "#6f685b",
       // Sized by the ResizeObserver below; Phaser's own RESIZE mode misreads grid cells.
       scale: { mode: Phaser.Scale.NONE, width: Math.max(1, this.el.field.clientWidth), height: Math.max(1, this.el.field.clientHeight) },
       scene,

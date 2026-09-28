@@ -1,107 +1,131 @@
-# Stormkeep components
+# Armorial components
 
 The live implementations are in `client/src/style.css`. This file explains how each one
 is built, so a new component can follow the same recipe instead of copying pixels by eye.
 
 ## Contents
-1. The frame and bevel recipe
+1. Frame, bevel, rivets
 2. Buttons
-3. Panels with merlons
-4. Pennant, ribbon, banner
-5. Bars and meters
-6. Small parts: keycap, chip, tag, feed line
-7. Pixel icons
-8. Recipe for a new component
+3. Panels: parchment in an oak frame
+4. Illuminated initial
+5. Pennant, ribbon, banner
+6. Bars and meters
+7. Small parts: hotkey plate, chip, tag, feed line
+8. Pixel art: icons and the wall
+9. Recipe for a new component
 
-## 1. The frame and bevel recipe
+## 1. Frame, bevel, rivets
 
 ```css
 /* declared on *, so --edge can be overridden per element */
 --frame: 0 -2px 0 0 var(--edge), -2px 0 0 0 var(--edge), 2px 0 0 0 var(--edge), 0 4px 0 0 var(--edge);
---frame-flat: 0 -2px 0 0 var(--edge), -2px 0 0 0 var(--edge), 2px 0 0 0 var(--edge), 0 2px 0 0 var(--edge);
+--frame-flat: /* same, with a 2px bottom */;
+--rivets: /* four 4×4 iron-hi squares, 6px in from each corner, as background layers */;
 
-.thing {
-  background: var(--stone);
+button {
+  background: var(--rivets), var(--face);
   box-shadow:
-    inset 2px 2px 0 0 var(--stone-hi),   /* light from top-left */
-    inset -2px -2px 0 0 var(--stone-2),  /* shade bottom-right */
-    var(--frame);                         /* notched outline + 2px depth */
+    inset 2px 2px 0 0 var(--hi),     /* light from top-left */
+    inset -2px -2px 0 0 var(--lo),   /* shade bottom-right */
+    var(--frame);                     /* notched ink outline + depth */
 }
 ```
 
-Why four offset shadows instead of `border`? Shifting the box by one art pixel in each
-direction draws the outline but leaves each corner pixel empty, which is exactly how
-pixel-art boxes are drawn. It also keeps the element's layout box unchanged. Because the
-frame sits outside the box, give framed elements `margin: 2px 2px 4px` (buttons already
-have it) so neighbors don't overlap the frame.
+Four offset shadows draw the outline but leave each corner pixel empty, which is how
+pixel-art boxes are drawn, and they don't change the layout box. Framed elements need
+`margin: 2px 2px 4px` so neighbours don't overlap the frame (buttons already have it).
+Rivets are background layers, so a variant that sets `background: var(--face)` alone (small
+buttons, tiles) simply has none. Keep rivets on buttons big enough to carry them.
 
 ## 2. Buttons
 
-All buttons read four custom properties, so a variant only changes tokens:
+Every button reads `--face`, `--hi`, `--lo` and `--text`, so a variant only changes tokens:
 
-| Variant | `--face` | `--hi` | `--lo` | `--ink` | Use |
-|---|---|---|---|---|---|
-| default | stone | stone-hi | stone-3 | night | everything |
-| `.primary` | bolt | bolt-pale | bolt-deep | night | the single call to action |
-| `.danger` | #FFD9D9 | stone-hi | #D98C8C | night | sell, destructive |
-| `:disabled` | stone-2 | stone-2 | stone-2 | stone-3 | unavailable |
-| `.send.locked` | night-2 | night-3 | night-deep | stone-3 | not unlocked yet (on navy) |
-| `.ghost` | none | – | – | inherits | tertiary text action ("Выйти") |
+| Variant | Face | Text | Use |
+|---|---|---|---|
+| default | oak + rivets | parch-hi, 2px oak-lo text shadow | ordinary actions |
+| `.primary` | vermilion, gold rim, own bevel | parch-hi | the single call to action (wax seal) |
+| `.mode.active`, `.build.active` | gold | ink | selected state |
+| `.danger` | verm-lo | parch-hi | sell, destructive |
+| `:disabled` | parch-lo, flat | parch-ink | unavailable |
+| `.build`, `.send` | parchment tile | ink | cards on the oak bar |
+| `.send.locked` | oak-lo | parch-lo | not unlocked yet |
+| `.ghost` | none | ink (parch-hi with ink outline on the wall) | tertiary text action |
 
-Pressed: `transform: translateY(2px)`, the bevel flips (dark top-left) and the frame turns
-`--frame-flat`, so the button visibly sinks into the wall. Sizes: `.small` 13px, default
-16px, `.big` 20px, mode tiles 24px.
+Pressed: `translateY(2px)`, the bevel flips and the frame turns flat, so the plank sinks.
+Sizes: `.small` 13px, default 16px, `.big` 20px, mode tiles 24px.
 
-For an irreversible action, use the in-page two-click confirm (see `confirmLeave` in
-`client/src/ui/match.ts`). The first click arms it and turns the text red; `confirm()` is
-unavailable in embedded viewers.
+For an irreversible action, use the in-page two-click confirm (`confirmLeave` in
+`client/src/ui/match.ts`), because `confirm()` is unavailable in embedded viewers.
 
-## 3. Panels with merlons
-
-`.panel` and `.team` are framed stone plus a `::before` row of merlons:
+## 3. Panels: parchment in an oak frame
 
 ```css
-.panel::before {
-  content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 8px;
-  background: repeating-linear-gradient(90deg, var(--night) 0 16px, transparent 16px 28px);
-  background-position: 6px 0;
+.panel {
+  background: var(--parch);
+  box-shadow:
+    inset 0 0 0 2px var(--oak-lo),   /* outer edge of the frame */
+    inset 0 0 0 6px var(--oak),      /* oak moulding */
+    inset 0 0 0 8px var(--gold-lo),  /* gilt fillet */
+    inset 10px 10px 0 0 var(--parch-hi), /* light on the parchment */
+    var(--frame);
+}
+.panel::after { /* iron corner plates: 8 gradient layers forming L-brackets */ }
+```
+
+`.panel` and `.team` get the iron corners. `.tip`, `.award` and `.teambox` get only a 2px oak
+line, so importance is visible at a glance. Give panels enough padding (20px) to clear
+the 8px frame.
+
+## 4. Illuminated initial
+
+```css
+.panel h2::first-letter {
+  color: var(--parch-hi);
+  background: var(--verm);
+  padding: 0 4px;
+  box-shadow: 0 0 0 2px var(--gold), 0 0 0 4px var(--ink);
 }
 ```
 
-The panel needs `position: relative` and `margin-top: 10px` to make room. Use merlons only
-on primary containers (menu blocks, team boxes). Cards, tips and awards stay plain, so the
-castle silhouette marks the important blocks.
+Use it for section headings only (panel titles, the lobby and loading headings), never for
+buttons or body text. One initial per block, as in a manuscript.
 
-## 4. Pennant, ribbon, banner
+## 5. Pennant, ribbon, banner
 
-- **Pennant** (team label): `clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%)`, team-colored background, white text with a 2px navy text-shadow.
-- **Ribbon** (finale, headline): both ends notched, `polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%, 16px 50%)`, navy with 2px cyan top and bottom borders.
-- **Banner** (alerts): the same ribbon shape in `--bad`, shown with a stepped keyframe.
+- **Pennant** (team label): `clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%)`, team color, parch-hi text with a 2px ink text-shadow.
+- **Ribbon** (finale): notched at both ends, `polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%, 16px 50%)`, parch-hi with 4px vermilion rules top and bottom.
+- **Banner** (alerts): the same shape in vermilion with 2px gold rules, shown with a stepped keyframe.
 
-## 5. Bars and meters
+## 6. Bars and meters
 
-- Mill HP (`.hpbar`): a navy-deep track with a 2px night-3 ring. The fill is masked into 8px blocks with 2px gaps (`mask: repeating-linear-gradient(90deg, #000 0 8px, transparent 8px 10px)`), and width changes use `steps(6)`.
-- Lure (`.lurebar`): the fill is a repeating stripe of two browns, 6+2px.
-- Keep new meters on the same 8+2px rhythm so they line up visually with the HP bars.
+- **Mill HP** (`.hpbar`): an oak-deep track with a gold-lo ring and an ink ring. The fill is masked into 8px blocks with 2px gaps; width changes use `steps(6)`.
+- **Lure** (`.lurebar`): stripes of two browns, 6+2px.
+- New meters keep the 8+2px rhythm so they line up with the HP bars.
 
-## 6. Small parts
+## 7. Small parts
 
-- **Keycap** `.key`: navy tile, cyan 10px letter, padding 2px 3px, top-left of a button.
-- **Chip** `.chip`: stone-hi with `--frame-flat` and a 10px color square framed by a 2px navy ring.
-- **Tag** `.tag`: solid `--bad` with white 11px bold text, no frame. It's a label, not a control.
-- **Feed line** `.line`: stone with a 4px left rule colored by tone (good, bad, stone-3 for neutral, bolt for pings).
+- **Hotkey plate** `.key`: iron tile, gold 10px letter, top-left of a tile.
+- **Chip** `.chip`: parch-hi with `--frame-flat`, and a 10px color square with a 2px ink ring.
+- **Tag** `.tag`: solid vermilion with parch-hi 11px bold text, no frame. It's a label, not a control.
+- **Feed line** `.line`: parch-hi with a 4px left rule by tone (good green, bad red, parch-lo neutral, gold-lo for pings).
+- **Section labels** in the side columns: vermilion uppercase 12px, like rubrics in a manuscript.
 
-## 7. Pixel icons
+## 8. Pixel art: icons and the wall
 
-`client/src/assets/icon-grain.svg` and `icon-lure.svg` are 10×10 grids. Draw new icons the
-same way: plan the grid as text rows, emit one `<rect>` per horizontal run, set
-`shape-rendering="crispEdges"` and add a `<title>`. Outline with `--night` (#0E213B), and
-display at an integer multiple (20px = ×2). Put them in `client/src/assets/` so Vite
-bundles and hashes them for both the online and the offline build.
+`client/src/assets/icon-grain.svg`, `icon-lure.svg` (10×10) and `wall.svg` (32×16, stones
+16×8 in running bond) are hand-authored grids. To add one:
+1. Plan the grid as text rows.
+2. Emit one `<rect>` per horizontal run.
+3. Set `shape-rendering="crispEdges"`, outline in `--ink` (#2B1D14), and add a `<title>` for icons.
+4. Display at a whole-number multiple.
 
-## 8. Recipe for a new component
+Keep background textures low-contrast so parchment panels read first. Put the files in
+`client/src/assets/` so Vite bundles them for both the online and the offline build.
 
-1. Decide its role: control (button recipe), container (panel), label (pennant/tag) or meter (bar).
-2. Start from that recipe and change tokens, not the structure.
-3. Pick at most one motif, and only if it means something.
-4. Check it on both surfaces it can appear on (stone sidebars, navy bars). On navy, use stone text and `--night-*` shades.
+## 9. Recipe for a new component
+
+1. Decide its role: action (button), container (panel), label (pennant, tag, rubric) or meter (bar).
+2. Start from that recipe and change tokens, not structure.
+3. Decide its color by meaning: vermilion only if it's the action to take, gold only if it shows a selection.
+4. Check it on both backgrounds it can sit on: parchment (ink text) and oak or stone (parch-hi text with an ink outline).
