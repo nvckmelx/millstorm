@@ -1,39 +1,33 @@
 /*
- * Millstorm brand UI — "Armorial" (Гербовник): heraldic, medieval, pixel-perfect.
- * Parchment panels in oak frames with iron corners, oak plank buttons, a vermilion
- * wax-seal call to action, gold for "selected", castle stonework behind everything.
+ * Millstorm brand UI — "Workshop" (Мельничная мастерская), matched to the painted logo
+ * and Art Pack 01: oak planks with a thick dark outline, teal iron plates with gold rivets,
+ * cream sail-canvas panels, gold lettering, red roof tiles, all under a painted sky.
  * Rules and rationale: .claude/skills/millstorm-brand/SKILL.md
- *
- * One art pixel = var(--px) = 2 CSS px. Every border, bevel, offset and shadow is a
- * whole number of art pixels. No border-radius, no blur.
  */
 
 :root {
-  /* Ink and parchment */
-  --ink: #2b1d14;
-  --parch: #ead9b0;
-  --parch-hi: #f6ecd0;
-  --parch-lo: #c9b07a;
-  --parch-ink: #6b5335;
+  /* Outline and wood */
+  --ink: #3a2414;
+  --wood: #a86b32;
+  --wood-hi: #c98a4b;
+  --wood-lo: #7a4a22;
+  --wood-deep: #4e2e16;
 
-  /* Oak (frames, planks, HUD beams) */
-  --oak: #7a4a26;
-  --oak-hi: #9a6534;
-  --oak-lo: #4e2e16;
-  --oak-deep: #33200f;
+  /* Sail canvas */
+  --cream: #f3e6c8;
+  --cream-hi: #fbf4e2;
+  --cream-lo: #d9c49a;
+  --cream-ink: #6b5335;
 
-  /* Metals */
-  --iron: #5b6770;
-  --iron-hi: #8a97a1;
-  --gold: #e2b33c;
-  --gold-hi: #f6d77a;
-  --gold-lo: #a8781e;
-
-  /* Heraldic tinctures */
-  --verm: #b8322a; /* the one call to action: a wax seal */
-  --verm-hi: #d9543f;
-  --verm-lo: #7e1f1a;
-  --azure: #2f5da8;
+  /* Metals and paint */
+  --gold: #f2c05a;
+  --gold-hi: #ffe08a;
+  --gold-lo: #c98f2a;
+  --teal: #2e8c87;
+  --teal-hi: #4fb3aa;
+  --teal-lo: #1f6663;
+  --tile: #c9502f;
+  --tile-lo: #8f3520;
 
   /* Game semantics (unchanged meaning) */
   --good: #3f8f3a;
@@ -42,35 +36,20 @@
   --blue: #2f80ed;
   --orange: #f2994a;
 
-  --px: 2px;
-  --font: "Pixelify Sans", "Trebuchet MS", system-ui, sans-serif;
-  --edge: var(--ink);
+  --outline: 3px;
+  --r: 12px;
+  --r-sm: 8px;
+  --font: "Rubik", "Trebuchet MS", system-ui, sans-serif;
+  --display: "Yeseva One", Georgia, "Times New Roman", serif;
+  --sky-url: none;
 
   color-scheme: light;
   font-family: var(--font);
   color: var(--ink);
-  font-synthesis: none;
-  -webkit-font-smoothing: none;
 }
 
 * {
   box-sizing: border-box;
-}
-
-/* Pixel frame: four offset copies of the box make an outline with notched corners.
-   Declared on every element so a local --edge (e.g. red on a targeted card) applies. */
-*,
-*::before,
-*::after {
-  --frame: 0 calc(var(--px) * -1) 0 0 var(--edge), calc(var(--px) * -1) 0 0 0 var(--edge), var(--px) 0 0 0 var(--edge),
-    0 calc(var(--px) * 2) 0 0 var(--edge);
-  --frame-flat: 0 calc(var(--px) * -1) 0 0 var(--edge), calc(var(--px) * -1) 0 0 0 var(--edge), var(--px) 0 0 0 var(--edge),
-    0 var(--px) 0 0 var(--edge);
-  /* Four iron rivets, one art pixel square, 3 pixels in from each corner. */
-  --rivets: linear-gradient(var(--iron-hi), var(--iron-hi)) 6px 6px / 4px 4px no-repeat,
-    linear-gradient(var(--iron-hi), var(--iron-hi)) calc(100% - 6px) 6px / 4px 4px no-repeat,
-    linear-gradient(var(--iron-hi), var(--iron-hi)) 6px calc(100% - 8px) / 4px 4px no-repeat,
-    linear-gradient(var(--iron-hi), var(--iron-hi)) calc(100% - 6px) calc(100% - 8px) / 4px 4px no-repeat;
 }
 
 html,
@@ -79,18 +58,20 @@ body {
   height: 100%;
 }
 
-/* Castle stonework: 16×8-pixel stones in running bond, a 32×16 tile shown at 2×. */
+/* The painted sky from the art pack, with a warm wash so panels stay the brightest thing. */
 body {
-  background: #7b7365 url("./assets/wall.svg") 0 0 / 64px 32px repeat;
-  image-rendering: pixelated;
+  background:
+    linear-gradient(180deg, rgba(255, 244, 214, 0.1), rgba(255, 236, 196, 0.35)),
+    var(--sky-url) center / cover fixed,
+    #bcd8ee;
   overflow: hidden;
   font-size: 16px;
-  line-height: 1.25;
+  line-height: 1.3;
+  font-weight: 500;
 }
 
 #app {
   height: 100%;
-  image-rendering: auto;
 }
 
 h1,
@@ -98,7 +79,6 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-weight: 700;
   text-wrap: balance;
 }
 
@@ -106,12 +86,16 @@ img {
   max-width: 100%;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 small {
   font-size: 12px;
 }
 
 .muted {
-  color: var(--parch-ink);
+  color: var(--cream-ink);
 }
 
 .row {
@@ -121,110 +105,158 @@ small {
   flex-wrap: wrap;
 }
 
+/* Gold display lettering with a dark outline and a teal underside, like the logo. */
+.display,
+.lobby-head h2,
+.loading h2,
+.results h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--gold);
+  -webkit-text-stroke: 6px var(--ink);
+  paint-order: stroke fill;
+  text-shadow:
+    0 3px 0 var(--teal-lo),
+    0 5px 0 var(--ink);
+  letter-spacing: 0.5px;
+}
+
 /* ---------------------------------------------------------------- buttons */
 
-/* Default: an oak plank with iron rivets and parchment lettering. */
+/* Default: an oak plank with a dark outline, a lit top edge and a thick bottom for depth. */
 button {
-  --face: var(--oak);
-  --hi: var(--oak-hi);
-  --lo: var(--oak-lo);
-  --text: var(--parch-hi);
-  --rivet: var(--iron-hi);
+  --top: var(--wood-hi);
+  --face: var(--wood);
+  --bottom: var(--wood-lo);
+  --depth: var(--ink);
+  --text: var(--cream-hi);
   position: relative;
   font: inherit;
   font-weight: 700;
   font-size: 16px;
   color: var(--text);
-  background: var(--rivets), var(--face);
-  border: 0;
-  border-radius: 0;
-  padding: 8px 16px 8px;
-  margin: var(--px) var(--px) calc(var(--px) * 2);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 9px, rgba(58, 36, 20, 0.12) 9px 10px),
+    linear-gradient(180deg, var(--top) 0 18%, var(--face) 18% 78%, var(--bottom) 78% 100%);
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 8px 16px;
+  margin: 2px 2px 6px;
   cursor: pointer;
-  text-shadow: 0 var(--px) 0 var(--lo);
-  box-shadow:
-    inset var(--px) var(--px) 0 0 var(--hi),
-    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 var(--lo),
-    var(--frame);
+  text-shadow: 0 2px 0 var(--wood-deep);
+  box-shadow: 0 4px 0 var(--depth);
+  transition: transform 0.06s, filter 0.1s;
 }
 
 button:hover:not(:disabled) {
-  --face: var(--oak-hi);
-  --hi: #b27a45;
+  filter: brightness(1.08) saturate(1.05);
 }
 
 button:active:not(:disabled) {
-  transform: translateY(var(--px));
-  box-shadow:
-    inset var(--px) var(--px) 0 0 var(--lo),
-    var(--frame-flat);
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--depth);
 }
 
 button:disabled {
-  --face: var(--parch-lo);
-  --hi: var(--parch-lo);
-  --lo: var(--parch-lo);
-  --text: var(--parch-ink);
+  --top: var(--cream-lo);
+  --face: var(--cream-lo);
+  --bottom: #c8b183;
+  --text: var(--cream-ink);
   text-shadow: none;
   cursor: default;
+  opacity: 0.8;
 }
 
 button:focus-visible,
 input:focus-visible {
-  outline: var(--px) solid var(--gold);
-  outline-offset: calc(var(--px) * 3);
+  outline: 3px solid var(--teal-hi);
+  outline-offset: 3px;
 }
 
-/* The call to action: a vermilion wax seal with a gold rim. */
+/* The call to action: gold like the logo's letters, sitting on a teal-and-ink ledge. */
 button.primary {
-  --face: var(--verm);
-  --hi: var(--verm-hi);
-  --lo: var(--verm-lo);
-  --edge: var(--ink);
-  background: var(--face);
+  --top: var(--gold-hi);
+  --face: var(--gold);
+  --bottom: var(--gold-lo);
+  --text: var(--ink);
+  text-shadow: 0 1px 0 var(--gold-hi);
   box-shadow:
-    inset 0 0 0 var(--px) var(--gold-lo),
-    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--verm-hi),
-    inset calc(var(--px) * -2) calc(var(--px) * -2) 0 0 var(--verm-lo),
-    var(--frame);
-}
-
-button.primary:hover:not(:disabled) {
-  --face: #cc3b31;
+    0 3px 0 var(--teal),
+    0 6px 0 var(--ink);
 }
 
 button.primary:active:not(:disabled) {
   box-shadow:
-    inset 0 0 0 var(--px) var(--gold-lo),
-    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--verm-lo),
-    var(--frame-flat);
+    0 1px 0 var(--teal),
+    0 2px 0 var(--ink);
+}
+
+/* Selected state: a teal iron plate. */
+.mode.active,
+.build.active {
+  --top: var(--teal-hi);
+  --face: var(--teal);
+  --bottom: var(--teal-lo);
+  --text: var(--cream-hi);
+  text-shadow: 0 2px 0 var(--teal-lo);
 }
 
 button.danger {
-  --face: var(--verm-lo);
-  --hi: var(--verm);
-  --lo: #521410;
+  --top: #e0704f;
+  --face: var(--tile);
+  --bottom: var(--tile-lo);
+  text-shadow: 0 2px 0 var(--tile-lo);
 }
 
 button.big {
   font-size: 20px;
-  padding: 12px 22px;
+  padding: 12px 40px;
+  border-radius: var(--r);
+}
+
+/* Big buttons carry two gold rivets on teal plates at their ends. */
+button.big::before,
+button.big::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -8px;
+  border-radius: 3px;
+  background: radial-gradient(circle, var(--gold) 0 2.5px, var(--gold-lo) 2.5px 3.5px, transparent 4px), var(--teal);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+button.big::before {
+  left: 7px;
+}
+
+button.big::after {
+  right: 7px;
 }
 
 button.small {
   font-size: 13px;
-  padding: 4px 8px;
-  background: var(--face);
+  padding: 4px 9px;
+  border-radius: 7px;
+  border-width: 2px;
+  box-shadow: 0 3px 0 var(--depth);
+}
+
+button.small:active:not(:disabled) {
+  box-shadow: 0 1px 0 var(--depth);
 }
 
 button.ghost {
   --text: var(--ink);
   background: none;
+  border-color: transparent;
   box-shadow: none;
   padding: 6px 4px;
   text-shadow: none;
   text-decoration: underline;
-  text-decoration-thickness: var(--px);
+  text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
 
@@ -233,17 +265,14 @@ button.ghost:active:not(:disabled) {
 }
 
 button.ghost.armed {
-  --text: var(--verm);
+  --text: var(--tile);
 }
 
-/* A text link standing on the stone wall needs an ink outline to stay readable. */
+/* A text link standing on the sky needs an outline to stay readable. */
 .screen > .row button.ghost {
-  --text: var(--parch-hi);
-  text-shadow:
-    var(--px) 0 0 var(--ink),
-    calc(var(--px) * -1) 0 0 var(--ink),
-    0 var(--px) 0 var(--ink),
-    0 calc(var(--px) * -1) 0 var(--ink);
+  --text: var(--cream-hi);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
 input {
@@ -251,77 +280,84 @@ input {
   font-size: 16px;
   font-weight: 500;
   color: var(--ink);
-  background: var(--parch-hi);
-  border: 0;
-  border-radius: 0;
+  background: var(--cream-hi);
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--r-sm);
   padding: 10px 12px;
-  margin: var(--px);
+  margin: 2px;
   min-width: 0;
-  box-shadow:
-    inset var(--px) var(--px) 0 0 var(--parch-lo),
-    var(--frame-flat);
+  box-shadow: inset 0 3px 0 rgba(58, 36, 20, 0.12);
 }
 
 input::placeholder {
-  color: var(--parch-lo);
+  color: #b9a47a;
 }
 
 /* ---------------------------------------------------------------- panels */
 
-/* Parchment in an oak frame with iron corner plates. */
+/* Sail canvas in an oak frame with teal corner plates and gold rivets. */
 .panel,
-.team,
-.tip,
-.award,
-.teambox {
+.team {
   position: relative;
-  background: var(--parch);
+  background: linear-gradient(180deg, var(--cream-hi), var(--cream));
+  border: var(--outline) solid var(--ink);
+  border-radius: 16px;
   box-shadow:
-    inset 0 0 0 var(--px) var(--oak-lo),
-    inset 0 0 0 calc(var(--px) * 3) var(--oak),
-    inset 0 0 0 calc(var(--px) * 4) var(--gold-lo),
-    inset calc(var(--px) * 5) calc(var(--px) * 5) 0 0 var(--parch-hi),
-    var(--frame);
+    inset 0 0 0 5px var(--wood),
+    inset 0 0 0 7px var(--wood-lo),
+    inset 0 9px 0 0 rgba(255, 255, 255, 0.35),
+    0 6px 0 rgba(58, 36, 20, 0.35);
 }
 
 .panel::after,
 .team::after {
-  /* Iron corner plates: 8×8 art-pixel L-brackets drawn with gradients. */
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -3px;
   pointer-events: none;
+  --rivet: radial-gradient(circle, var(--gold) 0 3px, var(--gold-lo) 3px 4px, var(--ink) 4px 5px, transparent 5.5px);
+  --plate: linear-gradient(var(--teal), var(--teal));
+  --plate-edge: linear-gradient(var(--ink), var(--ink));
   background:
-    linear-gradient(var(--iron), var(--iron)) 0 0 / 16px 6px no-repeat,
-    linear-gradient(var(--iron), var(--iron)) 0 0 / 6px 16px no-repeat,
-    linear-gradient(var(--iron), var(--iron)) 100% 0 / 16px 6px no-repeat,
-    linear-gradient(var(--iron), var(--iron)) 100% 0 / 6px 16px no-repeat,
-    linear-gradient(var(--iron), var(--iron)) 0 100% / 16px 6px no-repeat,
-    linear-gradient(var(--iron), var(--iron)) 0 100% / 6px 16px no-repeat,
-    linear-gradient(var(--iron), var(--iron)) 100% 100% / 16px 6px no-repeat,
-    linear-gradient(var(--iron), var(--iron)) 100% 100% / 6px 16px no-repeat;
+    var(--rivet) 0 0 / 22px 22px no-repeat,
+    var(--rivet) 100% 0 / 22px 22px no-repeat,
+    var(--rivet) 0 100% / 22px 22px no-repeat,
+    var(--rivet) 100% 100% / 22px 22px no-repeat,
+    var(--plate) 3px 3px / 16px 16px no-repeat,
+    var(--plate) calc(100% - 3px) 3px / 16px 16px no-repeat,
+    var(--plate) 3px calc(100% - 3px) / 16px 16px no-repeat,
+    var(--plate) calc(100% - 3px) calc(100% - 3px) / 16px 16px no-repeat,
+    var(--plate-edge) 0 0 / 22px 22px no-repeat,
+    var(--plate-edge) 100% 0 / 22px 22px no-repeat,
+    var(--plate-edge) 0 100% / 22px 22px no-repeat,
+    var(--plate-edge) 100% 100% / 22px 22px no-repeat;
+  border-radius: 16px;
 }
 
 .tip,
 .award,
-.teambox {
+.teambox,
+.chat-log {
+  background: var(--cream-hi);
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--r);
   box-shadow:
-    inset 0 0 0 var(--px) var(--oak),
-    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--parch-hi),
-    var(--frame);
+    inset 0 -4px 0 var(--cream-lo),
+    0 4px 0 rgba(58, 36, 20, 0.3);
 }
 
-/* Illuminated initial: the first letter of a section heading, as in a manuscript. */
-.panel h2::first-letter,
-.lobby-head h2::first-letter,
-.loading h2::first-letter {
-  color: var(--parch-hi);
-  background: var(--verm);
-  padding: 0 4px;
-  margin-right: 4px;
-  box-shadow:
-    0 0 0 var(--px) var(--gold),
-    0 0 0 calc(var(--px) * 2) var(--ink);
+/* Short text on the sky gets a cream plaque. */
+.foot,
+.status,
+.series,
+.countdown,
+.results > p:not(.tip) {
+  background: var(--cream-hi);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin: 0;
+  box-shadow: 0 3px 0 rgba(58, 36, 20, 0.3);
 }
 
 /* ---------------------------------------------------------------- screens */
@@ -332,27 +368,30 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 24px 16px 40px;
+  gap: 18px;
+  padding: 20px 16px 40px;
 }
 
 .panel {
   width: min(460px, 100%);
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .panel h2 {
-  font-size: 20px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 22px;
 }
 
 .panel label {
   font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--parch-ink);
+  color: var(--cream-ink);
 }
 
 .panel.note {
@@ -364,14 +403,14 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   text-align: center;
 }
 
 .logo img {
-  width: min(324px, 80vw);
+  width: min(330px, 78vw);
   height: auto;
-  image-rendering: pixelated;
+  filter: drop-shadow(0 6px 0 rgba(58, 36, 20, 0.25));
 }
 
 .logo p {
@@ -379,12 +418,9 @@ input::placeholder {
   font-size: 16px;
   font-weight: 700;
   max-width: 34ch;
-  color: var(--parch-hi);
-  text-shadow:
-    var(--px) 0 0 var(--ink),
-    calc(var(--px) * -1) 0 0 var(--ink),
-    0 var(--px) 0 var(--ink),
-    0 calc(var(--px) * -1) 0 var(--ink);
+  color: var(--cream-hi);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
 .visually-hidden {
@@ -421,23 +457,12 @@ input::placeholder {
   margin-right: 4px;
 }
 
-/* Text sitting directly on the stone wall gets a parchment plaque. */
-.foot,
-.status,
-.series,
-.countdown,
-.results > p {
-  background: var(--parch);
-  box-shadow: var(--frame-flat);
-  padding: 6px 12px;
-  margin: 0;
-}
-
 .foot {
   font-size: 13px;
-  color: var(--parch-ink);
+  color: var(--cream-ink);
   text-align: center;
   max-width: 64ch;
+  border-radius: var(--r);
 }
 
 /* lobby / loading */
@@ -452,14 +477,7 @@ input::placeholder {
 
 .lobby-head h2,
 .loading h2 {
-  font-size: 32px;
-  color: var(--parch-hi);
-  text-shadow:
-    var(--px) 0 0 var(--ink),
-    calc(var(--px) * -1) 0 0 var(--ink),
-    0 var(--px) 0 var(--ink),
-    0 calc(var(--px) * -1) 0 var(--ink),
-    0 calc(var(--px) * 2) 0 var(--ink);
+  font-size: 40px;
 }
 
 .invite {
@@ -468,18 +486,18 @@ input::placeholder {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  background: var(--parch);
-  box-shadow: var(--frame-flat);
-  padding: 8px 12px;
+  background: var(--cream-hi);
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--r);
+  padding: 8px 14px;
+  box-shadow: 0 4px 0 rgba(58, 36, 20, 0.3);
 }
 
 .invite .code {
+  font-family: var(--display);
   font-size: 32px;
   letter-spacing: 6px;
-  color: var(--verm);
-  background: var(--parch-hi);
-  padding: 2px 10px;
-  box-shadow: var(--frame-flat);
+  color: var(--tile);
 }
 
 .modes {
@@ -489,17 +507,8 @@ input::placeholder {
 
 .mode {
   font-size: 24px;
-  padding: 12px 24px;
-}
-
-/* Selected = gold ("or"), distinct from the vermilion call to action. */
-.mode.active,
-.build.active {
-  --face: var(--gold);
-  --hi: var(--gold-hi);
-  --lo: var(--gold-lo);
-  --text: var(--ink);
-  text-shadow: none;
+  padding: 12px 26px;
+  border-radius: var(--r);
 }
 
 .teams,
@@ -511,27 +520,30 @@ input::placeholder {
 }
 
 .team {
-  padding: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-/* Team pennant with a swallowtail. */
+/* Team banner: a flag with a swallowtail. */
 .team h3 {
   align-self: flex-start;
   background: var(--team);
-  color: var(--parch-hi);
-  font-size: 16px;
-  padding: 4px 22px 4px 10px;
-  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%);
-  text-shadow: var(--px) var(--px) 0 var(--ink);
+  color: var(--cream-hi);
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 18px;
+  padding: 4px 24px 4px 12px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 50%, 100% 100%, 0 100%);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
 .slot {
+  --top: transparent;
   --face: transparent;
-  --hi: transparent;
-  --lo: transparent;
+  --bottom: transparent;
   --text: var(--ink);
   display: flex;
   gap: 8px;
@@ -539,33 +551,30 @@ input::placeholder {
   flex-wrap: wrap;
   min-height: 44px;
   padding: 10px;
-  margin: var(--px);
+  margin: 2px;
   text-align: left;
   font-size: 14px;
   font-weight: 500;
   text-shadow: none;
   background: none;
+  border: 2px dashed var(--cream-lo);
   box-shadow: none;
-  outline: var(--px) dashed var(--parch-lo);
-  outline-offset: calc(var(--px) * -1);
 }
 
 .slot.filled {
-  background: var(--parch-hi);
-  outline: none;
-  box-shadow: var(--frame-flat);
+  background: var(--cream-hi);
+  border: 2px solid var(--ink);
 }
 
 .slot.you {
-  box-shadow:
-    inset 0 0 0 var(--px) var(--team),
-    var(--frame-flat);
+  border-color: var(--team);
+  box-shadow: 0 0 0 2px var(--ink);
 }
 
 .slot span {
   margin-left: auto;
   font-size: 13px;
-  color: var(--parch-ink);
+  color: var(--cream-ink);
 }
 
 .status,
@@ -582,20 +591,15 @@ input::placeholder {
 }
 
 .chat-log {
-  background: var(--parch);
-  padding: 8px;
+  padding: 8px 10px;
   height: 110px;
   overflow: auto;
   font-size: 14px;
-  margin: var(--px);
-  box-shadow:
-    inset var(--px) var(--px) 0 0 var(--parch-lo),
-    var(--frame-flat);
 }
 
 .tips {
   display: grid;
-  gap: 16px;
+  gap: 14px;
   width: min(640px, 100%);
 }
 
@@ -606,55 +610,52 @@ input::placeholder {
 }
 
 .countdown {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .loading .emblem {
-  width: 144px;
+  width: 150px;
   height: auto;
-  image-rendering: pixelated;
+  filter: drop-shadow(0 6px 0 rgba(58, 36, 20, 0.25));
 }
 
 /* results */
 
 .results h1 {
-  font-size: 64px;
-  color: var(--parch-hi);
-  text-shadow:
-    0 calc(var(--px) * -2) 0 var(--ink),
-    calc(var(--px) * -2) 0 0 var(--ink),
-    calc(var(--px) * 2) 0 0 var(--ink),
-    0 calc(var(--px) * 2) 0 var(--ink),
-    0 calc(var(--px) * 4) 0 var(--ink);
-}
-
-.results h1.win {
-  color: var(--gold);
+  font-size: 72px;
+  line-height: 1.1;
 }
 
 .results h1.lose {
-  color: #e8836f;
+  color: #f08a6a;
 }
 
-/* The finale on a parchment ribbon: "Мельницу сломал козёл игрока X". */
+.results h1.draw {
+  color: var(--cream-hi);
+}
+
+/* The finale on a cream ribbon with wooden ends. */
 .finisher {
-  background: var(--parch-hi);
+  position: relative;
+  background: var(--cream-hi);
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 20px;
   padding: 10px 40px;
-  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%, 16px 50%);
-  border-top: calc(var(--px) * 2) solid var(--verm);
-  border-bottom: calc(var(--px) * 2) solid var(--verm);
+  border-top: var(--outline) solid var(--ink);
+  border-bottom: var(--outline) solid var(--ink);
+  box-shadow:
+    inset 0 -4px 0 var(--cream-lo),
+    -18px 0 0 -2px var(--wood),
+    18px 0 0 -2px var(--wood);
 }
 
 .chart {
   max-width: 100%;
-  box-shadow:
-    0 0 0 calc(var(--px) * 2) var(--oak),
-    0 0 0 calc(var(--px) * 3) var(--ink);
-  margin: 6px;
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--r);
+  box-shadow: 0 4px 0 rgba(58, 36, 20, 0.3);
 }
 
 .awards {
@@ -667,15 +668,21 @@ input::placeholder {
 .award {
   padding: 12px 16px;
   display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+}
+
+.award > div {
+  display: flex;
   flex-direction: column;
-  min-width: 180px;
 }
 
 .award small {
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--verm);
-  font-weight: 700;
+  color: var(--teal-lo);
+  font-weight: 800;
 }
 
 .results .tip {
@@ -688,19 +695,21 @@ input::placeholder {
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 176px;
+  bottom: 180px;
   transform: translate(-50%, 8px);
-  background: var(--oak-lo);
-  color: var(--parch-hi);
-  padding: 10px 16px;
+  background: var(--wood);
+  color: var(--cream-hi);
+  padding: 10px 18px;
   font-weight: 700;
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--r);
+  box-shadow: 0 4px 0 var(--ink);
+  text-shadow: 0 2px 0 var(--wood-deep);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.15s steps(3), transform 0.15s steps(3);
+  transition: opacity 0.15s, transform 0.15s;
   z-index: 50;
   max-width: calc(100vw - 32px);
-  --edge: var(--gold);
-  box-shadow: var(--frame-flat);
 }
 
 .toast.show {
@@ -709,11 +718,67 @@ input::placeholder {
 }
 
 .toast.error {
-  --edge: var(--verm-hi);
+  background: var(--tile);
+  text-shadow: 0 2px 0 var(--tile-lo);
 }
 
 .toast.info {
-  --edge: #7fbf5a;
+  background: var(--teal);
+  text-shadow: 0 2px 0 var(--teal-lo);
+}
+
+/* ---------------------------------------------------------------- icons */
+
+/* Painted icons from Art Pack 01 (client/public/art/icons). */
+.ico {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: -5px;
+  flex: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ico.res-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.ico.inline {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}
+
+.ico.unit {
+  width: 36px;
+  height: 36px;
+  margin-top: 1px;
+}
+
+.ico.sel-art {
+  width: 44px;
+  height: 44px;
+}
+
+.ico.award-art {
+  width: 64px;
+  height: 64px;
+}
+
+.ico.feed-goose {
+  width: 32px;
+  height: 32px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.sel-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* ---------------------------------------------------------------- match */
@@ -721,7 +786,7 @@ input::placeholder {
 .match {
   display: grid;
   height: 100%;
-  grid-template-columns: 210px minmax(0, 1fr) 270px;
+  grid-template-columns: 214px minmax(0, 1fr) 274px;
   grid-template-rows: auto minmax(0, 1fr) auto;
   grid-template-areas:
     "top top top"
@@ -729,11 +794,13 @@ input::placeholder {
     "bottom bottom bottom";
 }
 
-/* Oak beams with a gold trim. */
+/* Oak beams: horizontal planks with a dark outline. */
 .topbar,
 .bottombar {
-  background: repeating-linear-gradient(180deg, var(--oak) 0 10px, #734524 10px 12px, var(--oak) 12px 22px, var(--oak-lo) 22px 24px);
-  color: var(--parch);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 13px, rgba(58, 36, 20, 0.28) 13px 15px),
+    linear-gradient(180deg, var(--wood-hi), var(--wood) 30%, var(--wood-lo));
+  color: var(--cream);
 }
 
 .topbar {
@@ -742,16 +809,17 @@ input::placeholder {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 12px;
-  padding: 6px 12px 6px;
-  box-shadow:
-    inset 0 calc(var(--px) * -2) 0 0 var(--gold-lo),
-    inset 0 calc(var(--px) * -3) 0 0 var(--ink);
+  padding: 6px 12px;
+  border-bottom: var(--outline) solid var(--ink);
+  box-shadow: 0 3px 0 rgba(58, 36, 20, 0.35);
+  position: relative;
+  z-index: 2;
 }
 
 .topbar .brand {
-  width: 32px;
+  width: 42px;
   height: auto;
-  image-rendering: pixelated;
+  margin: -6px 0;
 }
 
 .resources {
@@ -768,44 +836,37 @@ input::placeholder {
 
 .res b {
   font-size: 24px;
+  font-weight: 800;
   min-width: 44px;
-  color: var(--parch-hi);
+  color: var(--gold-hi);
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 var(--px) 0 var(--ink);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
 .res small {
-  color: var(--gold-hi);
-  font-weight: 500;
+  color: var(--cream);
+  font-weight: 700;
   white-space: nowrap;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
-  background: center / contain no-repeat;
-  image-rendering: pixelated;
-  flex: none;
-}
-
-.grain-icon {
-  background-image: url("./assets/icon-grain.svg");
-}
-
-.lure-icon {
-  background-image: url("./assets/icon-lure.svg");
+/* Capsule meters with an outline and a lit top. */
+.lurebar,
+.hpbar {
+  background: var(--wood-deep);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
 }
 
 .lurebar {
   width: 72px;
-  height: 10px;
-  background: var(--oak-deep);
-  box-shadow: 0 0 0 var(--px) var(--ink);
+  height: 12px;
 }
 
 .lurebar div {
   height: 100%;
-  background: repeating-linear-gradient(90deg, #d08a4a 0 6px, #b5733a 6px 8px);
+  background: linear-gradient(180deg, #e0a060, #b5733a 60%, #8f5a2c);
 }
 
 .scoreboard {
@@ -818,23 +879,28 @@ input::placeholder {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.mill span {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--cream-hi);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
 .mill b {
-  color: var(--parch-hi);
+  color: var(--cream-hi);
   font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
-/* Segmented health bar: each 8px block is a stone of the Mill. */
 .hpbar {
   width: 150px;
-  height: 16px;
-  background: var(--oak-deep);
-  box-shadow:
-    0 0 0 var(--px) var(--gold-lo),
-    0 0 0 calc(var(--px) * 2) var(--ink);
-  overflow: hidden;
+  height: 18px;
 }
 
 .mill.theirs .hpbar {
@@ -843,9 +909,10 @@ input::placeholder {
 
 .hpbar div {
   height: 100%;
-  transition: width 0.3s steps(6);
-  -webkit-mask: repeating-linear-gradient(90deg, #000 0 8px, transparent 8px 10px);
-  mask: repeating-linear-gradient(90deg, #000 0 8px, transparent 8px 10px);
+  transition: width 0.3s;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0 30%, transparent 30% 70%, rgba(0, 0, 0, 0.18) 70%),
+    repeating-linear-gradient(90deg, transparent 0 13px, rgba(58, 36, 20, 0.45) 13px 15px);
 }
 
 .wave {
@@ -854,35 +921,39 @@ input::placeholder {
 }
 
 .wave-no {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 13px;
   color: var(--gold-hi);
+  -webkit-text-stroke: 3px var(--ink);
+  paint-order: stroke fill;
 }
 
 .timer {
-  font-size: 32px;
-  font-weight: 700;
+  font-family: var(--display);
+  font-size: 34px;
   line-height: 1;
-  color: var(--parch-hi);
+  color: var(--gold);
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 var(--px) 0 var(--ink);
+  -webkit-text-stroke: 6px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 var(--teal-lo);
 }
 
 .timer.urgent {
-  color: #ff8a75;
+  color: #ff8a6a;
   animation: blink 0.5s steps(2) infinite;
 }
 
 @keyframes blink {
   50% {
-    opacity: 0.35;
+    opacity: 0.4;
   }
 }
 
 .phase {
   font-size: 11px;
-  color: var(--parch-lo);
-  font-weight: 700;
+  color: var(--cream);
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -895,18 +966,20 @@ input::placeholder {
 }
 
 .sys .ghost {
-  --text: var(--parch-hi);
+  --text: var(--cream-hi);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
 .latency {
   font-size: 12px;
-  color: var(--parch-lo);
+  color: var(--cream);
 }
 
-/* Side columns: parchment scrolls on the wall. */
+/* Side columns: canvas on the wall. */
 .left,
 .right {
-  background: var(--parch);
+  background: linear-gradient(180deg, var(--cream-hi), var(--cream));
   padding: 10px 10px 10px 12px;
   overflow: auto;
   display: flex;
@@ -916,36 +989,28 @@ input::placeholder {
 
 .left {
   grid-area: left;
-  box-shadow:
-    inset calc(var(--px) * -2) 0 0 0 var(--oak),
-    inset calc(var(--px) * -3) 0 0 0 var(--ink);
+  border-right: var(--outline) solid var(--ink);
+  box-shadow: inset -5px 0 0 var(--wood);
 }
 
 .right {
   grid-area: right;
-  box-shadow:
-    inset calc(var(--px) * 2) 0 0 0 var(--oak),
-    inset calc(var(--px) * 3) 0 0 0 var(--ink);
-}
-
-.left h4,
-.right h4,
-.bar-title {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  border-left: var(--outline) solid var(--ink);
+  box-shadow: inset 5px 0 0 var(--wood);
 }
 
 .left h4,
 .right h4 {
-  color: var(--verm);
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--wood-lo);
 }
 
 .left h4 small,
 .right h4 small {
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--parch-ink);
+  font-family: var(--font);
+  color: var(--cream-ink);
   font-weight: 500;
 }
 
@@ -961,9 +1026,11 @@ input::placeholder {
 }
 
 .line {
-  padding: 3px 6px 3px 8px;
-  background: var(--parch-hi);
-  border-left: calc(var(--px) * 2) solid var(--parch-lo);
+  padding: 4px 8px;
+  background: var(--cream-hi);
+  border: 2px solid var(--cream-lo);
+  border-left: 5px solid var(--cream-lo);
+  border-radius: 6px;
 }
 
 .line.good {
@@ -975,8 +1042,8 @@ input::placeholder {
 }
 
 .line.ping {
-  border-left-color: var(--gold-lo);
-  background: #f9e9b6;
+  border-left-color: var(--teal);
+  background: #e6f3ef;
 }
 
 .pings {
@@ -987,8 +1054,27 @@ input::placeholder {
 
 .ping {
   font-size: 11px;
-  padding: 3px 6px;
-  font-weight: 500;
+  padding: 3px 7px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ping .ico {
+  width: 16px;
+  height: 16px;
+  margin-right: 3px;
+}
+
+/* Goose stickers are pictures, not words. */
+.ping.sticker {
+  padding: 2px;
+}
+
+.ping.sticker .ico {
+  width: 40px;
+  height: 40px;
+  margin: 0;
 }
 
 .wheel {
@@ -1004,7 +1090,6 @@ input::placeholder {
   top: 0;
   white-space: nowrap;
   font-size: 13px;
-  font-weight: 700;
 }
 
 .center {
@@ -1025,37 +1110,37 @@ input::placeholder {
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
-  padding: 6px 10px;
+  padding: 5px 10px;
   font-size: 13px;
   font-weight: 700;
-  background: rgba(234, 217, 176, 0.92);
-  box-shadow: inset 0 calc(var(--px) * -1) 0 0 var(--oak);
+  background: rgba(251, 244, 226, 0.92);
+  border-bottom: 2px solid var(--ink);
 }
 
 .incoming.danger {
-  background: #f3c9b8;
-  box-shadow: inset 0 calc(var(--px) * -2) 0 0 var(--verm);
+  background: #f8d6c6;
+  border-bottom-color: var(--tile);
 }
 
 .incoming .next {
   margin-left: auto;
-  color: var(--parch-ink);
+  color: var(--cream-ink);
 }
 
 .chip {
   display: inline-flex;
   gap: 4px;
   align-items: center;
-  padding: 1px 8px;
-  background: var(--parch-hi);
-  box-shadow: var(--frame-flat);
-  margin: 0 var(--px);
+  padding: 1px 8px 1px 4px;
+  background: var(--cream-hi);
+  border: 2px solid;
+  border-radius: 999px;
 }
 
-.chip i {
-  width: 10px;
-  height: 10px;
-  box-shadow: 0 0 0 var(--px) var(--ink);
+.chip .ico {
+  width: 22px;
+  height: 22px;
+  margin: -3px 0;
 }
 
 .field {
@@ -1070,21 +1155,22 @@ input::placeholder {
   inset: 0;
 }
 
-/* Boss / goat alert: a vermilion ribbon. */
+/* Boss / goat alert: a red-tile banner. */
 .banner {
   position: absolute;
   top: 60px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--verm);
-  color: var(--parch-hi);
-  font-weight: 700;
-  font-size: 24px;
-  padding: 8px 36px;
-  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%, 14px 50%);
-  border-top: var(--px) solid var(--gold);
-  border-bottom: var(--px) solid var(--gold);
-  text-shadow: var(--px) var(--px) 0 var(--ink);
+  background: linear-gradient(180deg, #e0704f, var(--tile) 40%, var(--tile-lo));
+  color: var(--cream-hi);
+  font-family: var(--display);
+  font-size: 26px;
+  padding: 6px 30px;
+  border: var(--outline) solid var(--ink);
+  border-radius: var(--r);
+  box-shadow: 0 5px 0 var(--ink);
+  -webkit-text-stroke: 5px var(--ink);
+  paint-order: stroke fill;
   opacity: 0;
   pointer-events: none;
   z-index: 5;
@@ -1092,18 +1178,18 @@ input::placeholder {
 }
 
 .banner.show {
-  animation: banner 2.6s steps(20);
+  animation: banner 2.6s ease-out;
 }
 
 @keyframes banner {
   0% {
     opacity: 0;
-    transform: translate(-50%, -8px);
+    transform: translate(-50%, -10px) scale(0.9);
   }
-  8%,
+  10%,
   80% {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) scale(1);
   }
   100% {
     opacity: 0;
@@ -1116,11 +1202,12 @@ input::placeholder {
   top: 44px;
   transform: translateX(-50%);
   width: min(520px, calc(100% - 24px));
-  background: var(--parch-hi);
-  box-shadow:
-    inset calc(var(--px) * 3) 0 0 0 var(--verm),
-    var(--frame);
-  padding: 10px 14px 10px 18px;
+  background: var(--cream-hi);
+  border: var(--outline) solid var(--ink);
+  border-left: 10px solid var(--teal);
+  border-radius: var(--r);
+  box-shadow: 0 4px 0 rgba(58, 36, 20, 0.35);
+  padding: 10px 14px;
   font-weight: 700;
   display: none;
   z-index: 6;
@@ -1136,7 +1223,7 @@ input::placeholder {
   flex-direction: column;
   gap: 6px;
   font-size: 13px;
-  margin: var(--px);
+  margin: 2px;
 }
 
 .raid:empty {
@@ -1144,40 +1231,44 @@ input::placeholder {
 }
 
 .raid {
-  background: #f9e9b6;
-  padding: 4px 6px;
+  background: #e6f3ef;
+  padding: 4px 8px;
   font-weight: 700;
-  box-shadow: inset calc(var(--px) * 2) 0 0 0 var(--gold-lo);
+  border-radius: 6px;
+  border-left: 5px solid var(--teal);
 }
 
 .cards {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: var(--px);
+  padding: 2px;
 }
 
 .card {
+  --edge: var(--ink);
   display: flex;
   gap: 8px;
-  padding: 6px 6px 6px 12px;
+  padding: 6px 6px 6px 14px;
   font-size: 13px;
   position: relative;
-  background: var(--parch-hi);
-  box-shadow:
-    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 var(--parch-lo),
-    var(--frame);
+  background: var(--cream-hi);
+  border: var(--outline) solid var(--edge);
+  border-radius: var(--r);
+  box-shadow: 0 3px 0 rgba(58, 36, 20, 0.3);
+  overflow: hidden;
 }
 
-/* Team banner stripe on the card's left edge. */
+/* Team colour stripe on the card's left edge. */
 .card::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 6px;
+  width: 7px;
   background: var(--team);
+  border-right: 2px solid var(--ink);
 }
 
 .card.enemy {
@@ -1185,11 +1276,11 @@ input::placeholder {
 }
 
 .card.enemy:hover {
-  background: #fff8e4;
+  background: #fffaee;
 }
 
 .card.targeted {
-  --edge: var(--verm);
+  --edge: var(--tile);
 }
 
 .card.ally.warn {
@@ -1203,8 +1294,8 @@ input::placeholder {
 .mini {
   width: 64px;
   flex: none;
-  image-rendering: pixelated;
-  box-shadow: 0 0 0 var(--px) var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
 }
 
 .meta {
@@ -1222,7 +1313,7 @@ input::placeholder {
 
 .info .warn {
   color: var(--bad);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .actions {
@@ -1233,93 +1324,90 @@ input::placeholder {
 }
 
 .tag {
-  background: var(--verm);
-  color: var(--parch-hi);
-  padding: 1px 6px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  background: var(--tile);
+  color: var(--cream-hi);
+  padding: 1px 7px 1px 3px;
+  font-weight: 800;
   font-size: 11px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
 }
 
 .bottombar {
   grid-area: bottom;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 230px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 236px minmax(0, 1fr);
   gap: 12px;
-  padding: 8px 12px 4px;
-  box-shadow:
-    inset 0 calc(var(--px) * 2) 0 0 var(--gold-lo),
-    inset 0 calc(var(--px) * 3) 0 0 var(--ink);
+  padding: 7px 12px 4px;
+  border-top: var(--outline) solid var(--ink);
+  box-shadow: 0 -3px 0 rgba(58, 36, 20, 0.35);
+  position: relative;
+  z-index: 2;
 }
 
 .bar-title {
   margin-bottom: 4px;
-  color: var(--gold-hi);
+  font-family: var(--display);
+  font-size: 15px;
+  color: var(--gold);
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
 }
 
 .bar-title .target {
-  text-transform: none;
-  letter-spacing: 0;
-  color: #ffb3a1;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffc3ad;
 }
 
 .buttons {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 4px;
+  gap: 5px;
 }
 
-/* Build and send tiles are parchment cards on the oak beam. */
+/* Build and send tiles: cream cards with an outline, pressed into the beam. */
 .build,
 .send {
-  --face: var(--parch);
-  --hi: var(--parch-hi);
-  --lo: var(--parch-lo);
+  --top: var(--cream-hi);
+  --face: var(--cream);
+  --bottom: var(--cream-lo);
   --text: var(--ink);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
   padding: 6px 3px 10px;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.1;
   overflow: hidden;
-  min-height: 62px;
+  min-height: 64px;
   text-shadow: none;
-  background: var(--face);
-}
-
-.build:hover:not(:disabled),
-.send:hover:not(:disabled) {
-  --face: var(--parch-hi);
-  --hi: #fffaf0;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--top) 0 20%, var(--face) 20% 82%, var(--bottom) 82%);
 }
 
 .build.poor,
 .send.poor {
-  --face: var(--parch-lo);
-  --hi: var(--parch-lo);
-  --text: var(--parch-ink);
+  --top: var(--cream-lo);
+  --face: #ddc9a0;
+  --bottom: #c8b183;
+  --text: var(--cream-ink);
 }
 
 .send.locked {
-  --face: var(--oak-lo);
-  --hi: var(--oak);
-  --lo: var(--oak-deep);
-  --text: var(--parch-lo);
+  --top: var(--wood-lo);
+  --face: var(--wood-deep);
+  --bottom: #3a2410;
+  --text: var(--cream-lo);
 }
 
-.swatch {
-  width: 22px;
-  height: 22px;
-  flex: none;
-  box-shadow: 0 0 0 var(--px) var(--ink);
-  margin-top: var(--px);
-}
-
-.swatch.round {
-  clip-path: polygon(25% 0, 75% 0, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0 75%, 0 25%);
-  box-shadow: inset 0 0 0 var(--px) var(--ink);
+.send.locked .ico.unit {
+  filter: grayscale(0.85) brightness(0.65);
 }
 
 .build .name,
@@ -1331,40 +1419,49 @@ input::placeholder {
 }
 
 .cost {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 13px;
 }
 
-/* Hotkey: a small iron plate with gold letter. */
+/* Hotkey: a small teal plate with a gold letter. */
 .key {
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 3px;
+  left: 3px;
   font-size: 10px;
+  font-weight: 800;
   line-height: 1;
-  padding: 2px 3px;
-  background: var(--iron);
+  padding: 2px 4px;
+  background: var(--teal);
   color: var(--gold-hi);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
 }
 
 .lock {
   position: absolute;
-  top: 3px;
-  right: 4px;
-  font-size: 10px;
-  color: var(--verm-hi);
+  top: 2px;
+  right: 2px;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gold-hi);
 }
 
-.send.locked .lock {
-  color: var(--gold-hi);
+.lock .ico {
+  width: 16px;
+  height: 16px;
 }
 
 .strip {
   position: absolute;
-  left: var(--px);
-  right: var(--px);
-  bottom: var(--px);
+  left: 4px;
+  right: 4px;
+  bottom: 3px;
   height: 4px;
+  border-radius: 2px;
 }
 
 .selection {
@@ -1374,19 +1471,25 @@ input::placeholder {
   justify-content: center;
   font-size: 13px;
   padding: 0 12px;
-  border-left: var(--px) dashed var(--gold-lo);
-  border-right: var(--px) dashed var(--gold-lo);
+  color: var(--cream-hi);
+  border-left: 2px dashed rgba(58, 36, 20, 0.6);
+  border-right: 2px dashed rgba(58, 36, 20, 0.6);
+}
+
+.selection b {
+  -webkit-text-stroke: 3px var(--ink);
+  paint-order: stroke fill;
 }
 
 .selection small {
-  color: var(--parch-lo);
+  color: var(--cream);
 }
 
 .queue {
   font-size: 12px;
   margin-top: 2px;
-  color: var(--parch-lo);
-  font-weight: 500;
+  color: var(--cream);
+  font-weight: 700;
   min-height: 16px;
 }
 
@@ -1398,6 +1501,9 @@ input::placeholder {
   .banner.show {
     opacity: 1;
   }
+  button {
+    transition: none;
+  }
 }
 
 /* Laptop widths: tighten the top bar so resources never run into the score. */
@@ -1405,14 +1511,12 @@ input::placeholder {
   .resources {
     gap: 10px;
   }
-  .res.lure small {
+  .res.lure small,
+  .lurebar {
     display: none;
   }
   .hpbar {
     width: 120px;
-  }
-  .lurebar {
-    width: 48px;
   }
 }
 
@@ -1464,6 +1568,7 @@ input::placeholder {
   }
   .left,
   .right {
+    border: none;
     box-shadow: none;
   }
   .teams,

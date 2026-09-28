@@ -1,0 +1,87 @@
+{
+  "frames": {
+    "defender/bell/l1": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.53384,
+        "y": 0.9116
+      }
+    },
+    "defender/bell/l2": {
+      "frame": {
+        "x": 724,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.4855,
+        "y": 0.96685
+      }
+    },
+    "defender/bell/l3": {
+      "frame": {
+        "x": 1448,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.47928,
+        "y": 0.95718
+      }
+    }
+  },
+  "meta": {
+    "app": "Millstorm art pack",
+    "version": "1.0",
+    "image": "bell-levels.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2172,
+      "h": 724
+    },
+    "scale": "1"
+  }
+}

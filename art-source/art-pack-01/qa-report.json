@@ -1,0 +1,317 @@
+[
+  {
+    "file": "towers/scarecrow-levels.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.6411,
+    "opaquePixelFraction": 0.0006
+  },
+  {
+    "file": "towers/pumpkin-levels.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.5259,
+    "opaquePixelFraction": 0.001
+  },
+  {
+    "file": "towers/ballista-levels.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.5891,
+    "opaquePixelFraction": 0.0004
+  },
+  {
+    "file": "towers/owl-levels.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.6637,
+    "opaquePixelFraction": 0.0002
+  },
+  {
+    "file": "towers/sprinkler-levels.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.6524,
+    "opaquePixelFraction": 0.0009
+  },
+  {
+    "file": "towers/bell-levels.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.628,
+    "opaquePixelFraction": 0.0013
+  },
+  {
+    "file": "towers/feeder.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 1,
+    "transparentPixelFraction": 0.6092,
+    "opaquePixelFraction": 0.0009
+  },
+  {
+    "file": "enemies/mouse.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.7122,
+    "opaquePixelFraction": 0.0018
+  },
+  {
+    "file": "enemies/beetle.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.7248,
+    "opaquePixelFraction": 0.0008
+  },
+  {
+    "file": "enemies/ferret.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.7683,
+    "opaquePixelFraction": 0.0007
+  },
+  {
+    "file": "enemies/crow.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.6877,
+    "opaquePixelFraction": 0.001
+  },
+  {
+    "file": "enemies/snail.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.654,
+    "opaquePixelFraction": 0.0014
+  },
+  {
+    "file": "enemies/spore.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.672,
+    "opaquePixelFraction": 0.0012
+  },
+  {
+    "file": "enemies/goat.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.6287,
+    "opaquePixelFraction": 0.0017
+  },
+  {
+    "file": "enemies/badger.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.6098,
+    "opaquePixelFraction": 0.0014
+  },
+  {
+    "file": "enemies/locustQueen.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.7722,
+    "opaquePixelFraction": 0.0005
+  },
+  {
+    "file": "enemies/stormcloud.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.4785,
+    "opaquePixelFraction": 0.0005
+  },
+  {
+    "file": "world/mill-body.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.6085,
+    "opaquePixelFraction": 0.0009
+  },
+  {
+    "file": "world/mill-rotors.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.6213,
+    "opaquePixelFraction": 0.0007
+  },
+  {
+    "file": "world/cannon-low.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.6712,
+    "opaquePixelFraction": 0.0009
+  },
+  {
+    "file": "world/cannon-high.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "frameCount": 3,
+    "transparentPixelFraction": 0.6394,
+    "opaquePixelFraction": 0.001
+  },
+  {
+    "file": "world/terrain.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "frameCount": 16
+  },
+  {
+    "file": "world/props.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 9,
+    "transparentPixelFraction": 0.5896,
+    "opaquePixelFraction": 0.0016
+  },
+  {
+    "file": "world/sky.png",
+    "size": [
+      1672,
+      941
+    ],
+    "mode": "RGB",
+    "frameCount": 1
+  },
+  {
+    "file": "ui/resources-actions.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 16,
+    "transparentPixelFraction": 0.5529,
+    "opaquePixelFraction": 0.0033
+  },
+  {
+    "file": "ui/combat-types.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 9,
+    "transparentPixelFraction": 0.5748,
+    "opaquePixelFraction": 0.0024
+  },
+  {
+    "file": "ui/pings-awards.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 9,
+    "transparentPixelFraction": 0.4657,
+    "opaquePixelFraction": 0.0014
+  },
+  {
+    "file": "ui/goose-emotes.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 4,
+    "transparentPixelFraction": 0.4896,
+    "opaquePixelFraction": 0.0015
+  },
+  {
+    "file": "fx/projectiles.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "frameCount": 9,
+    "transparentPixelFraction": 0.834,
+    "opaquePixelFraction": 0.0016
+  }
+]

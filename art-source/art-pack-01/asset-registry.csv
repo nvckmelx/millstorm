@@ -1,0 +1,50 @@
+file,source,usage_note
+enemies/badger.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/beetle.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/crow.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/ferret.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/goat.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/locustQueen.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/mouse.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/snail.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/spore.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+enemies/stormcloud.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+fx/projectiles.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+fx/svg/bell-aura.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/cannon-smoke.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/death-dust.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/entry-arrow.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/flying-shadow.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/grain-pickup.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/heal.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/hp-frame.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/impact.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/level-three.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/ping-ring.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/placement-invalid.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/placement-valid.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/pumpkin-explosion.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/pumpkin-puddle.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/selection.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/shield.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/spore-cloud.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/upgrade-burst.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+fx/svg/water-splash.svg,Native SVG authored for Millstorm,Generated for this project; no third-party stock license asserted
+towers/ballista-levels.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+towers/bell-levels.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+towers/feeder.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+towers/owl-levels.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+towers/pumpkin-levels.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+towers/scarecrow-levels.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+towers/sprinkler-levels.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+ui/combat-types.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+ui/goose-emotes.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+ui/pings-awards.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+ui/resources-actions.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+world/cannon-high.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+world/cannon-low.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+world/mill-body.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+world/mill-rotors.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+world/props.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+world/sky.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted
+world/terrain.png,OpenAI built-in image generation,Generated for this project; no third-party stock license asserted

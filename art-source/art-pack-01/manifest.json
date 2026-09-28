@@ -1,0 +1,3529 @@
+{
+  "version": "1.0",
+  "source": "Claude Code inventory: prototype-week1 e9dc58f",
+  "status": "art-pack; integration not yet verified",
+  "sheets": [
+    {
+      "file": "towers/scarecrow-levels.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "defender/scarecrow/l1",
+        "defender/scarecrow/l2",
+        "defender/scarecrow/l3"
+      ],
+      "group": "Башни",
+      "title": "Пугало-лучник",
+      "key": "scarecrow-levels",
+      "width": 2172,
+      "height": 724,
+      "atlas": "towers/scarecrow-levels.json",
+      "frames": [
+        {
+          "id": "defender/scarecrow/l1",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            163,
+            79,
+            607,
+            683
+          ],
+          "pivot": {
+            "x": 0.53177,
+            "y": 0.94337
+          }
+        },
+        {
+          "id": "defender/scarecrow/l2",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            136,
+            30,
+            658,
+            698
+          ],
+          "pivot": {
+            "x": 0.54834,
+            "y": 0.96409
+          }
+        },
+        {
+          "id": "defender/scarecrow/l3",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            88,
+            21,
+            690,
+            698
+          ],
+          "pivot": {
+            "x": 0.53729,
+            "y": 0.96409
+          }
+        }
+      ]
+    },
+    {
+      "file": "towers/pumpkin-levels.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "defender/pumpkin/l1",
+        "defender/pumpkin/l2",
+        "defender/pumpkin/l3"
+      ],
+      "group": "Башни",
+      "title": "Тыквомёт",
+      "key": "pumpkin-levels",
+      "width": 2172,
+      "height": 724,
+      "atlas": "towers/pumpkin-levels.json",
+      "frames": [
+        {
+          "id": "defender/pumpkin/l1",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            128,
+            117,
+            645,
+            675
+          ],
+          "pivot": {
+            "x": 0.53384,
+            "y": 0.93232
+          }
+        },
+        {
+          "id": "defender/pumpkin/l2",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            59,
+            59,
+            646,
+            681
+          ],
+          "pivot": {
+            "x": 0.48688,
+            "y": 0.94061
+          }
+        },
+        {
+          "id": "defender/pumpkin/l3",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            60,
+            29,
+            668,
+            675
+          ],
+          "pivot": {
+            "x": 0.50276,
+            "y": 0.93232
+          }
+        }
+      ]
+    },
+    {
+      "file": "towers/ballista-levels.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "defender/ballista/l1",
+        "defender/ballista/l2",
+        "defender/ballista/l3"
+      ],
+      "group": "Башни",
+      "title": "Вилы-баллиста",
+      "key": "ballista-levels",
+      "width": 2172,
+      "height": 724,
+      "atlas": "towers/ballista-levels.json",
+      "frames": [
+        {
+          "id": "defender/ballista/l1",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            39,
+            91,
+            665,
+            660
+          ],
+          "pivot": {
+            "x": 0.48619,
+            "y": 0.9116
+          }
+        },
+        {
+          "id": "defender/ballista/l2",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            27,
+            48,
+            657,
+            681
+          ],
+          "pivot": {
+            "x": 0.47238,
+            "y": 0.94061
+          }
+        },
+        {
+          "id": "defender/ballista/l3",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            20,
+            15,
+            697,
+            686
+          ],
+          "pivot": {
+            "x": 0.49517,
+            "y": 0.94751
+          }
+        }
+      ]
+    },
+    {
+      "file": "towers/owl-levels.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "defender/owl/l1",
+        "defender/owl/l2",
+        "defender/owl/l3"
+      ],
+      "group": "Башни",
+      "title": "Сова-дозорный",
+      "key": "owl-levels",
+      "width": 2172,
+      "height": 724,
+      "atlas": "towers/owl-levels.json",
+      "frames": [
+        {
+          "id": "defender/owl/l1",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            236,
+            45,
+            558,
+            698
+          ],
+          "pivot": {
+            "x": 0.54834,
+            "y": 0.96409
+          }
+        },
+        {
+          "id": "defender/owl/l2",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            175,
+            33,
+            524,
+            697
+          ],
+          "pivot": {
+            "x": 0.48273,
+            "y": 0.96271
+          }
+        },
+        {
+          "id": "defender/owl/l3",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            95,
+            10,
+            533,
+            709
+          ],
+          "pivot": {
+            "x": 0.4337,
+            "y": 0.97928
+          }
+        }
+      ]
+    },
+    {
+      "file": "towers/sprinkler-levels.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "defender/sprinkler/l1",
+        "defender/sprinkler/l2",
+        "defender/sprinkler/l3"
+      ],
+      "group": "Башни",
+      "title": "Разбрызгиватель",
+      "key": "sprinkler-levels",
+      "width": 2172,
+      "height": 724,
+      "atlas": "towers/sprinkler-levels.json",
+      "frames": [
+        {
+          "id": "defender/sprinkler/l1",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            171,
+            159,
+            669,
+            678
+          ],
+          "pivot": {
+            "x": 0.58011,
+            "y": 0.93646
+          }
+        },
+        {
+          "id": "defender/sprinkler/l2",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            52,
+            56,
+            674,
+            691
+          ],
+          "pivot": {
+            "x": 0.50138,
+            "y": 0.95442
+          }
+        },
+        {
+          "id": "defender/sprinkler/l3",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            46,
+            16,
+            659,
+            692
+          ],
+          "pivot": {
+            "x": 0.48688,
+            "y": 0.9558
+          }
+        }
+      ]
+    },
+    {
+      "file": "towers/bell-levels.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "defender/bell/l1",
+        "defender/bell/l2",
+        "defender/bell/l3"
+      ],
+      "group": "Башни",
+      "title": "Колокол амбара",
+      "key": "bell-levels",
+      "width": 2172,
+      "height": 724,
+      "atlas": "towers/bell-levels.json",
+      "frames": [
+        {
+          "id": "defender/bell/l1",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            198,
+            133,
+            575,
+            660
+          ],
+          "pivot": {
+            "x": 0.53384,
+            "y": 0.9116
+          }
+        },
+        {
+          "id": "defender/bell/l2",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            116,
+            25,
+            587,
+            700
+          ],
+          "pivot": {
+            "x": 0.4855,
+            "y": 0.96685
+          }
+        },
+        {
+          "id": "defender/bell/l3",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            52,
+            11,
+            642,
+            693
+          ],
+          "pivot": {
+            "x": 0.47928,
+            "y": 0.95718
+          }
+        }
+      ]
+    },
+    {
+      "file": "towers/feeder.png",
+      "columns": 1,
+      "rows": 1,
+      "names": [
+        "defender/feeder/l1"
+      ],
+      "group": "Башни",
+      "title": "Кормушка",
+      "key": "feeder",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "towers/feeder.json",
+      "frames": [
+        {
+          "id": "defender/feeder/l1",
+          "x": 0,
+          "y": 0,
+          "w": 1254,
+          "h": 1254,
+          "visibleBounds": [
+            176,
+            111,
+            1128,
+            1152
+          ],
+          "pivot": {
+            "x": 0.51994,
+            "y": 0.91866
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/mouse.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/mouse/side_a",
+        "enemy/mouse/side_b",
+        "enemy/mouse/down_a",
+        "enemy/mouse/down_b"
+      ],
+      "group": "Мобы",
+      "title": "Мышь",
+      "key": "mouse",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/mouse.json",
+      "frames": [
+        {
+          "id": "enemy/mouse/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            72,
+            117,
+            618,
+            562
+          ],
+          "pivot": {
+            "x": 0.55024,
+            "y": 0.89633
+          }
+        },
+        {
+          "id": "enemy/mouse/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            52,
+            117,
+            594,
+            561
+          ],
+          "pivot": {
+            "x": 0.51515,
+            "y": 0.89474
+          }
+        },
+        {
+          "id": "enemy/mouse/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            151,
+            107,
+            573,
+            549
+          ],
+          "pivot": {
+            "x": 0.57735,
+            "y": 0.8756
+          }
+        },
+        {
+          "id": "enemy/mouse/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            148,
+            110,
+            570,
+            546
+          ],
+          "pivot": {
+            "x": 0.57257,
+            "y": 0.87081
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/beetle.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/beetle/side_a",
+        "enemy/beetle/side_b",
+        "enemy/beetle/down_a",
+        "enemy/beetle/down_b"
+      ],
+      "group": "Мобы",
+      "title": "Жук-броненосец",
+      "key": "beetle",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/beetle.json",
+      "frames": [
+        {
+          "id": "enemy/beetle/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            127,
+            187,
+            620,
+            532
+          ],
+          "pivot": {
+            "x": 0.59569,
+            "y": 0.84848
+          }
+        },
+        {
+          "id": "enemy/beetle/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            104,
+            193,
+            570,
+            543
+          ],
+          "pivot": {
+            "x": 0.53748,
+            "y": 0.86603
+          }
+        },
+        {
+          "id": "enemy/beetle/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            100,
+            76,
+            546,
+            455
+          ],
+          "pivot": {
+            "x": 0.51515,
+            "y": 0.72568
+          }
+        },
+        {
+          "id": "enemy/beetle/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            83,
+            76,
+            550,
+            425
+          ],
+          "pivot": {
+            "x": 0.50478,
+            "y": 0.67783
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/ferret.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/ferret/side_a",
+        "enemy/ferret/side_b",
+        "enemy/ferret/down_a",
+        "enemy/ferret/down_b"
+      ],
+      "group": "Мобы",
+      "title": "Хорёк-вор",
+      "key": "ferret",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/ferret.json",
+      "frames": [
+        {
+          "id": "enemy/ferret/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            21,
+            225,
+            627,
+            523
+          ],
+          "pivot": {
+            "x": 0.51675,
+            "y": 0.83413
+          }
+        },
+        {
+          "id": "enemy/ferret/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            0,
+            219,
+            614,
+            525
+          ],
+          "pivot": {
+            "x": 0.48963,
+            "y": 0.83732
+          }
+        },
+        {
+          "id": "enemy/ferret/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            241,
+            58,
+            507,
+            533
+          ],
+          "pivot": {
+            "x": 0.59649,
+            "y": 0.85008
+          }
+        },
+        {
+          "id": "enemy/ferret/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            212,
+            58,
+            472,
+            540
+          ],
+          "pivot": {
+            "x": 0.54545,
+            "y": 0.86124
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/crow.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/crow/side_a",
+        "enemy/crow/side_b",
+        "enemy/crow/down_a",
+        "enemy/crow/down_b"
+      ],
+      "group": "Мобы",
+      "title": "Ворона",
+      "key": "crow",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/crow.json",
+      "frames": [
+        {
+          "id": "enemy/crow/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            81,
+            72,
+            627,
+            598
+          ],
+          "pivot": {
+            "x": 0.56459,
+            "y": 0.95375
+          }
+        },
+        {
+          "id": "enemy/crow/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            0,
+            258,
+            574,
+            604
+          ],
+          "pivot": {
+            "x": 0.45774,
+            "y": 0.96332
+          }
+        },
+        {
+          "id": "enemy/crow/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            74,
+            89,
+            595,
+            515
+          ],
+          "pivot": {
+            "x": 0.53349,
+            "y": 0.82137
+          }
+        },
+        {
+          "id": "enemy/crow/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            35,
+            141,
+            567,
+            515
+          ],
+          "pivot": {
+            "x": 0.48006,
+            "y": 0.82137
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/snail.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/snail/side_a",
+        "enemy/snail/side_b",
+        "enemy/snail/down_a",
+        "enemy/snail/down_b"
+      ],
+      "group": "Мобы",
+      "title": "Слизень-щитоносец",
+      "key": "snail",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/snail.json",
+      "frames": [
+        {
+          "id": "enemy/snail/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            51,
+            157,
+            607,
+            533
+          ],
+          "pivot": {
+            "x": 0.52472,
+            "y": 0.85008
+          }
+        },
+        {
+          "id": "enemy/snail/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            100,
+            186,
+            596,
+            538
+          ],
+          "pivot": {
+            "x": 0.55502,
+            "y": 0.85805
+          }
+        },
+        {
+          "id": "enemy/snail/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            136,
+            56,
+            518,
+            494
+          ],
+          "pivot": {
+            "x": 0.52153,
+            "y": 0.78788
+          }
+        },
+        {
+          "id": "enemy/snail/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            135,
+            95,
+            518,
+            499
+          ],
+          "pivot": {
+            "x": 0.52073,
+            "y": 0.79585
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/spore.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/spore/side_a",
+        "enemy/spore/side_b",
+        "enemy/spore/down_a",
+        "enemy/spore/down_b"
+      ],
+      "group": "Мобы",
+      "title": "Споровый гриб",
+      "key": "spore",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/spore.json",
+      "frames": [
+        {
+          "id": "enemy/spore/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            121,
+            119,
+            600,
+            555
+          ],
+          "pivot": {
+            "x": 0.57496,
+            "y": 0.88517
+          }
+        },
+        {
+          "id": "enemy/spore/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            121,
+            119,
+            598,
+            556
+          ],
+          "pivot": {
+            "x": 0.57337,
+            "y": 0.88676
+          }
+        },
+        {
+          "id": "enemy/spore/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            127,
+            79,
+            566,
+            537
+          ],
+          "pivot": {
+            "x": 0.55263,
+            "y": 0.85646
+          }
+        },
+        {
+          "id": "enemy/spore/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            101,
+            81,
+            540,
+            534
+          ],
+          "pivot": {
+            "x": 0.51116,
+            "y": 0.85167
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/goat.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/goat/side_a",
+        "enemy/goat/side_b",
+        "enemy/goat/down_a",
+        "enemy/goat/down_b"
+      ],
+      "group": "Мобы",
+      "title": "Козёл-таран",
+      "key": "goat",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/goat.json",
+      "frames": [
+        {
+          "id": "enemy/goat/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            101,
+            97,
+            627,
+            584
+          ],
+          "pivot": {
+            "x": 0.58054,
+            "y": 0.93142
+          }
+        },
+        {
+          "id": "enemy/goat/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            0,
+            183,
+            599,
+            605
+          ],
+          "pivot": {
+            "x": 0.47767,
+            "y": 0.96491
+          }
+        },
+        {
+          "id": "enemy/goat/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            134,
+            39,
+            539,
+            539
+          ],
+          "pivot": {
+            "x": 0.53668,
+            "y": 0.85965
+          }
+        },
+        {
+          "id": "enemy/goat/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            127,
+            60,
+            532,
+            556
+          ],
+          "pivot": {
+            "x": 0.52552,
+            "y": 0.88676
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/badger.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/badger/side_a",
+        "enemy/badger/side_b",
+        "enemy/badger/down_a",
+        "enemy/badger/down_b"
+      ],
+      "group": "Боссы",
+      "title": "Старый барсук",
+      "key": "badger",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/badger.json",
+      "frames": [
+        {
+          "id": "enemy/badger/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            22,
+            143,
+            624,
+            569
+          ],
+          "pivot": {
+            "x": 0.51515,
+            "y": 0.9075
+          }
+        },
+        {
+          "id": "enemy/badger/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            15,
+            143,
+            612,
+            570
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.90909
+          }
+        },
+        {
+          "id": "enemy/badger/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            119,
+            29,
+            548,
+            533
+          ],
+          "pivot": {
+            "x": 0.5319,
+            "y": 0.85008
+          }
+        },
+        {
+          "id": "enemy/badger/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            89,
+            31,
+            522,
+            554
+          ],
+          "pivot": {
+            "x": 0.48724,
+            "y": 0.88357
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/locustQueen.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/locustQueen/side_a",
+        "enemy/locustQueen/side_b",
+        "enemy/locustQueen/down_a",
+        "enemy/locustQueen/down_b"
+      ],
+      "group": "Боссы",
+      "title": "Королева саранчи",
+      "key": "locustQueen",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/locustQueen.json",
+      "frames": [
+        {
+          "id": "enemy/locustQueen/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            73,
+            152,
+            534,
+            527
+          ],
+          "pivot": {
+            "x": 0.48405,
+            "y": 0.84051
+          }
+        },
+        {
+          "id": "enemy/locustQueen/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            73,
+            151,
+            541,
+            532
+          ],
+          "pivot": {
+            "x": 0.48963,
+            "y": 0.84848
+          }
+        },
+        {
+          "id": "enemy/locustQueen/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            129,
+            121,
+            499,
+            506
+          ],
+          "pivot": {
+            "x": 0.5008,
+            "y": 0.80702
+          }
+        },
+        {
+          "id": "enemy/locustQueen/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            129,
+            121,
+            497,
+            506
+          ],
+          "pivot": {
+            "x": 0.4992,
+            "y": 0.80702
+          }
+        }
+      ]
+    },
+    {
+      "file": "enemies/stormcloud.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "enemy/stormcloud/side_a",
+        "enemy/stormcloud/side_b",
+        "enemy/stormcloud/down_a",
+        "enemy/stormcloud/down_b"
+      ],
+      "group": "Боссы",
+      "title": "Грозовая туча",
+      "key": "stormcloud",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "enemies/stormcloud.json",
+      "frames": [
+        {
+          "id": "enemy/stormcloud/side_a",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            34,
+            89,
+            590,
+            581
+          ],
+          "pivot": {
+            "x": 0.49761,
+            "y": 0.92663
+          }
+        },
+        {
+          "id": "enemy/stormcloud/side_b",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            33,
+            63,
+            590,
+            601
+          ],
+          "pivot": {
+            "x": 0.49681,
+            "y": 0.95853
+          }
+        },
+        {
+          "id": "enemy/stormcloud/down_a",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            47,
+            43,
+            596,
+            568
+          ],
+          "pivot": {
+            "x": 0.51276,
+            "y": 0.9059
+          }
+        },
+        {
+          "id": "enemy/stormcloud/down_b",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            25,
+            36,
+            589,
+            589
+          ],
+          "pivot": {
+            "x": 0.48963,
+            "y": 0.93939
+          }
+        }
+      ]
+    },
+    {
+      "file": "world/mill-body.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "mill/body/healthy",
+        "mill/body/damaged",
+        "mill/body/critical",
+        "mill/body/destroyed"
+      ],
+      "group": "Мир",
+      "title": "Мельница · корпус",
+      "key": "mill-body",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "world/mill-body.json",
+      "frames": [
+        {
+          "id": "mill/body/healthy",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            92,
+            30,
+            555,
+            582
+          ],
+          "pivot": {
+            "x": 0.51595,
+            "y": 0.92823
+          }
+        },
+        {
+          "id": "mill/body/damaged",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            87,
+            30,
+            562,
+            587
+          ],
+          "pivot": {
+            "x": 0.51754,
+            "y": 0.9362
+          }
+        },
+        {
+          "id": "mill/body/critical",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            84,
+            28,
+            583,
+            598
+          ],
+          "pivot": {
+            "x": 0.5319,
+            "y": 0.95375
+          }
+        },
+        {
+          "id": "mill/body/destroyed",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            61,
+            137,
+            578,
+            591
+          ],
+          "pivot": {
+            "x": 0.50957,
+            "y": 0.94258
+          }
+        }
+      ]
+    },
+    {
+      "file": "world/mill-rotors.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "mill/rotor/healthy",
+        "mill/rotor/damaged",
+        "mill/rotor/broken"
+      ],
+      "group": "Мир",
+      "title": "Мельница · крылья",
+      "key": "mill-rotors",
+      "width": 2172,
+      "height": 724,
+      "atlas": "world/mill-rotors.json",
+      "frames": [
+        {
+          "id": "mill/rotor/healthy",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            22,
+            18,
+            704,
+            700
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "mill/rotor/damaged",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            21,
+            18,
+            703,
+            699
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "mill/rotor/broken",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            21,
+            18,
+            702,
+            700
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "world/cannon-low.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "cannon/l1",
+        "cannon/l2",
+        "cannon/l3"
+      ],
+      "group": "Мир",
+      "title": "Пушка · уровни 1–3",
+      "key": "cannon-low",
+      "width": 2172,
+      "height": 724,
+      "atlas": "world/cannon-low.json",
+      "frames": [
+        {
+          "id": "cannon/l1",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            183,
+            163,
+            609,
+            650
+          ],
+          "pivot": {
+            "x": 0.54696,
+            "y": 0.89779
+          }
+        },
+        {
+          "id": "cannon/l2",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            130,
+            95,
+            610,
+            656
+          ],
+          "pivot": {
+            "x": 0.51105,
+            "y": 0.90608
+          }
+        },
+        {
+          "id": "cannon/l3",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            93,
+            84,
+            634,
+            656
+          ],
+          "pivot": {
+            "x": 0.50207,
+            "y": 0.90608
+          }
+        }
+      ]
+    },
+    {
+      "file": "world/cannon-high.png",
+      "columns": 3,
+      "rows": 1,
+      "names": [
+        "cannon/l0",
+        "cannon/l4",
+        "cannon/l5"
+      ],
+      "group": "Мир",
+      "title": "Пушка · основание и уровни 4–5",
+      "key": "cannon-high",
+      "width": 2172,
+      "height": 724,
+      "atlas": "world/cannon-high.json",
+      "frames": [
+        {
+          "id": "cannon/l0",
+          "x": 0,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            128,
+            161,
+            544,
+            657
+          ],
+          "pivot": {
+            "x": 0.46409,
+            "y": 0.90746
+          }
+        },
+        {
+          "id": "cannon/l4",
+          "x": 724,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            94,
+            68,
+            627,
+            661
+          ],
+          "pivot": {
+            "x": 0.49793,
+            "y": 0.91298
+          }
+        },
+        {
+          "id": "cannon/l5",
+          "x": 1448,
+          "y": 0,
+          "w": 724,
+          "h": 724,
+          "visibleBounds": [
+            103,
+            56,
+            653,
+            667
+          ],
+          "pivot": {
+            "x": 0.5221,
+            "y": 0.92127
+          }
+        }
+      ]
+    },
+    {
+      "file": "world/terrain.png",
+      "columns": 4,
+      "rows": 4,
+      "names": [
+        "tile/grass-light",
+        "tile/grass-dark",
+        "tile/path-ew",
+        "tile/path-ns",
+        "tile/path-ne",
+        "tile/path-ws",
+        "tile/path-nw",
+        "tile/path-es",
+        "tile/entry-n",
+        "tile/exit-s",
+        "tile/yard",
+        "tile/grass-flowers",
+        "tile/grass-straw",
+        "tile/grass-stones",
+        "tile/yard-dark",
+        "tile/wood"
+      ],
+      "group": "Мир",
+      "title": "Тайлы поля",
+      "key": "terrain",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "world/terrain.json",
+      "frames": [
+        {
+          "id": "tile/grass-light",
+          "x": 0,
+          "y": 0,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/grass-dark",
+          "x": 314,
+          "y": 0,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/path-ew",
+          "x": 627,
+          "y": 0,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/path-ns",
+          "x": 940,
+          "y": 0,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/path-ne",
+          "x": 0,
+          "y": 314,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/path-ws",
+          "x": 314,
+          "y": 314,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/path-nw",
+          "x": 627,
+          "y": 314,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/path-es",
+          "x": 940,
+          "y": 314,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/entry-n",
+          "x": 0,
+          "y": 627,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/exit-s",
+          "x": 314,
+          "y": 627,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/yard",
+          "x": 627,
+          "y": 627,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/grass-flowers",
+          "x": 940,
+          "y": 627,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/grass-straw",
+          "x": 0,
+          "y": 940,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/grass-stones",
+          "x": 314,
+          "y": 940,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/yard-dark",
+          "x": 627,
+          "y": 940,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            313,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "tile/wood",
+          "x": 940,
+          "y": 940,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "world/props.png",
+      "columns": 3,
+      "rows": 3,
+      "names": [
+        "prop/fence",
+        "prop/fence-corner",
+        "prop/gate",
+        "prop/hay",
+        "prop/barrel",
+        "prop/grain-sack",
+        "prop/bush",
+        "prop/rocks",
+        "prop/island-cliff"
+      ],
+      "group": "Мир",
+      "title": "Окружение",
+      "key": "props",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "world/props.json",
+      "frames": [
+        {
+          "id": "prop/fence",
+          "x": 0,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            48,
+            114,
+            385,
+            378
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/fence-corner",
+          "x": 418,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            38,
+            89,
+            382,
+            374
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/gate",
+          "x": 836,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            22,
+            74,
+            380,
+            388
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/hay",
+          "x": 0,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            48,
+            63,
+            398,
+            365
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/barrel",
+          "x": 418,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            78,
+            36,
+            343,
+            377
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/grain-sack",
+          "x": 836,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            33,
+            36,
+            371,
+            367
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/bush",
+          "x": 0,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            54,
+            47,
+            390,
+            344
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/rocks",
+          "x": 418,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            39,
+            52,
+            387,
+            337
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "prop/island-cliff",
+          "x": 836,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            32,
+            31,
+            378,
+            364
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "world/sky.png",
+      "columns": 1,
+      "rows": 1,
+      "names": [
+        "world/sky"
+      ],
+      "group": "Мир",
+      "title": "Небо",
+      "key": "sky",
+      "width": 1672,
+      "height": 941,
+      "atlas": "world/sky.json",
+      "frames": [
+        {
+          "id": "world/sky",
+          "x": 0,
+          "y": 0,
+          "w": 1672,
+          "h": 941,
+          "visibleBounds": [
+            0,
+            0,
+            1672,
+            941
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "ui/resources-actions.png",
+      "columns": 4,
+      "rows": 4,
+      "names": [
+        "ui/grain",
+        "ui/lure",
+        "ui/lock",
+        "ui/cannon",
+        "ui/gift",
+        "ui/raid",
+        "ui/target",
+        "ui/bot",
+        "ui/second-wind",
+        "ui/holding",
+        "ui/leaking",
+        "ui/failed",
+        "ui/upgrade",
+        "ui/sell",
+        "ui/team-blue",
+        "ui/team-orange"
+      ],
+      "group": "Интерфейс",
+      "title": "Ресурсы и действия",
+      "key": "resources-actions",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "ui/resources-actions.json",
+      "frames": [
+        {
+          "id": "ui/grain",
+          "x": 0,
+          "y": 0,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            44,
+            46,
+            276,
+            312
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/lure",
+          "x": 314,
+          "y": 0,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            42,
+            45,
+            286,
+            305
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/lock",
+          "x": 627,
+          "y": 0,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            52,
+            45,
+            260,
+            305
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/cannon",
+          "x": 940,
+          "y": 0,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            22,
+            59,
+            289,
+            306
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/gift",
+          "x": 0,
+          "y": 314,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            38,
+            38,
+            294,
+            293
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/raid",
+          "x": 314,
+          "y": 314,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            35,
+            38,
+            287,
+            292
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/target",
+          "x": 627,
+          "y": 314,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            28,
+            32,
+            283,
+            291
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/bot",
+          "x": 940,
+          "y": 314,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            29,
+            34,
+            287,
+            298
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/second-wind",
+          "x": 0,
+          "y": 627,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            37,
+            43,
+            301,
+            269
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/holding",
+          "x": 314,
+          "y": 627,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            44,
+            7,
+            275,
+            274
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/leaking",
+          "x": 627,
+          "y": 627,
+          "w": 313,
+          "h": 313,
+          "visibleBounds": [
+            42,
+            7,
+            272,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/failed",
+          "x": 940,
+          "y": 627,
+          "w": 314,
+          "h": 313,
+          "visibleBounds": [
+            36,
+            17,
+            278,
+            313
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/upgrade",
+          "x": 0,
+          "y": 940,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            56,
+            1,
+            269,
+            252
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/sell",
+          "x": 314,
+          "y": 940,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            31,
+            10,
+            285,
+            261
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/team-blue",
+          "x": 627,
+          "y": 940,
+          "w": 313,
+          "h": 314,
+          "visibleBounds": [
+            44,
+            0,
+            290,
+            266
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/team-orange",
+          "x": 940,
+          "y": 940,
+          "w": 314,
+          "h": 314,
+          "visibleBounds": [
+            39,
+            0,
+            281,
+            266
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "ui/combat-types.png",
+      "columns": 3,
+      "rows": 3,
+      "names": [
+        "ui/type/swift",
+        "ui/type/armored",
+        "ui/type/flying",
+        "ui/type/basic",
+        "ui/type/splash",
+        "ui/type/pierce",
+        "ui/type/air",
+        "ui/type/slow",
+        "ui/type/spored"
+      ],
+      "group": "Интерфейс",
+      "title": "Типы брони и атак",
+      "key": "combat-types",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "ui/combat-types.json",
+      "frames": [
+        {
+          "id": "ui/type/swift",
+          "x": 0,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            39,
+            37,
+            404,
+            398
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/armored",
+          "x": 418,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            58,
+            42,
+            359,
+            398
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/flying",
+          "x": 836,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            2,
+            63,
+            387,
+            397
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/basic",
+          "x": 0,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            33,
+            28,
+            390,
+            392
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/splash",
+          "x": 418,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            23,
+            14,
+            382,
+            387
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/pierce",
+          "x": 836,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            67,
+            24,
+            368,
+            400
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/air",
+          "x": 0,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            33,
+            19,
+            400,
+            358
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/slow",
+          "x": 418,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            73,
+            17,
+            389,
+            367
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/type/spored",
+          "x": 836,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            22,
+            13,
+            379,
+            368
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "ui/pings-awards.png",
+      "columns": 3,
+      "rows": 3,
+      "names": [
+        "ui/ping/raidHere",
+        "ui/ping/needHelp",
+        "ui/ping/savingGoat",
+        "ui/ping/noAirEnemy",
+        "ui/ping/thanks",
+        "ui/ping/haha",
+        "ui/award/best-defender",
+        "ui/award/main-pest",
+        "ui/award/expensive-ram"
+      ],
+      "group": "Интерфейс",
+      "title": "Пинги и награды",
+      "key": "pings-awards",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "ui/pings-awards.json",
+      "frames": [
+        {
+          "id": "ui/ping/raidHere",
+          "x": 0,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            61,
+            28,
+            389,
+            403
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/ping/needHelp",
+          "x": 418,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            52,
+            26,
+            366,
+            408
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/ping/savingGoat",
+          "x": 836,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            32,
+            54,
+            388,
+            402
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/ping/noAirEnemy",
+          "x": 0,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            59,
+            26,
+            400,
+            418
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/ping/thanks",
+          "x": 418,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            42,
+            56,
+            397,
+            418
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/ping/haha",
+          "x": 836,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            34,
+            32,
+            363,
+            418
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/award/best-defender",
+          "x": 0,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            38,
+            0,
+            407,
+            384
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/award/main-pest",
+          "x": 418,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            27,
+            0,
+            391,
+            383
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/award/expensive-ram",
+          "x": 836,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            23,
+            0,
+            386,
+            384
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "ui/goose-emotes.png",
+      "columns": 2,
+      "rows": 2,
+      "names": [
+        "ui/goose/gooseHappy",
+        "ui/goose/gooseAngry",
+        "ui/goose/gooseCry",
+        "ui/goose/gooseCool"
+      ],
+      "group": "Интерфейс",
+      "title": "Гусиные эмоции",
+      "key": "goose-emotes",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "ui/goose-emotes.json",
+      "frames": [
+        {
+          "id": "ui/goose/gooseHappy",
+          "x": 0,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            68,
+            32,
+            569,
+            610
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/goose/gooseAngry",
+          "x": 627,
+          "y": 0,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            56,
+            42,
+            551,
+            613
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/goose/gooseCry",
+          "x": 0,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            90,
+            16,
+            590,
+            593
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "ui/goose/gooseCool",
+          "x": 627,
+          "y": 627,
+          "w": 627,
+          "h": 627,
+          "visibleBounds": [
+            87,
+            8,
+            551,
+            594
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "file": "fx/projectiles.png",
+      "columns": 3,
+      "rows": 3,
+      "names": [
+        "projectile/basic",
+        "projectile/basic-double",
+        "projectile/splash",
+        "projectile/pierce",
+        "projectile/air",
+        "projectile/spray",
+        "projectile/cannon",
+        "projectile/pumpkin-fragments",
+        "projectile/spore"
+      ],
+      "group": "Эффекты",
+      "title": "Снаряды",
+      "key": "projectiles",
+      "width": 1254,
+      "height": 1254,
+      "atlas": "fx/projectiles.json",
+      "frames": [
+        {
+          "id": "projectile/basic",
+          "x": 0,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            60,
+            185,
+            406,
+            285
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/basic-double",
+          "x": 418,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            61,
+            128,
+            384,
+            344
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/splash",
+          "x": 836,
+          "y": 0,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            116,
+            124,
+            314,
+            337
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/pierce",
+          "x": 0,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            57,
+            117,
+            391,
+            282
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/air",
+          "x": 418,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            42,
+            140,
+            394,
+            260
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/spray",
+          "x": 836,
+          "y": 418,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            110,
+            136,
+            357,
+            277
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/cannon",
+          "x": 0,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            104,
+            75,
+            327,
+            299
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/pumpkin-fragments",
+          "x": 418,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            103,
+            65,
+            332,
+            286
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "projectile/spore",
+          "x": 836,
+          "y": 836,
+          "w": 418,
+          "h": 418,
+          "visibleBounds": [
+            125,
+            101,
+            304,
+            279
+          ],
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    }
+  ],
+  "vectors": [
+    {
+      "id": "fx/impact",
+      "file": "fx/svg/impact.svg",
+      "title": "Попадание",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/pumpkin-explosion",
+      "file": "fx/svg/pumpkin-explosion.svg",
+      "title": "Взрыв тыквы",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/water-splash",
+      "file": "fx/svg/water-splash.svg",
+      "title": "Брызги",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/cannon-smoke",
+      "file": "fx/svg/cannon-smoke.svg",
+      "title": "Дым пушки",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/shield",
+      "file": "fx/svg/shield.svg",
+      "title": "Щит слизня",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/spore-cloud",
+      "file": "fx/svg/spore-cloud.svg",
+      "title": "Облако спор",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/pumpkin-puddle",
+      "file": "fx/svg/pumpkin-puddle.svg",
+      "title": "Тыквенная лужа",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/bell-aura",
+      "file": "fx/svg/bell-aura.svg",
+      "title": "Аура колокола",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/heal",
+      "file": "fx/svg/heal.svg",
+      "title": "Второе дыхание",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/upgrade-burst",
+      "file": "fx/svg/upgrade-burst.svg",
+      "title": "Улучшение",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/death-dust",
+      "file": "fx/svg/death-dust.svg",
+      "title": "Исчезновение врага",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/grain-pickup",
+      "file": "fx/svg/grain-pickup.svg",
+      "title": "Зерно",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/selection",
+      "file": "fx/svg/selection.svg",
+      "title": "Выделение",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/placement-valid",
+      "file": "fx/svg/placement-valid.svg",
+      "title": "Можно строить",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/placement-invalid",
+      "file": "fx/svg/placement-invalid.svg",
+      "title": "Нельзя строить",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/entry-arrow",
+      "file": "fx/svg/entry-arrow.svg",
+      "title": "Вход на тропу",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/flying-shadow",
+      "file": "fx/svg/flying-shadow.svg",
+      "title": "Тень летуна",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/ping-ring",
+      "file": "fx/svg/ping-ring.svg",
+      "title": "Пинг на поле",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/level-three",
+      "file": "fx/svg/level-three.svg",
+      "title": "Уровень 3",
+      "group": "Эффекты",
+      "format": "svg"
+    },
+    {
+      "id": "fx/hp-frame",
+      "file": "fx/svg/hp-frame.svg",
+      "title": "Рамка здоровья",
+      "group": "Эффекты",
+      "format": "svg"
+    }
+  ],
+  "enemyRadiusCells": {
+    "mouse": 0.17,
+    "beetle": 0.3,
+    "ferret": 0.22,
+    "crow": 0.21,
+    "snail": 0.28,
+    "spore": 0.25,
+    "goat": 0.38,
+    "badger": 0.44,
+    "locustQueen": 0.46,
+    "stormcloud": 0.5
+  },
+  "aliases": {
+    "mice": "mouse",
+    "crows": "crow"
+  },
+  "qa": [
+    {
+      "file": "towers/scarecrow-levels.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.6411,
+      "opaquePixelFraction": 0.0006
+    },
+    {
+      "file": "towers/pumpkin-levels.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.5259,
+      "opaquePixelFraction": 0.001
+    },
+    {
+      "file": "towers/ballista-levels.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.5891,
+      "opaquePixelFraction": 0.0004
+    },
+    {
+      "file": "towers/owl-levels.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.6637,
+      "opaquePixelFraction": 0.0002
+    },
+    {
+      "file": "towers/sprinkler-levels.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.6524,
+      "opaquePixelFraction": 0.0009
+    },
+    {
+      "file": "towers/bell-levels.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.628,
+      "opaquePixelFraction": 0.0013
+    },
+    {
+      "file": "towers/feeder.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 1,
+      "transparentPixelFraction": 0.6092,
+      "opaquePixelFraction": 0.0009
+    },
+    {
+      "file": "enemies/mouse.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.7122,
+      "opaquePixelFraction": 0.0018
+    },
+    {
+      "file": "enemies/beetle.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.7248,
+      "opaquePixelFraction": 0.0008
+    },
+    {
+      "file": "enemies/ferret.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.7683,
+      "opaquePixelFraction": 0.0007
+    },
+    {
+      "file": "enemies/crow.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.6877,
+      "opaquePixelFraction": 0.001
+    },
+    {
+      "file": "enemies/snail.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.654,
+      "opaquePixelFraction": 0.0014
+    },
+    {
+      "file": "enemies/spore.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.672,
+      "opaquePixelFraction": 0.0012
+    },
+    {
+      "file": "enemies/goat.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.6287,
+      "opaquePixelFraction": 0.0017
+    },
+    {
+      "file": "enemies/badger.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.6098,
+      "opaquePixelFraction": 0.0014
+    },
+    {
+      "file": "enemies/locustQueen.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.7722,
+      "opaquePixelFraction": 0.0005
+    },
+    {
+      "file": "enemies/stormcloud.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.4785,
+      "opaquePixelFraction": 0.0005
+    },
+    {
+      "file": "world/mill-body.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.6085,
+      "opaquePixelFraction": 0.0009
+    },
+    {
+      "file": "world/mill-rotors.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.6213,
+      "opaquePixelFraction": 0.0007
+    },
+    {
+      "file": "world/cannon-low.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.6712,
+      "opaquePixelFraction": 0.0009
+    },
+    {
+      "file": "world/cannon-high.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "frameCount": 3,
+      "transparentPixelFraction": 0.6394,
+      "opaquePixelFraction": 0.001
+    },
+    {
+      "file": "world/terrain.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "frameCount": 16
+    },
+    {
+      "file": "world/props.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 9,
+      "transparentPixelFraction": 0.5896,
+      "opaquePixelFraction": 0.0016
+    },
+    {
+      "file": "world/sky.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "frameCount": 1
+    },
+    {
+      "file": "ui/resources-actions.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 16,
+      "transparentPixelFraction": 0.5529,
+      "opaquePixelFraction": 0.0033
+    },
+    {
+      "file": "ui/combat-types.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 9,
+      "transparentPixelFraction": 0.5748,
+      "opaquePixelFraction": 0.0024
+    },
+    {
+      "file": "ui/pings-awards.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 9,
+      "transparentPixelFraction": 0.4657,
+      "opaquePixelFraction": 0.0014
+    },
+    {
+      "file": "ui/goose-emotes.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 4,
+      "transparentPixelFraction": 0.4896,
+      "opaquePixelFraction": 0.0015
+    },
+    {
+      "file": "fx/projectiles.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "frameCount": 9,
+      "transparentPixelFraction": 0.834,
+      "opaquePixelFraction": 0.0016
+    }
+  ],
+  "totalRasterFrames": 145,
+  "totalVectorAssets": 20
+}
