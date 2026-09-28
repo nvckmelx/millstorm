@@ -1,0 +1,111 @@
+{
+  "frames": {
+    "enemy/spore/side_a": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 627,
+        "h": 627
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 627,
+        "h": 627
+      },
+      "sourceSize": {
+        "w": 627,
+        "h": 627
+      },
+      "pivot": {
+        "x": 0.57496,
+        "y": 0.88517
+      }
+    },
+    "enemy/spore/side_b": {
+      "frame": {
+        "x": 627,
+        "y": 0,
+        "w": 627,
+        "h": 627
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 627,
+        "h": 627
+      },
+      "sourceSize": {
+        "w": 627,
+        "h": 627
+      },
+      "pivot": {
+        "x": 0.57337,
+        "y": 0.88676
+      }
+    },
+    "enemy/spore/down_a": {
+      "frame": {
+        "x": 0,
+        "y": 627,
+        "w": 627,
+        "h": 627
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 627,
+        "h": 627
+      },
+      "sourceSize": {
+        "w": 627,
+        "h": 627
+      },
+      "pivot": {
+        "x": 0.55263,
+        "y": 0.85646
+      }
+    },
+    "enemy/spore/down_b": {
+      "frame": {
+        "x": 627,
+        "y": 627,
+        "w": 627,
+        "h": 627
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 627,
+        "h": 627
+      },
+      "sourceSize": {
+        "w": 627,
+        "h": 627
+      },
+      "pivot": {
+        "x": 0.51116,
+        "y": 0.85167
+      }
+    }
+  },
+  "meta": {
+    "app": "Millstorm art pack",
+    "version": "1.0",
+    "image": "spore.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1254,
+      "h": 1254
+    },
+    "scale": "1"
+  }
+}

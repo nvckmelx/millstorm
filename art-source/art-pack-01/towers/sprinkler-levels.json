@@ -1,0 +1,87 @@
+{
+  "frames": {
+    "defender/sprinkler/l1": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.58011,
+        "y": 0.93646
+      }
+    },
+    "defender/sprinkler/l2": {
+      "frame": {
+        "x": 724,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.50138,
+        "y": 0.95442
+      }
+    },
+    "defender/sprinkler/l3": {
+      "frame": {
+        "x": 1448,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.48688,
+        "y": 0.9558
+      }
+    }
+  },
+  "meta": {
+    "app": "Millstorm art pack",
+    "version": "1.0",
+    "image": "sprinkler-levels.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2172,
+      "h": 724
+    },
+    "scale": "1"
+  }
+}

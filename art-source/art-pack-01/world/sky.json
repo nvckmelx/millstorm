@@ -1,0 +1,39 @@
+{
+  "frames": {
+    "world/sky": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 1672,
+        "h": 941
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1672,
+        "h": 941
+      },
+      "sourceSize": {
+        "w": 1672,
+        "h": 941
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "Millstorm art pack",
+    "version": "1.0",
+    "image": "sky.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1672,
+      "h": 941
+    },
+    "scale": "1"
+  }
+}

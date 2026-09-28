@@ -1,0 +1,231 @@
+{
+  "frames": {
+    "prop/fence": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/fence-corner": {
+      "frame": {
+        "x": 418,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/gate": {
+      "frame": {
+        "x": 836,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/hay": {
+      "frame": {
+        "x": 0,
+        "y": 418,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/barrel": {
+      "frame": {
+        "x": 418,
+        "y": 418,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/grain-sack": {
+      "frame": {
+        "x": 836,
+        "y": 418,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/bush": {
+      "frame": {
+        "x": 0,
+        "y": 836,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/rocks": {
+      "frame": {
+        "x": 418,
+        "y": 836,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "prop/island-cliff": {
+      "frame": {
+        "x": 836,
+        "y": 836,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "Millstorm art pack",
+    "version": "1.0",
+    "image": "props.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1254,
+      "h": 1254
+    },
+    "scale": "1"
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "frames": {
+    "ui/ping/raidHere": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/ping/needHelp": {
+      "frame": {
+        "x": 418,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/ping/savingGoat": {
+      "frame": {
+        "x": 836,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/ping/noAirEnemy": {
+      "frame": {
+        "x": 0,
+        "y": 418,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/ping/thanks": {
+      "frame": {
+        "x": 418,
+        "y": 418,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/ping/haha": {
+      "frame": {
+        "x": 836,
+        "y": 418,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/award/best-defender": {
+      "frame": {
+        "x": 0,
+        "y": 836,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/award/main-pest": {
+      "frame": {
+        "x": 418,
+        "y": 836,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ui/award/expensive-ram": {
+      "frame": {
+        "x": 836,
+        "y": 836,
+        "w": 418,
+        "h": 418
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 418,
+        "h": 418
+      },
+      "sourceSize": {
+        "w": 418,
+        "h": 418
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "Millstorm art pack",
+    "version": "1.0",
+    "image": "pings-awards.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1254,
+      "h": 1254
+    },
+    "scale": "1"
+  }
+}

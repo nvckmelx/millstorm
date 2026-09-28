@@ -1,0 +1,87 @@
+{
+  "frames": {
+    "cannon/l0": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.46409,
+        "y": 0.90746
+      }
+    },
+    "cannon/l4": {
+      "frame": {
+        "x": 724,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.49793,
+        "y": 0.91298
+      }
+    },
+    "cannon/l5": {
+      "frame": {
+        "x": 1448,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724
+      },
+      "sourceSize": {
+        "w": 724,
+        "h": 724
+      },
+      "pivot": {
+        "x": 0.5221,
+        "y": 0.92127
+      }
+    }
+  },
+  "meta": {
+    "app": "Millstorm art pack",
+    "version": "1.0",
+    "image": "cannon-high.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2172,
+      "h": 724
+    },
+    "scale": "1"
+  }
+}
