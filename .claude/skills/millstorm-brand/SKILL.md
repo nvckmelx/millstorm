@@ -1,6 +1,6 @@
 ---
 name: millstorm-brand
-description: Millstorm brand identity and "Stormkeep" UI style — logo files and usage, navy/lightning/stone palette, Pixelify Sans type, and medieval pixel-perfect components (stone buttons with notched pixel frames, crenellated panels, team pennants, ribbons, segmented health bars). Use this skill for ANY visual or UI work on Millstorm, even when the user doesn't say "brand": new or changed screens, buttons, HUD, lobby, results, menus, icons, favicons, loading screens, marketing or landing pages, artifacts or mockups about the game, key-art or icon prompts, choosing colors or fonts, or reviewing whether something "looks like Millstorm".
+description: "Millstorm brand identity and 'Stormkeep' UI style — logo files and usage, navy/lightning/stone palette, Pixelify Sans type, and medieval pixel-perfect components (stone buttons with notched pixel frames, crenellated panels, team pennants, ribbons, segmented health bars). Use this skill for ANY visual or UI work on Millstorm, even when the user doesn't say 'brand': new or changed screens, buttons, HUD, lobby, results, menus, icons, favicons, loading screens, marketing or landing pages, artifacts or mockups about the game, key-art or icon prompts, choosing colors or fonts, or reviewing whether something 'looks like Millstorm'."
 ---
 
 # Millstorm brand — "Stormkeep"
