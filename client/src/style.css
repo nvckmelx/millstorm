@@ -1,0 +1,1473 @@
+/*
+ * Millstorm brand UI — "Armorial" (Гербовник): heraldic, medieval, pixel-perfect.
+ * Parchment panels in oak frames with iron corners, oak plank buttons, a vermilion
+ * wax-seal call to action, gold for "selected", castle stonework behind everything.
+ * Rules and rationale: .claude/skills/millstorm-brand/SKILL.md
+ *
+ * One art pixel = var(--px) = 2 CSS px. Every border, bevel, offset and shadow is a
+ * whole number of art pixels. No border-radius, no blur.
+ */
+
+:root {
+  /* Ink and parchment */
+  --ink: #2b1d14;
+  --parch: #ead9b0;
+  --parch-hi: #f6ecd0;
+  --parch-lo: #c9b07a;
+  --parch-ink: #6b5335;
+
+  /* Oak (frames, planks, HUD beams) */
+  --oak: #7a4a26;
+  --oak-hi: #9a6534;
+  --oak-lo: #4e2e16;
+  --oak-deep: #33200f;
+
+  /* Metals */
+  --iron: #5b6770;
+  --iron-hi: #8a97a1;
+  --gold: #e2b33c;
+  --gold-hi: #f6d77a;
+  --gold-lo: #a8781e;
+
+  /* Heraldic tinctures */
+  --verm: #b8322a; /* the one call to action: a wax seal */
+  --verm-hi: #d9543f;
+  --verm-lo: #7e1f1a;
+  --azure: #2f5da8;
+
+  /* Game semantics (unchanged meaning) */
+  --good: #3f8f3a;
+  --bad: #c0392b;
+  --warn: #f2c230;
+  --blue: #2f80ed;
+  --orange: #f2994a;
+
+  --px: 2px;
+  --font: "Pixelify Sans", "Trebuchet MS", system-ui, sans-serif;
+  --edge: var(--ink);
+
+  color-scheme: light;
+  font-family: var(--font);
+  color: var(--ink);
+  font-synthesis: none;
+  -webkit-font-smoothing: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Pixel frame: four offset copies of the box make an outline with notched corners.
+   Declared on every element so a local --edge (e.g. red on a targeted card) applies. */
+*,
+*::before,
+*::after {
+  --frame: 0 calc(var(--px) * -1) 0 0 var(--edge), calc(var(--px) * -1) 0 0 0 var(--edge), var(--px) 0 0 0 var(--edge),
+    0 calc(var(--px) * 2) 0 0 var(--edge);
+  --frame-flat: 0 calc(var(--px) * -1) 0 0 var(--edge), calc(var(--px) * -1) 0 0 0 var(--edge), var(--px) 0 0 0 var(--edge),
+    0 var(--px) 0 0 var(--edge);
+  /* Four iron rivets, one art pixel square, 3 pixels in from each corner. */
+  --rivets: linear-gradient(var(--iron-hi), var(--iron-hi)) 6px 6px / 4px 4px no-repeat,
+    linear-gradient(var(--iron-hi), var(--iron-hi)) calc(100% - 6px) 6px / 4px 4px no-repeat,
+    linear-gradient(var(--iron-hi), var(--iron-hi)) 6px calc(100% - 8px) / 4px 4px no-repeat,
+    linear-gradient(var(--iron-hi), var(--iron-hi)) calc(100% - 6px) calc(100% - 8px) / 4px 4px no-repeat;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+/* Castle stonework: 16×8-pixel stones in running bond, a 32×16 tile shown at 2×. */
+body {
+  background: #7b7365 url("./assets/wall.svg") 0 0 / 64px 32px repeat;
+  image-rendering: pixelated;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+#app {
+  height: 100%;
+  image-rendering: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+img {
+  max-width: 100%;
+}
+
+small {
+  font-size: 12px;
+}
+
+.muted {
+  color: var(--parch-ink);
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+/* Default: an oak plank with iron rivets and parchment lettering. */
+button {
+  --face: var(--oak);
+  --hi: var(--oak-hi);
+  --lo: var(--oak-lo);
+  --text: var(--parch-hi);
+  --rivet: var(--iron-hi);
+  position: relative;
+  font: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--rivets), var(--face);
+  border: 0;
+  border-radius: 0;
+  padding: 8px 16px 8px;
+  margin: var(--px) var(--px) calc(var(--px) * 2);
+  cursor: pointer;
+  text-shadow: 0 var(--px) 0 var(--lo);
+  box-shadow:
+    inset var(--px) var(--px) 0 0 var(--hi),
+    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 var(--lo),
+    var(--frame);
+}
+
+button:hover:not(:disabled) {
+  --face: var(--oak-hi);
+  --hi: #b27a45;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(var(--px));
+  box-shadow:
+    inset var(--px) var(--px) 0 0 var(--lo),
+    var(--frame-flat);
+}
+
+button:disabled {
+  --face: var(--parch-lo);
+  --hi: var(--parch-lo);
+  --lo: var(--parch-lo);
+  --text: var(--parch-ink);
+  text-shadow: none;
+  cursor: default;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: var(--px) solid var(--gold);
+  outline-offset: calc(var(--px) * 3);
+}
+
+/* The call to action: a vermilion wax seal with a gold rim. */
+button.primary {
+  --face: var(--verm);
+  --hi: var(--verm-hi);
+  --lo: var(--verm-lo);
+  --edge: var(--ink);
+  background: var(--face);
+  box-shadow:
+    inset 0 0 0 var(--px) var(--gold-lo),
+    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--verm-hi),
+    inset calc(var(--px) * -2) calc(var(--px) * -2) 0 0 var(--verm-lo),
+    var(--frame);
+}
+
+button.primary:hover:not(:disabled) {
+  --face: #cc3b31;
+}
+
+button.primary:active:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 var(--px) var(--gold-lo),
+    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--verm-lo),
+    var(--frame-flat);
+}
+
+button.danger {
+  --face: var(--verm-lo);
+  --hi: var(--verm);
+  --lo: #521410;
+}
+
+button.big {
+  font-size: 20px;
+  padding: 12px 22px;
+}
+
+button.small {
+  font-size: 13px;
+  padding: 4px 8px;
+  background: var(--face);
+}
+
+button.ghost {
+  --text: var(--ink);
+  background: none;
+  box-shadow: none;
+  padding: 6px 4px;
+  text-shadow: none;
+  text-decoration: underline;
+  text-decoration-thickness: var(--px);
+  text-underline-offset: 4px;
+}
+
+button.ghost:active:not(:disabled) {
+  box-shadow: none;
+}
+
+button.ghost.armed {
+  --text: var(--verm);
+}
+
+/* A text link standing on the stone wall needs an ink outline to stay readable. */
+.screen > .row button.ghost {
+  --text: var(--parch-hi);
+  text-shadow:
+    var(--px) 0 0 var(--ink),
+    calc(var(--px) * -1) 0 0 var(--ink),
+    0 var(--px) 0 var(--ink),
+    0 calc(var(--px) * -1) 0 var(--ink);
+}
+
+input {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--parch-hi);
+  border: 0;
+  border-radius: 0;
+  padding: 10px 12px;
+  margin: var(--px);
+  min-width: 0;
+  box-shadow:
+    inset var(--px) var(--px) 0 0 var(--parch-lo),
+    var(--frame-flat);
+}
+
+input::placeholder {
+  color: var(--parch-lo);
+}
+
+/* ---------------------------------------------------------------- panels */
+
+/* Parchment in an oak frame with iron corner plates. */
+.panel,
+.team,
+.tip,
+.award,
+.teambox {
+  position: relative;
+  background: var(--parch);
+  box-shadow:
+    inset 0 0 0 var(--px) var(--oak-lo),
+    inset 0 0 0 calc(var(--px) * 3) var(--oak),
+    inset 0 0 0 calc(var(--px) * 4) var(--gold-lo),
+    inset calc(var(--px) * 5) calc(var(--px) * 5) 0 0 var(--parch-hi),
+    var(--frame);
+}
+
+.panel::after,
+.team::after {
+  /* Iron corner plates: 8×8 art-pixel L-brackets drawn with gradients. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--iron), var(--iron)) 0 0 / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 0 0 / 6px 16px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 0 / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 0 / 6px 16px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 0 100% / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 0 100% / 6px 16px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 100% / 16px 6px no-repeat,
+    linear-gradient(var(--iron), var(--iron)) 100% 100% / 6px 16px no-repeat;
+}
+
+.tip,
+.award,
+.teambox {
+  box-shadow:
+    inset 0 0 0 var(--px) var(--oak),
+    inset calc(var(--px) * 2) calc(var(--px) * 2) 0 0 var(--parch-hi),
+    var(--frame);
+}
+
+/* Illuminated initial: the first letter of a section heading, as in a manuscript. */
+.panel h2::first-letter,
+.lobby-head h2::first-letter,
+.loading h2::first-letter {
+  color: var(--parch-hi);
+  background: var(--verm);
+  padding: 0 4px;
+  margin-right: 4px;
+  box-shadow:
+    0 0 0 var(--px) var(--gold),
+    0 0 0 calc(var(--px) * 2) var(--ink);
+}
+
+/* ---------------------------------------------------------------- screens */
+
+.screen {
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 16px 40px;
+}
+
+.panel {
+  width: min(460px, 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel h2 {
+  font-size: 20px;
+}
+
+.panel label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--parch-ink);
+}
+
+.panel.note {
+  display: block;
+  font-size: 14px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.logo img {
+  width: min(324px, 80vw);
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.logo p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  max-width: 34ch;
+  color: var(--parch-hi);
+  text-shadow:
+    var(--px) 0 0 var(--ink),
+    calc(var(--px) * -1) 0 0 var(--ink),
+    0 var(--px) 0 var(--ink),
+    0 calc(var(--px) * -1) 0 var(--ink);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.join {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.join .code {
+  width: 104px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.mode-pick {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mode-pick span {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* Text sitting directly on the stone wall gets a parchment plaque. */
+.foot,
+.status,
+.series,
+.countdown,
+.results > p {
+  background: var(--parch);
+  box-shadow: var(--frame-flat);
+  padding: 6px 12px;
+  margin: 0;
+}
+
+.foot {
+  font-size: 13px;
+  color: var(--parch-ink);
+  text-align: center;
+  max-width: 64ch;
+}
+
+/* lobby / loading */
+
+.lobby-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.lobby-head h2,
+.loading h2 {
+  font-size: 32px;
+  color: var(--parch-hi);
+  text-shadow:
+    var(--px) 0 0 var(--ink),
+    calc(var(--px) * -1) 0 0 var(--ink),
+    0 var(--px) 0 var(--ink),
+    0 calc(var(--px) * -1) 0 var(--ink),
+    0 calc(var(--px) * 2) 0 var(--ink);
+}
+
+.invite {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: var(--parch);
+  box-shadow: var(--frame-flat);
+  padding: 8px 12px;
+}
+
+.invite .code {
+  font-size: 32px;
+  letter-spacing: 6px;
+  color: var(--verm);
+  background: var(--parch-hi);
+  padding: 2px 10px;
+  box-shadow: var(--frame-flat);
+}
+
+.modes {
+  display: flex;
+  gap: 12px;
+}
+
+.mode {
+  font-size: 24px;
+  padding: 12px 24px;
+}
+
+/* Selected = gold ("or"), distinct from the vermilion call to action. */
+.mode.active,
+.build.active {
+  --face: var(--gold);
+  --hi: var(--gold-hi);
+  --lo: var(--gold-lo);
+  --text: var(--ink);
+  text-shadow: none;
+}
+
+.teams,
+.versus {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 300px));
+  gap: 20px;
+  width: min(640px, 100%);
+}
+
+.team {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Team pennant with a swallowtail. */
+.team h3 {
+  align-self: flex-start;
+  background: var(--team);
+  color: var(--parch-hi);
+  font-size: 16px;
+  padding: 4px 22px 4px 10px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%);
+  text-shadow: var(--px) var(--px) 0 var(--ink);
+}
+
+.slot {
+  --face: transparent;
+  --hi: transparent;
+  --lo: transparent;
+  --text: var(--ink);
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  min-height: 44px;
+  padding: 10px;
+  margin: var(--px);
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: none;
+  background: none;
+  box-shadow: none;
+  outline: var(--px) dashed var(--parch-lo);
+  outline-offset: calc(var(--px) * -1);
+}
+
+.slot.filled {
+  background: var(--parch-hi);
+  outline: none;
+  box-shadow: var(--frame-flat);
+}
+
+.slot.you {
+  box-shadow:
+    inset 0 0 0 var(--px) var(--team),
+    var(--frame-flat);
+}
+
+.slot span {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--parch-ink);
+}
+
+.status,
+.series {
+  font-weight: 700;
+  text-align: center;
+}
+
+.chat {
+  width: min(640px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-log {
+  background: var(--parch);
+  padding: 8px;
+  height: 110px;
+  overflow: auto;
+  font-size: 14px;
+  margin: var(--px);
+  box-shadow:
+    inset var(--px) var(--px) 0 0 var(--parch-lo),
+    var(--frame-flat);
+}
+
+.tips {
+  display: grid;
+  gap: 16px;
+  width: min(640px, 100%);
+}
+
+.tip {
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.countdown {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.loading .emblem {
+  width: 144px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* results */
+
+.results h1 {
+  font-size: 64px;
+  color: var(--parch-hi);
+  text-shadow:
+    0 calc(var(--px) * -2) 0 var(--ink),
+    calc(var(--px) * -2) 0 0 var(--ink),
+    calc(var(--px) * 2) 0 0 var(--ink),
+    0 calc(var(--px) * 2) 0 var(--ink),
+    0 calc(var(--px) * 4) 0 var(--ink);
+}
+
+.results h1.win {
+  color: var(--gold);
+}
+
+.results h1.lose {
+  color: #e8836f;
+}
+
+/* The finale on a parchment ribbon: "Мельницу сломал козёл игрока X". */
+.finisher {
+  background: var(--parch-hi);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 40px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%, 16px 50%);
+  border-top: calc(var(--px) * 2) solid var(--verm);
+  border-bottom: calc(var(--px) * 2) solid var(--verm);
+}
+
+.chart {
+  max-width: 100%;
+  box-shadow:
+    0 0 0 calc(var(--px) * 2) var(--oak),
+    0 0 0 calc(var(--px) * 3) var(--ink);
+  margin: 6px;
+}
+
+.awards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.award {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+.award small {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--verm);
+  font-weight: 700;
+}
+
+.results .tip {
+  max-width: 560px;
+  font-size: 16px;
+}
+
+/* toast */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 176px;
+  transform: translate(-50%, 8px);
+  background: var(--oak-lo);
+  color: var(--parch-hi);
+  padding: 10px 16px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s steps(3), transform 0.15s steps(3);
+  z-index: 50;
+  max-width: calc(100vw - 32px);
+  --edge: var(--gold);
+  box-shadow: var(--frame-flat);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.toast.error {
+  --edge: var(--verm-hi);
+}
+
+.toast.info {
+  --edge: #7fbf5a;
+}
+
+/* ---------------------------------------------------------------- match */
+
+.match {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 210px minmax(0, 1fr) 270px;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "top top top"
+    "left center right"
+    "bottom bottom bottom";
+}
+
+/* Oak beams with a gold trim. */
+.topbar,
+.bottombar {
+  background: repeating-linear-gradient(180deg, var(--oak) 0 10px, #734524 10px 12px, var(--oak) 12px 22px, var(--oak-lo) 22px 24px);
+  color: var(--parch);
+}
+
+.topbar {
+  grid-area: top;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px 6px;
+  box-shadow:
+    inset 0 calc(var(--px) * -2) 0 0 var(--gold-lo),
+    inset 0 calc(var(--px) * -3) 0 0 var(--ink);
+}
+
+.topbar .brand {
+  width: 32px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.resources {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.res {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.res b {
+  font-size: 24px;
+  min-width: 44px;
+  color: var(--parch-hi);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 var(--px) 0 var(--ink);
+}
+
+.res small {
+  color: var(--gold-hi);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  background: center / contain no-repeat;
+  image-rendering: pixelated;
+  flex: none;
+}
+
+.grain-icon {
+  background-image: url("./assets/icon-grain.svg");
+}
+
+.lure-icon {
+  background-image: url("./assets/icon-lure.svg");
+}
+
+.lurebar {
+  width: 72px;
+  height: 10px;
+  background: var(--oak-deep);
+  box-shadow: 0 0 0 var(--px) var(--ink);
+}
+
+.lurebar div {
+  height: 100%;
+  background: repeating-linear-gradient(90deg, #d08a4a 0 6px, #b5733a 6px 8px);
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.mill b {
+  color: var(--parch-hi);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Segmented health bar: each 8px block is a stone of the Mill. */
+.hpbar {
+  width: 150px;
+  height: 16px;
+  background: var(--oak-deep);
+  box-shadow:
+    0 0 0 var(--px) var(--gold-lo),
+    0 0 0 calc(var(--px) * 2) var(--ink);
+  overflow: hidden;
+}
+
+.mill.theirs .hpbar {
+  transform: scaleX(-1);
+}
+
+.hpbar div {
+  height: 100%;
+  transition: width 0.3s steps(6);
+  -webkit-mask: repeating-linear-gradient(90deg, #000 0 8px, transparent 8px 10px);
+  mask: repeating-linear-gradient(90deg, #000 0 8px, transparent 8px 10px);
+}
+
+.wave {
+  text-align: center;
+  min-width: 156px;
+}
+
+.wave-no {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--gold-hi);
+}
+
+.timer {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--parch-hi);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 var(--px) 0 var(--ink);
+}
+
+.timer.urgent {
+  color: #ff8a75;
+  animation: blink 0.5s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.phase {
+  font-size: 11px;
+  color: var(--parch-lo);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sys {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  align-items: center;
+}
+
+.sys .ghost {
+  --text: var(--parch-hi);
+}
+
+.latency {
+  font-size: 12px;
+  color: var(--parch-lo);
+}
+
+/* Side columns: parchment scrolls on the wall. */
+.left,
+.right {
+  background: var(--parch);
+  padding: 10px 10px 10px 12px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.left {
+  grid-area: left;
+  box-shadow:
+    inset calc(var(--px) * -2) 0 0 0 var(--oak),
+    inset calc(var(--px) * -3) 0 0 0 var(--ink);
+}
+
+.right {
+  grid-area: right;
+  box-shadow:
+    inset calc(var(--px) * 2) 0 0 0 var(--oak),
+    inset calc(var(--px) * 3) 0 0 0 var(--ink);
+}
+
+.left h4,
+.right h4,
+.bar-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.left h4,
+.right h4 {
+  color: var(--verm);
+}
+
+.left h4 small,
+.right h4 small {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--parch-ink);
+  font-weight: 500;
+}
+
+.feed-list {
+  flex: 1;
+  min-height: 80px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  padding: 2px;
+}
+
+.line {
+  padding: 3px 6px 3px 8px;
+  background: var(--parch-hi);
+  border-left: calc(var(--px) * 2) solid var(--parch-lo);
+}
+
+.line.good {
+  border-left-color: var(--good);
+}
+
+.line.bad {
+  border-left-color: var(--bad);
+}
+
+.line.ping {
+  border-left-color: var(--gold-lo);
+  background: #f9e9b6;
+}
+
+.pings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.ping {
+  font-size: 11px;
+  padding: 3px 6px;
+  font-weight: 500;
+}
+
+.wheel {
+  position: fixed;
+  width: 0;
+  height: 0;
+  z-index: 40;
+}
+
+.wheel .ping {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.center {
+  grid-area: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.incoming {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(234, 217, 176, 0.92);
+  box-shadow: inset 0 calc(var(--px) * -1) 0 0 var(--oak);
+}
+
+.incoming.danger {
+  background: #f3c9b8;
+  box-shadow: inset 0 calc(var(--px) * -2) 0 0 var(--verm);
+}
+
+.incoming .next {
+  margin-left: auto;
+  color: var(--parch-ink);
+}
+
+.chip {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 1px 8px;
+  background: var(--parch-hi);
+  box-shadow: var(--frame-flat);
+  margin: 0 var(--px);
+}
+
+.chip i {
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 0 var(--px) var(--ink);
+}
+
+.field {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.field canvas {
+  position: absolute;
+  inset: 0;
+}
+
+/* Boss / goat alert: a vermilion ribbon. */
+.banner {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--verm);
+  color: var(--parch-hi);
+  font-weight: 700;
+  font-size: 24px;
+  padding: 8px 36px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%, 14px 50%);
+  border-top: var(--px) solid var(--gold);
+  border-bottom: var(--px) solid var(--gold);
+  text-shadow: var(--px) var(--px) 0 var(--ink);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.banner.show {
+  animation: banner 2.6s steps(20);
+}
+
+@keyframes banner {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+  }
+  8%,
+  80% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  top: 44px;
+  transform: translateX(-50%);
+  width: min(520px, calc(100% - 24px));
+  background: var(--parch-hi);
+  box-shadow:
+    inset calc(var(--px) * 3) 0 0 0 var(--verm),
+    var(--frame);
+  padding: 10px 14px 10px 18px;
+  font-weight: 700;
+  display: none;
+  z-index: 6;
+}
+
+.hint.show {
+  display: block;
+}
+
+.teambox {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  margin: var(--px);
+}
+
+.raid:empty {
+  display: none;
+}
+
+.raid {
+  background: #f9e9b6;
+  padding: 4px 6px;
+  font-weight: 700;
+  box-shadow: inset calc(var(--px) * 2) 0 0 0 var(--gold-lo);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--px);
+}
+
+.card {
+  display: flex;
+  gap: 8px;
+  padding: 6px 6px 6px 12px;
+  font-size: 13px;
+  position: relative;
+  background: var(--parch-hi);
+  box-shadow:
+    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 var(--parch-lo),
+    var(--frame);
+}
+
+/* Team banner stripe on the card's left edge. */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--team);
+}
+
+.card.enemy {
+  cursor: pointer;
+}
+
+.card.enemy:hover {
+  background: #fff8e4;
+}
+
+.card.targeted {
+  --edge: var(--verm);
+}
+
+.card.ally.warn {
+  --edge: var(--gold-lo);
+}
+
+.card.ally.bad {
+  --edge: var(--bad);
+}
+
+.mini {
+  width: 64px;
+  flex: none;
+  image-rendering: pixelated;
+  box-shadow: 0 0 0 var(--px) var(--ink);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  min-width: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info .warn {
+  color: var(--bad);
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--verm);
+  color: var(--parch-hi);
+  padding: 1px 6px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.bottombar {
+  grid-area: bottom;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px minmax(0, 1fr);
+  gap: 12px;
+  padding: 8px 12px 4px;
+  box-shadow:
+    inset 0 calc(var(--px) * 2) 0 0 var(--gold-lo),
+    inset 0 calc(var(--px) * 3) 0 0 var(--ink);
+}
+
+.bar-title {
+  margin-bottom: 4px;
+  color: var(--gold-hi);
+}
+
+.bar-title .target {
+  text-transform: none;
+  letter-spacing: 0;
+  color: #ffb3a1;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+/* Build and send tiles are parchment cards on the oak beam. */
+.build,
+.send {
+  --face: var(--parch);
+  --hi: var(--parch-hi);
+  --lo: var(--parch-lo);
+  --text: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.1;
+  overflow: hidden;
+  min-height: 62px;
+  text-shadow: none;
+  background: var(--face);
+}
+
+.build:hover:not(:disabled),
+.send:hover:not(:disabled) {
+  --face: var(--parch-hi);
+  --hi: #fffaf0;
+}
+
+.build.poor,
+.send.poor {
+  --face: var(--parch-lo);
+  --hi: var(--parch-lo);
+  --text: var(--parch-ink);
+}
+
+.send.locked {
+  --face: var(--oak-lo);
+  --hi: var(--oak);
+  --lo: var(--oak-deep);
+  --text: var(--parch-lo);
+}
+
+.swatch {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  box-shadow: 0 0 0 var(--px) var(--ink);
+  margin-top: var(--px);
+}
+
+.swatch.round {
+  clip-path: polygon(25% 0, 75% 0, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0 75%, 0 25%);
+  box-shadow: inset 0 0 0 var(--px) var(--ink);
+}
+
+.build .name,
+.send .name {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.cost {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Hotkey: a small iron plate with gold letter. */
+.key {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 10px;
+  line-height: 1;
+  padding: 2px 3px;
+  background: var(--iron);
+  color: var(--gold-hi);
+}
+
+.lock {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  font-size: 10px;
+  color: var(--verm-hi);
+}
+
+.send.locked .lock {
+  color: var(--gold-hi);
+}
+
+.strip {
+  position: absolute;
+  left: var(--px);
+  right: var(--px);
+  bottom: var(--px);
+  height: 4px;
+}
+
+.selection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  font-size: 13px;
+  padding: 0 12px;
+  border-left: var(--px) dashed var(--gold-lo);
+  border-right: var(--px) dashed var(--gold-lo);
+}
+
+.selection small {
+  color: var(--parch-lo);
+}
+
+.queue {
+  font-size: 12px;
+  margin-top: 2px;
+  color: var(--parch-lo);
+  font-weight: 500;
+  min-height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timer.urgent,
+  .banner.show {
+    animation: none;
+  }
+  .banner.show {
+    opacity: 1;
+  }
+}
+
+/* Laptop widths: tighten the top bar so resources never run into the score. */
+@media (max-width: 1500px) {
+  .resources {
+    gap: 10px;
+  }
+  .res.lure small {
+    display: none;
+  }
+  .hpbar {
+    width: 120px;
+  }
+  .lurebar {
+    width: 48px;
+  }
+}
+
+/* Smaller screens: keep the field usable. */
+@media (max-width: 1200px) {
+  .match {
+    grid-template-columns: 170px minmax(0, 1fr) 230px;
+  }
+  .hpbar {
+    width: 100px;
+  }
+  .bottombar {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .selection {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    border: none;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  body {
+    overflow: auto;
+  }
+  .match {
+    height: auto;
+    min-height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 70vh auto auto auto;
+    grid-template-areas: "top" "center" "bottom" "right" "left";
+  }
+  .topbar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .scoreboard {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bottombar {
+    grid-template-columns: 1fr;
+  }
+  .buttons {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .left,
+  .right {
+    box-shadow: none;
+  }
+  .teams,
+  .versus {
+    grid-template-columns: 1fr;
+  }
+}
