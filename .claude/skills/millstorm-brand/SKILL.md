@@ -87,7 +87,22 @@ One art pixel = `--px` = 2 CSS px.
 3. The frame is `var(--frame)`: four offset copies of the box, an outline with notched corners plus a 2-pixel depth at the bottom. Recolor it with `--edge` on the element; `--frame` is declared on `*` so that local override works.
 4. Bevels: light top-left, dark bottom-right. Pressed controls sink by `--px` and flip the bevel.
 5. Motion is stepped (`steps(n)`), and every animation has a `prefers-reduced-motion` fallback.
-6. Icons and textures are pixel art: SVG with `shape-rendering="crispEdges"`, one `rect` per run, shown at a whole-number scale with `image-rendering: pixelated` (`client/src/assets/`).
+6. Chrome textures (the stone wall) are pixel art: SVG with `shape-rendering="crispEdges"`, one `rect` per run, shown at a whole-number scale with `image-rendering: pixelated` (`client/src/assets/`). Icons and field art are the painted Art Pack (next section) and are not pixelated.
+
+## Painted art: Art Pack 01
+
+The playing field and all icons use **Art Pack 01**: painted, cartoon-style sprites with dark
+outlines in the same warm palette (oak, gold, red tile, parchment). The pixel-perfect rules
+above govern the *chrome* (frames, buttons, panels, bars). The painted art sits inside that chrome,
+the way a painted miniature sits inside a carved frame. Don't pixelate it and don't draw
+placeholder shapes where a sprite exists.
+
+- Sources: `art-source/art-pack-01/` (full-size sheets, `manifest.json` with frame ids, pivots and visible bounds, prompts, gallery). Runtime: `client/public/art/`, built by `python3 tools/build_art.py`. Never load the source sheets in the browser (38 MB).
+- Frame ids are exact: `defender/<id>/l1..l3`, `enemy/<id>/side_a|side_b|down_a|down_b`, `mill/body/healthy|damaged|critical|destroyed`, `mill/rotor/…`, `cannon/l0..l5`, `tile/…`, `prop/…`, `projectile/…`. Send ids map to units (`mice` → `mouse`, `crows` → `crow`).
+- Size sprites by their **visible** width (`art.json` → `visible`), anchor at the pivot: towers ≈ 1.1 cell, enemies ≈ 3.1 × radius from `ENEMY_RADIUS`, Mill body ≈ 2.5 cells. Mirror side frames for leftward movement; never rotate a character to follow the path.
+- HTML icons: `icon("<name>")` from `client/src/ui/dom.ts` loads `art/icons/<frame id with / → ->.png` (e.g. `ui-grain`, `defender-owl-l1`, `enemy-crow-side_a`, `ui-goose-gooseHappy`). Keep text next to icons; goose stickers are the one picture-only control, and they carry an `aria-label`.
+- Keep in code, not in art: range circles, placement highlight, HP bars, team colours, sender tags, the field border. They need exact sizes and states.
+- New art follows the same brief: painted, thick dark outline, warm palette, readable at 40 px, transparent PNG. Add it to the pack sources and the build script, then to `docs/assets-registry.md`.
 
 ## Medieval motifs
 
