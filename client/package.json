@@ -9,6 +9,7 @@
     "build:offline": "vite build --mode offline --outDir dist-offline"
   },
   "dependencies": {
+    "@fontsource/pixelify-sans": "^5.3.0",
     "@millstorm/shared": "*",
     "colyseus.js": "0.16.22",
     "phaser": "^3.90.0"

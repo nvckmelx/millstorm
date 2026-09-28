@@ -32,8 +32,16 @@ export interface MenuActions {
   tutorial(name: string): void;
 }
 
+export const BRAND_URL = `${import.meta.env.BASE_URL}brand/`;
+
 function logo(): HTMLElement {
-  return h("div.logo", {}, h("span.mill-o"), h("h1", {}, "Millstorm"), h("p", {}, "Защищай свою небесную ферму и насылай вредителей на соседей"));
+  return h(
+    "div.logo",
+    {},
+    h("h1.visually-hidden", {}, "Millstorm"),
+    h("img", { src: `${BRAND_URL}millstorm-lockup.png`, alt: "Millstorm", width: 720, height: 599 }),
+    h("p", {}, "Защищай свою небесную ферму и насылай вредителей на соседей"),
+  );
 }
 
 export function menuScreen(a: MenuActions, invite?: string): HTMLElement {
@@ -109,6 +117,8 @@ export function lobbyScreen(l: LobbyState, session: Session, onLeave: () => void
   const members = l.slots.flat().filter(Boolean).length;
   const link = `${location.origin}/p/${l.code}`;
   const me = l.slots.flat().find((s) => s?.id === you);
+  // One cyan call to action at a time: "Готов" until you're ready, then "Старт" once everyone is.
+  const allReady = l.slots.flat().every((s) => !s || s.ready);
 
   const copy = () => {
     void navigator.clipboard?.writeText(link).then(
@@ -172,7 +182,7 @@ export function lobbyScreen(l: LobbyState, session: Session, onLeave: () => void
       {},
       h("h2", {}, l.isPublic ? "Поиск матча" : "Пати"),
       !l.isPublic
-        ? h("div.invite", {}, h("span", {}, "Код: ", h("b.code", {}, l.code)), h("button.primary", { onclick: copy }, "Скопировать ссылку"), h("small", {}, link))
+        ? h("div.invite", {}, h("span", {}, "Код: ", h("b.code", {}, l.code)), h("button", { onclick: copy }, "Скопировать ссылку"), h("small", {}, link))
         : "",
     ),
     modes,
@@ -184,7 +194,7 @@ export function lobbyScreen(l: LobbyState, session: Session, onLeave: () => void
       !l.isPublic && me
         ? h(`button.big${me.ready ? "" : ".primary"}`, { onclick: () => session.send("ready", { ready: !me.ready }) }, me.ready ? "Не готов" : "Готов")
         : "",
-      isLeader && !l.isPublic ? h("button.big.primary", { onclick: () => session.send("start") }, "Старт") : "",
+      isLeader && !l.isPublic ? h(`button.big${allReady ? ".primary" : ""}`, { onclick: () => session.send("start") }, "Старт") : "",
       h("button.ghost", { onclick: onLeave }, "Выйти"),
     ),
     l.series[0] + l.series[1] > 0 ? h("p.series", {}, `Счёт серии: ${TEAM_NAMES[0]} ${l.series[0]} : ${l.series[1]} ${TEAM_NAMES[1]}`) : "",
@@ -197,6 +207,7 @@ export function loadingScreen(l: LobbyState, tutorial: boolean): HTMLElement {
   return h(
     "div.screen.loading",
     {},
+    h("img.emblem", { src: `${BRAND_URL}millstorm-emblem.png`, alt: "", width: 512, height: 469 }),
     h("h2", {}, tutorial ? "Обучение: игра за 60 секунд" : "Загрузка матча"),
     h(
       "div.versus",
@@ -229,7 +240,8 @@ export function resultsScreen(l: LobbyState, s: Snapshot, session: Session, onLe
   if (r.finisher) {
     const who = name(r.finisher.playerId);
     finisher = who ? `Мельницу сломал ${enemyName(r.finisher.enemy)} игрока ${who}` : `Мельницу сломал ${enemyName(r.finisher.enemy)} из волны`;
-  } else if (r.reason === "waves") finisher = "Обучение пройдено: победа по HP Мельницы";
+  } else if (r.reason === "waves")
+    finisher = won ? "Обучение пройдено: победа по HP Мельницы" : "Обучение окончено: у соперника осталось больше HP Мельницы";
 
   const awards = awardsFor(s.players);
   const humans = l.slots.flat().filter((x) => x && !x.bot && x.connected).length;
@@ -288,9 +300,9 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
   const W = canvas.width;
   const H = canvas.height;
   const pad = 28;
-  ctx.fillStyle = "#fff8e7";
+  ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, 0, W, H);
-  ctx.strokeStyle = "#e3d3b0";
+  ctx.strokeStyle = "#cbd3de";
   ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
     const y = pad / 2 + 6 + ((H - pad - 6) * i) / 4;
@@ -299,8 +311,8 @@ function hpChart(s: Snapshot, myTeam: number): HTMLElement {
     ctx.lineTo(W - 8, y);
     ctx.stroke();
   }
-  ctx.fillStyle = "#6b5a45";
-  ctx.font = "12px Nunito, sans-serif";
+  ctx.fillStyle = "#4f6280";
+  ctx.font = "12px 'Pixelify Sans', sans-serif";
   ctx.fillText("HP Мельниц по волнам", pad, 11);
   const points = [[s.teams[0].maxHp, s.teams[1].maxHp], ...hist];
   for (const team of [0, 1]) {

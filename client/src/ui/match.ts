@@ -7,6 +7,7 @@ import { drawMiniField } from "../game/minimap";
 import type { Session } from "../net";
 import { h, setText, toast } from "./dom";
 import { Hints } from "./hints";
+import { BRAND_URL } from "./screens";
 import { PING_TEXT, PING_WHEEL, STICKERS, eventText, sendUnitsText } from "./text";
 
 const B = DATA.balance;
@@ -69,6 +70,7 @@ export class MatchScreen {
       h(
         "div.resources",
         {},
+        h("img.brand", { src: `${BRAND_URL}millstorm-emblem-reversed.png`, alt: "Millstorm", width: 512, height: 469 }),
         h("div.res.grain", { title: "Зерно: постройка и улучшения" }, h("span.icon.grain-icon"), (e.grain = h("b", {}, "0")), (e.income = h("small", {}, ""))),
         h(
           "div.res.lure",
@@ -212,7 +214,7 @@ export class MatchScreen {
     this.game = new Phaser.Game({
       type: Phaser.AUTO,
       parent: this.el.field,
-      backgroundColor: "#bfe3f5",
+      backgroundColor: "#d3e2ef",
       // Sized by the ResizeObserver below; Phaser's own RESIZE mode misreads grid cells.
       scale: { mode: Phaser.Scale.NONE, width: Math.max(1, this.el.field.clientWidth), height: Math.max(1, this.el.field.clientHeight) },
       scene,
